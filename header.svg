@@ -1,0 +1,117 @@
+<svg viewBox="0 0 1200 380" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Soft Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F8FAFC" />
+    </linearGradient>
+
+    <!-- Deep Navy Shard Gradient -->
+    <linearGradient id="navy-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#051329" />
+      <stop offset="100%" stop-color="#0E2A52" />
+    </linearGradient>
+
+    <!-- Cobalt Blue Shard Gradient -->
+    <linearGradient id="cobalt-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D4ED8" />
+      <stop offset="100%" stop-color="#1E3A8A" />
+    </linearGradient>
+
+    <!-- Electric Sapphire Gradient -->
+    <linearGradient id="sapphire-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#3B82F6" />
+    </linearGradient>
+
+    <!-- Sky Blue Translucent Gradient -->
+    <linearGradient id="cyan-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#93C5FD" />
+    </linearGradient>
+
+    <!-- Premium Gold Accent Gradient -->
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B48A3C" />
+      <stop offset="50%" stop-color="#E5C178" />
+      <stop offset="100%" stop-color="#B89355" />
+    </linearGradient>
+
+    <!-- Dot Grid Matrix Pattern -->
+    <pattern id="dot-grid" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#60A5FA" opacity="0.5" />
+    </pattern>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="380" fill="url(#bg-grad)"/>
+
+  <!-- Top Geometric Low-Poly Facet Shards (Confined to Top Area y <= 105) -->
+  <g id="geometric-facets">
+    <!-- Deep Navy Primary Facet (Left Top) -->
+    <polygon points="0,0 480,0 320,85 0,105" fill="url(#navy-grad)" />
+
+    <!-- Dot Matrix Pattern Overlay on Left Navy Shard -->
+    <polygon points="0,0 220,0 140,75 0,95" fill="url(#dot-grid)" opacity="0.85" />
+
+    <!-- Cobalt Blue Polygon (Center Top Shard) -->
+    <polygon points="220,0 720,0 480,80 200,90" fill="url(#cobalt-grad)" opacity="0.94" />
+
+    <!-- Sapphire Blue Facet Layer -->
+    <polygon points="460,0 960,0 700,70 360,75" fill="url(#sapphire-grad)" opacity="0.82" />
+
+    <!-- Light Sky Translucent Facet Shards (Right Top) -->
+    <polygon points="720,0 1200,0 1200,90 600,60" fill="url(#cyan-grad)" opacity="0.55" />
+    <polygon points="900,0 1200,0 1200,65 800,45" fill="#E0F2FE" opacity="0.4" />
+
+    <!-- Left Angular Shard Slice -->
+    <polygon points="0,60 160,85 0,110" fill="url(#cobalt-grad)" opacity="0.88" />
+
+    <!-- Sharp White Geometric Highlight Crease Lines -->
+    <line x1="0" y1="0" x2="320" y2="85" stroke="#FFFFFF" stroke-width="1.6" opacity="0.5" />
+    <line x1="220" y1="0" x2="480" y2="80" stroke="#FFFFFF" stroke-width="1.4" opacity="0.4" />
+    <line x1="460" y1="0" x2="700" y2="70" stroke="#FFFFFF" stroke-width="1.4" opacity="0.35" />
+
+    <!-- Gold Cutting Geometric Lines (Safely bounded above y = 80) -->
+    <line x1="140" y1="0" x2="620" y2="75" stroke="url(#gold-grad)" stroke-width="1.3" opacity="0.85" />
+    <line x1="380" y1="0" x2="980" y2="65" stroke="url(#gold-grad)" stroke-width="1.2" opacity="0.75" />
+    <line x1="680" y1="0" x2="1200" y2="45" stroke="url(#gold-grad)" stroke-width="1.2" opacity="0.65" />
+  </g>
+
+  <!-- Typography Section (Clean White Area, Zero Overlap) -->
+
+  <!-- Eyebrow Section with Side Lines and Dots -->
+  <g id="eyebrow-group">
+    <!-- Left Gold Line & Dot -->
+    <line x1="370" y1="146" x2="435" y2="146" stroke="url(#gold-grad)" stroke-width="1.4" stroke-linecap="round" />
+    <circle cx="442" cy="146" r="2.5" fill="#B48A3C" />
+
+    <!-- Eyebrow Text -->
+    <text x="600" y="150" text-anchor="middle" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" letter-spacing="5.5px" fill="#B48A3C">A PROJECT COLLABORATION HANDBOOK</text>
+
+    <!-- Right Gold Dot & Line -->
+    <circle cx="758" cy="146" r="2.5" fill="#B48A3C" />
+    <line x1="765" y1="146" x2="830" y2="146" stroke="url(#gold-grad)" stroke-width="1.4" stroke-linecap="round" />
+
+    <!-- Accent Pill Mark under Eyebrow -->
+    <rect x="582" y="162" width="36" height="3" rx="1.5" fill="url(#cobalt-grad)" />
+  </g>
+
+  <!-- Main Title -->
+  <text x="600" y="216" text-anchor="middle" font-family="'Playfair Display', Georgia, 'Times New Roman', Times, serif" font-size="48" font-weight="700" fill="#0B192C" letter-spacing="-0.5px">Smart Loan Default</text>
+  <text x="600" y="266" text-anchor="middle" font-family="'Playfair Display', Georgia, 'Times New Roman', Times, serif" font-size="48" font-weight="700" fill="#0B192C" letter-spacing="-0.5px">Risk Assessment Platform</text>
+
+  <!-- Gold Diamond Rule -->
+  <g id="diamond-rule">
+    <line x1="410" y1="296" x2="565" y2="296" stroke="url(#gold-grad)" stroke-width="1.5" stroke-linecap="round" />
+    <!-- Outer Diamond -->
+    <polygon points="600,287 609,296 600,305 591,296" fill="#FFFFFF" stroke="url(#gold-grad)" stroke-width="1.8" />
+    <!-- Inner Diamond -->
+    <polygon points="600,291 605,296 600,301 595,296" fill="url(#gold-grad)" />
+    <line x1="635" y1="296" x2="790" y2="296" stroke="url(#gold-grad)" stroke-width="1.5" stroke-linecap="round" />
+  </g>
+
+  <!-- Subtitle -->
+  <text x="600" y="330" text-anchor="middle" font-family="Georgia, 'Times New Roman', Times, serif" font-style="italic" font-size="15.5" fill="#334155">An intelligent platform that uses Big Data, machine learning,</text>
+  <text x="600" y="352" text-anchor="middle" font-family="Georgia, 'Times New Roman', Times, serif" font-style="italic" font-size="15.5" fill="#334155">and Explainable AI to assess loan default risk.</text>
+</svg>
