@@ -1,0 +1,122 @@
+[
+  {
+    "join": "application_train + bureau_features",
+    "spine": "application_train",
+    "feature_table": "bureau_features",
+    "join_key": "SK_ID_CURR",
+    "left_rows": 307511,
+    "right_rows": 305811,
+    "output_rows": 307511,
+    "row_increase": 0,
+    "duration_seconds": 0.48,
+    "status": "PASS"
+  },
+  {
+    "join": "application_train + previous_application_features",
+    "spine": "application_train",
+    "feature_table": "previous_application_features",
+    "join_key": "SK_ID_CURR",
+    "left_rows": 307511,
+    "right_rows": 338857,
+    "output_rows": 307511,
+    "row_increase": 0,
+    "duration_seconds": 0.51,
+    "status": "PASS"
+  },
+  {
+    "join": "application_train + installments_features",
+    "spine": "application_train",
+    "feature_table": "installments_features",
+    "join_key": "SK_ID_CURR",
+    "left_rows": 307511,
+    "right_rows": 339587,
+    "output_rows": 307511,
+    "row_increase": 0,
+    "duration_seconds": 0.5,
+    "status": "PASS"
+  },
+  {
+    "join": "application_train + credit_card_features",
+    "spine": "application_train",
+    "feature_table": "credit_card_features",
+    "join_key": "SK_ID_CURR",
+    "left_rows": 307511,
+    "right_rows": 103558,
+    "output_rows": 307511,
+    "row_increase": 0,
+    "duration_seconds": 0.62,
+    "status": "PASS"
+  },
+  {
+    "join": "application_train + pos_cash_features",
+    "spine": "application_train",
+    "feature_table": "pos_cash_features",
+    "join_key": "SK_ID_CURR",
+    "left_rows": 307511,
+    "right_rows": 337252,
+    "output_rows": 307511,
+    "row_increase": 0,
+    "duration_seconds": 0.71,
+    "status": "PASS"
+  },
+  {
+    "join": "application_test + bureau_features",
+    "spine": "application_test",
+    "feature_table": "bureau_features",
+    "join_key": "SK_ID_CURR",
+    "left_rows": 48744,
+    "right_rows": 305811,
+    "output_rows": 48744,
+    "row_increase": 0,
+    "duration_seconds": 0.3,
+    "status": "PASS"
+  },
+  {
+    "join": "application_test + previous_application_features",
+    "spine": "application_test",
+    "feature_table": "previous_application_features",
+    "join_key": "SK_ID_CURR",
+    "left_rows": 48744,
+    "right_rows": 338857,
+    "output_rows": 48744,
+    "row_increase": 0,
+    "duration_seconds": 0.38,
+    "status": "PASS"
+  },
+  {
+    "join": "application_test + installments_features",
+    "spine": "application_test",
+    "feature_table": "installments_features",
+    "join_key": "SK_ID_CURR",
+    "left_rows": 48744,
+    "right_rows": 339587,
+    "output_rows": 48744,
+    "row_increase": 0,
+    "duration_seconds": 0.38,
+    "status": "PASS"
+  },
+  {
+    "join": "application_test + credit_card_features",
+    "spine": "application_test",
+    "feature_table": "credit_card_features",
+    "join_key": "SK_ID_CURR",
+    "left_rows": 48744,
+    "right_rows": 103558,
+    "output_rows": 48744,
+    "row_increase": 0,
+    "duration_seconds": 0.42,
+    "status": "PASS"
+  },
+  {
+    "join": "application_test + pos_cash_features",
+    "spine": "application_test",
+    "feature_table": "pos_cash_features",
+    "join_key": "SK_ID_CURR",
+    "left_rows": 48744,
+    "right_rows": 337252,
+    "output_rows": 48744,
+    "row_increase": 0,
+    "duration_seconds": 0.51,
+    "status": "PASS"
+  }
+]

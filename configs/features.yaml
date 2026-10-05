@@ -1,0 +1,2349 @@
+SK_ID_CURR:
+  source: application_train
+  source_columns:
+  - SK_ID_CURR
+  aggregation: primary_key
+  description: Unique applicant loan identifier
+  output_type: integer
+  leakage_risk: none
+  null_behavior: never_null
+TARGET:
+  source: application_train
+  source_columns:
+  - TARGET
+  aggregation: ground_truth
+  description: Loan default ground truth indicator (1 = default, 0 = non-default)
+  output_type: integer
+  leakage_risk: target_label
+  null_behavior: never_null
+NAME_CONTRACT_TYPE:
+  source: application_train
+  source_columns:
+  - NAME_CONTRACT_TYPE
+  aggregation: passthrough
+  description: 'Base application feature: NAME_CONTRACT_TYPE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+CODE_GENDER:
+  source: application_train
+  source_columns:
+  - CODE_GENDER
+  aggregation: passthrough
+  description: 'Base application feature: CODE_GENDER'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_OWN_CAR:
+  source: application_train
+  source_columns:
+  - FLAG_OWN_CAR
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_OWN_CAR'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_OWN_REALTY:
+  source: application_train
+  source_columns:
+  - FLAG_OWN_REALTY
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_OWN_REALTY'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+CNT_CHILDREN:
+  source: application_train
+  source_columns:
+  - CNT_CHILDREN
+  aggregation: passthrough
+  description: 'Base application feature: CNT_CHILDREN'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+AMT_INCOME_TOTAL:
+  source: application_train
+  source_columns:
+  - AMT_INCOME_TOTAL
+  aggregation: passthrough
+  description: 'Base application feature: AMT_INCOME_TOTAL'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+AMT_CREDIT:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  aggregation: passthrough
+  description: 'Base application feature: AMT_CREDIT'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+AMT_ANNUITY:
+  source: application_train
+  source_columns:
+  - AMT_ANNUITY
+  aggregation: passthrough
+  description: 'Base application feature: AMT_ANNUITY'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+AMT_GOODS_PRICE:
+  source: application_train
+  source_columns:
+  - AMT_GOODS_PRICE
+  aggregation: passthrough
+  description: 'Base application feature: AMT_GOODS_PRICE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+NAME_TYPE_SUITE:
+  source: application_train
+  source_columns:
+  - NAME_TYPE_SUITE
+  aggregation: passthrough
+  description: 'Base application feature: NAME_TYPE_SUITE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+NAME_INCOME_TYPE:
+  source: application_train
+  source_columns:
+  - NAME_INCOME_TYPE
+  aggregation: passthrough
+  description: 'Base application feature: NAME_INCOME_TYPE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+NAME_EDUCATION_TYPE:
+  source: application_train
+  source_columns:
+  - NAME_EDUCATION_TYPE
+  aggregation: passthrough
+  description: 'Base application feature: NAME_EDUCATION_TYPE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+NAME_FAMILY_STATUS:
+  source: application_train
+  source_columns:
+  - NAME_FAMILY_STATUS
+  aggregation: passthrough
+  description: 'Base application feature: NAME_FAMILY_STATUS'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+NAME_HOUSING_TYPE:
+  source: application_train
+  source_columns:
+  - NAME_HOUSING_TYPE
+  aggregation: passthrough
+  description: 'Base application feature: NAME_HOUSING_TYPE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+REGION_POPULATION_RELATIVE:
+  source: application_train
+  source_columns:
+  - REGION_POPULATION_RELATIVE
+  aggregation: passthrough
+  description: 'Base application feature: REGION_POPULATION_RELATIVE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+DAYS_BIRTH:
+  source: application_train
+  source_columns:
+  - DAYS_BIRTH
+  aggregation: passthrough
+  description: 'Base application feature: DAYS_BIRTH'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+DAYS_EMPLOYED:
+  source: application_train
+  source_columns:
+  - DAYS_EMPLOYED
+  aggregation: passthrough
+  description: 'Base application feature: DAYS_EMPLOYED'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+DAYS_REGISTRATION:
+  source: application_train
+  source_columns:
+  - DAYS_REGISTRATION
+  aggregation: passthrough
+  description: 'Base application feature: DAYS_REGISTRATION'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+DAYS_ID_PUBLISH:
+  source: application_train
+  source_columns:
+  - DAYS_ID_PUBLISH
+  aggregation: passthrough
+  description: 'Base application feature: DAYS_ID_PUBLISH'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+OWN_CAR_AGE:
+  source: application_train
+  source_columns:
+  - OWN_CAR_AGE
+  aggregation: passthrough
+  description: 'Base application feature: OWN_CAR_AGE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_MOBIL:
+  source: application_train
+  source_columns:
+  - FLAG_MOBIL
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_MOBIL'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_EMP_PHONE:
+  source: application_train
+  source_columns:
+  - FLAG_EMP_PHONE
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_EMP_PHONE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_WORK_PHONE:
+  source: application_train
+  source_columns:
+  - FLAG_WORK_PHONE
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_WORK_PHONE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_CONT_MOBILE:
+  source: application_train
+  source_columns:
+  - FLAG_CONT_MOBILE
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_CONT_MOBILE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_PHONE:
+  source: application_train
+  source_columns:
+  - FLAG_PHONE
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_PHONE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_EMAIL:
+  source: application_train
+  source_columns:
+  - FLAG_EMAIL
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_EMAIL'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+OCCUPATION_TYPE:
+  source: application_train
+  source_columns:
+  - OCCUPATION_TYPE
+  aggregation: passthrough
+  description: 'Base application feature: OCCUPATION_TYPE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+CNT_FAM_MEMBERS:
+  source: application_train
+  source_columns:
+  - CNT_FAM_MEMBERS
+  aggregation: passthrough
+  description: 'Base application feature: CNT_FAM_MEMBERS'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+REGION_RATING_CLIENT:
+  source: application_train
+  source_columns:
+  - REGION_RATING_CLIENT
+  aggregation: passthrough
+  description: 'Base application feature: REGION_RATING_CLIENT'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+REGION_RATING_CLIENT_W_CITY:
+  source: application_train
+  source_columns:
+  - REGION_RATING_CLIENT_W_CITY
+  aggregation: passthrough
+  description: 'Base application feature: REGION_RATING_CLIENT_W_CITY'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+WEEKDAY_APPR_PROCESS_START:
+  source: application_train
+  source_columns:
+  - WEEKDAY_APPR_PROCESS_START
+  aggregation: passthrough
+  description: 'Base application feature: WEEKDAY_APPR_PROCESS_START'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+HOUR_APPR_PROCESS_START:
+  source: application_train
+  source_columns:
+  - HOUR_APPR_PROCESS_START
+  aggregation: passthrough
+  description: 'Base application feature: HOUR_APPR_PROCESS_START'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+REG_REGION_NOT_LIVE_REGION:
+  source: application_train
+  source_columns:
+  - REG_REGION_NOT_LIVE_REGION
+  aggregation: passthrough
+  description: 'Base application feature: REG_REGION_NOT_LIVE_REGION'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+REG_REGION_NOT_WORK_REGION:
+  source: application_train
+  source_columns:
+  - REG_REGION_NOT_WORK_REGION
+  aggregation: passthrough
+  description: 'Base application feature: REG_REGION_NOT_WORK_REGION'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+LIVE_REGION_NOT_WORK_REGION:
+  source: application_train
+  source_columns:
+  - LIVE_REGION_NOT_WORK_REGION
+  aggregation: passthrough
+  description: 'Base application feature: LIVE_REGION_NOT_WORK_REGION'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+REG_CITY_NOT_LIVE_CITY:
+  source: application_train
+  source_columns:
+  - REG_CITY_NOT_LIVE_CITY
+  aggregation: passthrough
+  description: 'Base application feature: REG_CITY_NOT_LIVE_CITY'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+REG_CITY_NOT_WORK_CITY:
+  source: application_train
+  source_columns:
+  - REG_CITY_NOT_WORK_CITY
+  aggregation: passthrough
+  description: 'Base application feature: REG_CITY_NOT_WORK_CITY'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+LIVE_CITY_NOT_WORK_CITY:
+  source: application_train
+  source_columns:
+  - LIVE_CITY_NOT_WORK_CITY
+  aggregation: passthrough
+  description: 'Base application feature: LIVE_CITY_NOT_WORK_CITY'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+ORGANIZATION_TYPE:
+  source: application_train
+  source_columns:
+  - ORGANIZATION_TYPE
+  aggregation: passthrough
+  description: 'Base application feature: ORGANIZATION_TYPE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+EXT_SOURCE_1:
+  source: application_train
+  source_columns:
+  - EXT_SOURCE_1
+  aggregation: passthrough
+  description: 'Base application feature: EXT_SOURCE_1'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+EXT_SOURCE_2:
+  source: application_train
+  source_columns:
+  - EXT_SOURCE_2
+  aggregation: passthrough
+  description: 'Base application feature: EXT_SOURCE_2'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+EXT_SOURCE_3:
+  source: application_train
+  source_columns:
+  - EXT_SOURCE_3
+  aggregation: passthrough
+  description: 'Base application feature: EXT_SOURCE_3'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+APARTMENTS_AVG:
+  source: application_train
+  source_columns:
+  - APARTMENTS_AVG
+  aggregation: passthrough
+  description: 'Base application feature: APARTMENTS_AVG'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+BASEMENTAREA_AVG:
+  source: application_train
+  source_columns:
+  - BASEMENTAREA_AVG
+  aggregation: passthrough
+  description: 'Base application feature: BASEMENTAREA_AVG'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+YEARS_BEGINEXPLUATATION_AVG:
+  source: application_train
+  source_columns:
+  - YEARS_BEGINEXPLUATATION_AVG
+  aggregation: passthrough
+  description: 'Base application feature: YEARS_BEGINEXPLUATATION_AVG'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+YEARS_BUILD_AVG:
+  source: application_train
+  source_columns:
+  - YEARS_BUILD_AVG
+  aggregation: passthrough
+  description: 'Base application feature: YEARS_BUILD_AVG'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+COMMONAREA_AVG:
+  source: application_train
+  source_columns:
+  - COMMONAREA_AVG
+  aggregation: passthrough
+  description: 'Base application feature: COMMONAREA_AVG'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+ELEVATORS_AVG:
+  source: application_train
+  source_columns:
+  - ELEVATORS_AVG
+  aggregation: passthrough
+  description: 'Base application feature: ELEVATORS_AVG'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+ENTRANCES_AVG:
+  source: application_train
+  source_columns:
+  - ENTRANCES_AVG
+  aggregation: passthrough
+  description: 'Base application feature: ENTRANCES_AVG'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLOORSMAX_AVG:
+  source: application_train
+  source_columns:
+  - FLOORSMAX_AVG
+  aggregation: passthrough
+  description: 'Base application feature: FLOORSMAX_AVG'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLOORSMIN_AVG:
+  source: application_train
+  source_columns:
+  - FLOORSMIN_AVG
+  aggregation: passthrough
+  description: 'Base application feature: FLOORSMIN_AVG'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+LANDAREA_AVG:
+  source: application_train
+  source_columns:
+  - LANDAREA_AVG
+  aggregation: passthrough
+  description: 'Base application feature: LANDAREA_AVG'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+LIVINGAPARTMENTS_AVG:
+  source: application_train
+  source_columns:
+  - LIVINGAPARTMENTS_AVG
+  aggregation: passthrough
+  description: 'Base application feature: LIVINGAPARTMENTS_AVG'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+LIVINGAREA_AVG:
+  source: application_train
+  source_columns:
+  - LIVINGAREA_AVG
+  aggregation: passthrough
+  description: 'Base application feature: LIVINGAREA_AVG'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+NONLIVINGAPARTMENTS_AVG:
+  source: application_train
+  source_columns:
+  - NONLIVINGAPARTMENTS_AVG
+  aggregation: passthrough
+  description: 'Base application feature: NONLIVINGAPARTMENTS_AVG'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+NONLIVINGAREA_AVG:
+  source: application_train
+  source_columns:
+  - NONLIVINGAREA_AVG
+  aggregation: passthrough
+  description: 'Base application feature: NONLIVINGAREA_AVG'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+APARTMENTS_MODE:
+  source: application_train
+  source_columns:
+  - APARTMENTS_MODE
+  aggregation: passthrough
+  description: 'Base application feature: APARTMENTS_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+BASEMENTAREA_MODE:
+  source: application_train
+  source_columns:
+  - BASEMENTAREA_MODE
+  aggregation: passthrough
+  description: 'Base application feature: BASEMENTAREA_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+YEARS_BEGINEXPLUATATION_MODE:
+  source: application_train
+  source_columns:
+  - YEARS_BEGINEXPLUATATION_MODE
+  aggregation: passthrough
+  description: 'Base application feature: YEARS_BEGINEXPLUATATION_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+YEARS_BUILD_MODE:
+  source: application_train
+  source_columns:
+  - YEARS_BUILD_MODE
+  aggregation: passthrough
+  description: 'Base application feature: YEARS_BUILD_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+COMMONAREA_MODE:
+  source: application_train
+  source_columns:
+  - COMMONAREA_MODE
+  aggregation: passthrough
+  description: 'Base application feature: COMMONAREA_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+ELEVATORS_MODE:
+  source: application_train
+  source_columns:
+  - ELEVATORS_MODE
+  aggregation: passthrough
+  description: 'Base application feature: ELEVATORS_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+ENTRANCES_MODE:
+  source: application_train
+  source_columns:
+  - ENTRANCES_MODE
+  aggregation: passthrough
+  description: 'Base application feature: ENTRANCES_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLOORSMAX_MODE:
+  source: application_train
+  source_columns:
+  - FLOORSMAX_MODE
+  aggregation: passthrough
+  description: 'Base application feature: FLOORSMAX_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLOORSMIN_MODE:
+  source: application_train
+  source_columns:
+  - FLOORSMIN_MODE
+  aggregation: passthrough
+  description: 'Base application feature: FLOORSMIN_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+LANDAREA_MODE:
+  source: application_train
+  source_columns:
+  - LANDAREA_MODE
+  aggregation: passthrough
+  description: 'Base application feature: LANDAREA_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+LIVINGAPARTMENTS_MODE:
+  source: application_train
+  source_columns:
+  - LIVINGAPARTMENTS_MODE
+  aggregation: passthrough
+  description: 'Base application feature: LIVINGAPARTMENTS_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+LIVINGAREA_MODE:
+  source: application_train
+  source_columns:
+  - LIVINGAREA_MODE
+  aggregation: passthrough
+  description: 'Base application feature: LIVINGAREA_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+NONLIVINGAPARTMENTS_MODE:
+  source: application_train
+  source_columns:
+  - NONLIVINGAPARTMENTS_MODE
+  aggregation: passthrough
+  description: 'Base application feature: NONLIVINGAPARTMENTS_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+NONLIVINGAREA_MODE:
+  source: application_train
+  source_columns:
+  - NONLIVINGAREA_MODE
+  aggregation: passthrough
+  description: 'Base application feature: NONLIVINGAREA_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+APARTMENTS_MEDI:
+  source: application_train
+  source_columns:
+  - APARTMENTS_MEDI
+  aggregation: passthrough
+  description: 'Base application feature: APARTMENTS_MEDI'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+BASEMENTAREA_MEDI:
+  source: application_train
+  source_columns:
+  - BASEMENTAREA_MEDI
+  aggregation: passthrough
+  description: 'Base application feature: BASEMENTAREA_MEDI'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+YEARS_BEGINEXPLUATATION_MEDI:
+  source: application_train
+  source_columns:
+  - YEARS_BEGINEXPLUATATION_MEDI
+  aggregation: passthrough
+  description: 'Base application feature: YEARS_BEGINEXPLUATATION_MEDI'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+YEARS_BUILD_MEDI:
+  source: application_train
+  source_columns:
+  - YEARS_BUILD_MEDI
+  aggregation: passthrough
+  description: 'Base application feature: YEARS_BUILD_MEDI'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+COMMONAREA_MEDI:
+  source: application_train
+  source_columns:
+  - COMMONAREA_MEDI
+  aggregation: passthrough
+  description: 'Base application feature: COMMONAREA_MEDI'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+ELEVATORS_MEDI:
+  source: application_train
+  source_columns:
+  - ELEVATORS_MEDI
+  aggregation: passthrough
+  description: 'Base application feature: ELEVATORS_MEDI'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+ENTRANCES_MEDI:
+  source: application_train
+  source_columns:
+  - ENTRANCES_MEDI
+  aggregation: passthrough
+  description: 'Base application feature: ENTRANCES_MEDI'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLOORSMAX_MEDI:
+  source: application_train
+  source_columns:
+  - FLOORSMAX_MEDI
+  aggregation: passthrough
+  description: 'Base application feature: FLOORSMAX_MEDI'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLOORSMIN_MEDI:
+  source: application_train
+  source_columns:
+  - FLOORSMIN_MEDI
+  aggregation: passthrough
+  description: 'Base application feature: FLOORSMIN_MEDI'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+LANDAREA_MEDI:
+  source: application_train
+  source_columns:
+  - LANDAREA_MEDI
+  aggregation: passthrough
+  description: 'Base application feature: LANDAREA_MEDI'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+LIVINGAPARTMENTS_MEDI:
+  source: application_train
+  source_columns:
+  - LIVINGAPARTMENTS_MEDI
+  aggregation: passthrough
+  description: 'Base application feature: LIVINGAPARTMENTS_MEDI'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+LIVINGAREA_MEDI:
+  source: application_train
+  source_columns:
+  - LIVINGAREA_MEDI
+  aggregation: passthrough
+  description: 'Base application feature: LIVINGAREA_MEDI'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+NONLIVINGAPARTMENTS_MEDI:
+  source: application_train
+  source_columns:
+  - NONLIVINGAPARTMENTS_MEDI
+  aggregation: passthrough
+  description: 'Base application feature: NONLIVINGAPARTMENTS_MEDI'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+NONLIVINGAREA_MEDI:
+  source: application_train
+  source_columns:
+  - NONLIVINGAREA_MEDI
+  aggregation: passthrough
+  description: 'Base application feature: NONLIVINGAREA_MEDI'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FONDKAPREMONT_MODE:
+  source: application_train
+  source_columns:
+  - FONDKAPREMONT_MODE
+  aggregation: passthrough
+  description: 'Base application feature: FONDKAPREMONT_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+HOUSETYPE_MODE:
+  source: application_train
+  source_columns:
+  - HOUSETYPE_MODE
+  aggregation: passthrough
+  description: 'Base application feature: HOUSETYPE_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+TOTALAREA_MODE:
+  source: application_train
+  source_columns:
+  - TOTALAREA_MODE
+  aggregation: passthrough
+  description: 'Base application feature: TOTALAREA_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+WALLSMATERIAL_MODE:
+  source: application_train
+  source_columns:
+  - WALLSMATERIAL_MODE
+  aggregation: passthrough
+  description: 'Base application feature: WALLSMATERIAL_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+EMERGENCYSTATE_MODE:
+  source: application_train
+  source_columns:
+  - EMERGENCYSTATE_MODE
+  aggregation: passthrough
+  description: 'Base application feature: EMERGENCYSTATE_MODE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+OBS_30_CNT_SOCIAL_CIRCLE:
+  source: application_train
+  source_columns:
+  - OBS_30_CNT_SOCIAL_CIRCLE
+  aggregation: passthrough
+  description: 'Base application feature: OBS_30_CNT_SOCIAL_CIRCLE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+DEF_30_CNT_SOCIAL_CIRCLE:
+  source: application_train
+  source_columns:
+  - DEF_30_CNT_SOCIAL_CIRCLE
+  aggregation: passthrough
+  description: 'Base application feature: DEF_30_CNT_SOCIAL_CIRCLE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+OBS_60_CNT_SOCIAL_CIRCLE:
+  source: application_train
+  source_columns:
+  - OBS_60_CNT_SOCIAL_CIRCLE
+  aggregation: passthrough
+  description: 'Base application feature: OBS_60_CNT_SOCIAL_CIRCLE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+DEF_60_CNT_SOCIAL_CIRCLE:
+  source: application_train
+  source_columns:
+  - DEF_60_CNT_SOCIAL_CIRCLE
+  aggregation: passthrough
+  description: 'Base application feature: DEF_60_CNT_SOCIAL_CIRCLE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+DAYS_LAST_PHONE_CHANGE:
+  source: application_train
+  source_columns:
+  - DAYS_LAST_PHONE_CHANGE
+  aggregation: passthrough
+  description: 'Base application feature: DAYS_LAST_PHONE_CHANGE'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_2:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_2
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_2'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_3:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_3
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_3'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_4:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_4
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_4'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_5:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_5
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_5'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_6:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_6
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_6'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_7:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_7
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_7'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_8:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_8
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_8'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_9:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_9
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_9'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_10:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_10
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_10'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_11:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_11
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_11'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_12:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_12
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_12'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_13:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_13
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_13'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_14:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_14
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_14'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_15:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_15
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_15'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_16:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_16
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_16'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_17:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_17
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_17'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_18:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_18
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_18'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_19:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_19
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_19'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_20:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_20
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_20'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DOCUMENT_21:
+  source: application_train
+  source_columns:
+  - FLAG_DOCUMENT_21
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DOCUMENT_21'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+AMT_REQ_CREDIT_BUREAU_HOUR:
+  source: application_train
+  source_columns:
+  - AMT_REQ_CREDIT_BUREAU_HOUR
+  aggregation: passthrough
+  description: 'Base application feature: AMT_REQ_CREDIT_BUREAU_HOUR'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+AMT_REQ_CREDIT_BUREAU_DAY:
+  source: application_train
+  source_columns:
+  - AMT_REQ_CREDIT_BUREAU_DAY
+  aggregation: passthrough
+  description: 'Base application feature: AMT_REQ_CREDIT_BUREAU_DAY'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+AMT_REQ_CREDIT_BUREAU_WEEK:
+  source: application_train
+  source_columns:
+  - AMT_REQ_CREDIT_BUREAU_WEEK
+  aggregation: passthrough
+  description: 'Base application feature: AMT_REQ_CREDIT_BUREAU_WEEK'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+AMT_REQ_CREDIT_BUREAU_MON:
+  source: application_train
+  source_columns:
+  - AMT_REQ_CREDIT_BUREAU_MON
+  aggregation: passthrough
+  description: 'Base application feature: AMT_REQ_CREDIT_BUREAU_MON'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+AMT_REQ_CREDIT_BUREAU_QRT:
+  source: application_train
+  source_columns:
+  - AMT_REQ_CREDIT_BUREAU_QRT
+  aggregation: passthrough
+  description: 'Base application feature: AMT_REQ_CREDIT_BUREAU_QRT'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+AMT_REQ_CREDIT_BUREAU_YEAR:
+  source: application_train
+  source_columns:
+  - AMT_REQ_CREDIT_BUREAU_YEAR
+  aggregation: passthrough
+  description: 'Base application feature: AMT_REQ_CREDIT_BUREAU_YEAR'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_DAYS_EMPLOYED_SENTINEL:
+  source: application_train
+  source_columns:
+  - FLAG_DAYS_EMPLOYED_SENTINEL
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_DAYS_EMPLOYED_SENTINEL'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_CODE_GENDER_XNA:
+  source: application_train
+  source_columns:
+  - FLAG_CODE_GENDER_XNA
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_CODE_GENDER_XNA'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+FLAG_ORGANIZATION_TYPE_XNA:
+  source: application_train
+  source_columns:
+  - FLAG_ORGANIZATION_TYPE_XNA
+  aggregation: passthrough
+  description: 'Base application feature: FLAG_ORGANIZATION_TYPE_XNA'
+  output_type: original
+  leakage_risk: none
+  null_behavior: preserve_raw_missingness
+APP_CREDIT_TO_INCOME_RATIO:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  - AMT_INCOME_TOTAL
+  - AMT_ANNUITY
+  - DAYS_BIRTH
+  - EXT_SOURCES
+  aggregation: row_level_ratio
+  description: 'Engineered application domain ratio: APP_CREDIT_TO_INCOME_RATIO'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: safe_division_null_on_zero
+APP_ANNUITY_TO_INCOME_RATIO:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  - AMT_INCOME_TOTAL
+  - AMT_ANNUITY
+  - DAYS_BIRTH
+  - EXT_SOURCES
+  aggregation: row_level_ratio
+  description: 'Engineered application domain ratio: APP_ANNUITY_TO_INCOME_RATIO'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: safe_division_null_on_zero
+APP_PAYMENT_RATE:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  - AMT_INCOME_TOTAL
+  - AMT_ANNUITY
+  - DAYS_BIRTH
+  - EXT_SOURCES
+  aggregation: row_level_ratio
+  description: 'Engineered application domain ratio: APP_PAYMENT_RATE'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: safe_division_null_on_zero
+APP_GOODS_TO_CREDIT_RATIO:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  - AMT_INCOME_TOTAL
+  - AMT_ANNUITY
+  - DAYS_BIRTH
+  - EXT_SOURCES
+  aggregation: row_level_ratio
+  description: 'Engineered application domain ratio: APP_GOODS_TO_CREDIT_RATIO'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: safe_division_null_on_zero
+APP_INCOME_PER_FAMILY_MEMBER:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  - AMT_INCOME_TOTAL
+  - AMT_ANNUITY
+  - DAYS_BIRTH
+  - EXT_SOURCES
+  aggregation: row_level_ratio
+  description: 'Engineered application domain ratio: APP_INCOME_PER_FAMILY_MEMBER'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: safe_division_null_on_zero
+APP_AGE_YEARS:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  - AMT_INCOME_TOTAL
+  - AMT_ANNUITY
+  - DAYS_BIRTH
+  - EXT_SOURCES
+  aggregation: row_level_ratio
+  description: 'Engineered application domain ratio: APP_AGE_YEARS'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: safe_division_null_on_zero
+APP_EMPLOYED_YEARS:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  - AMT_INCOME_TOTAL
+  - AMT_ANNUITY
+  - DAYS_BIRTH
+  - EXT_SOURCES
+  aggregation: row_level_ratio
+  description: 'Engineered application domain ratio: APP_EMPLOYED_YEARS'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: safe_division_null_on_zero
+APP_DAYS_EMPLOYED_TO_BIRTH_RATIO:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  - AMT_INCOME_TOTAL
+  - AMT_ANNUITY
+  - DAYS_BIRTH
+  - EXT_SOURCES
+  aggregation: row_level_ratio
+  description: 'Engineered application domain ratio: APP_DAYS_EMPLOYED_TO_BIRTH_RATIO'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: safe_division_null_on_zero
+APP_INCOME_TO_EMPLOYED_RATIO:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  - AMT_INCOME_TOTAL
+  - AMT_ANNUITY
+  - DAYS_BIRTH
+  - EXT_SOURCES
+  aggregation: row_level_ratio
+  description: 'Engineered application domain ratio: APP_INCOME_TO_EMPLOYED_RATIO'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: safe_division_null_on_zero
+APP_EXT_SOURCES_MEAN:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  - AMT_INCOME_TOTAL
+  - AMT_ANNUITY
+  - DAYS_BIRTH
+  - EXT_SOURCES
+  aggregation: row_level_ratio
+  description: 'Engineered application domain ratio: APP_EXT_SOURCES_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: safe_division_null_on_zero
+APP_EXT_SOURCES_PROD:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  - AMT_INCOME_TOTAL
+  - AMT_ANNUITY
+  - DAYS_BIRTH
+  - EXT_SOURCES
+  aggregation: row_level_ratio
+  description: 'Engineered application domain ratio: APP_EXT_SOURCES_PROD'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: safe_division_null_on_zero
+APP_EXT_SOURCE_1_TO_2_RATIO:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  - AMT_INCOME_TOTAL
+  - AMT_ANNUITY
+  - DAYS_BIRTH
+  - EXT_SOURCES
+  aggregation: row_level_ratio
+  description: 'Engineered application domain ratio: APP_EXT_SOURCE_1_TO_2_RATIO'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: safe_division_null_on_zero
+APP_EXT_SOURCE_2_TO_3_RATIO:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  - AMT_INCOME_TOTAL
+  - AMT_ANNUITY
+  - DAYS_BIRTH
+  - EXT_SOURCES
+  aggregation: row_level_ratio
+  description: 'Engineered application domain ratio: APP_EXT_SOURCE_2_TO_3_RATIO'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: safe_division_null_on_zero
+APP_DOCUMENT_FLAGS_COUNT:
+  source: application_train
+  source_columns:
+  - AMT_CREDIT
+  - AMT_INCOME_TOTAL
+  - AMT_ANNUITY
+  - DAYS_BIRTH
+  - EXT_SOURCES
+  aggregation: row_level_ratio
+  description: 'Engineered application domain ratio: APP_DOCUMENT_FLAGS_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: safe_division_null_on_zero
+BURO_RECORD_COUNT:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_RECORD_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_ACTIVE_COUNT:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_ACTIVE_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_CLOSED_COUNT:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_CLOSED_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_DAYS_CREDIT_MIN:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_DAYS_CREDIT_MIN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_DAYS_CREDIT_MAX:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_DAYS_CREDIT_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_DAYS_CREDIT_MEAN:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_DAYS_CREDIT_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_DAYS_CREDIT_ENDDATE_MAX:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_DAYS_CREDIT_ENDDATE_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_AMT_CREDIT_SUM_SUM:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_AMT_CREDIT_SUM_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_AMT_CREDIT_SUM_MEAN:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_AMT_CREDIT_SUM_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_AMT_CREDIT_SUM_MAX:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_AMT_CREDIT_SUM_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_AMT_CREDIT_SUM_DEBT_SUM:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_AMT_CREDIT_SUM_DEBT_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_AMT_CREDIT_SUM_DEBT_MEAN:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_AMT_CREDIT_SUM_DEBT_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_AMT_CREDIT_SUM_OVERDUE_SUM:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_AMT_CREDIT_SUM_OVERDUE_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_AMT_CREDIT_SUM_OVERDUE_MAX:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_AMT_CREDIT_SUM_OVERDUE_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_CNT_CREDIT_PROLONG_SUM:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_CNT_CREDIT_PROLONG_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_AMT_ANNUITY_SUM:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_AMT_ANNUITY_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_AMT_ANNUITY_MEAN:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_AMT_ANNUITY_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_BAL_MONTH_COUNT_SUM:
+  source: bureau_balance
+  source_columns:
+  - STATUS
+  - MONTHS_BALANCE
+  aggregation: groupBy(SK_ID_BUREAU) -> groupBy(SK_ID_CURR)
+  description: 'Credit bureau monthly balance aggregate feature: BURO_BAL_MONTH_COUNT_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau_balance
+BURO_BAL_MONTH_COUNT_MEAN:
+  source: bureau_balance
+  source_columns:
+  - STATUS
+  - MONTHS_BALANCE
+  aggregation: groupBy(SK_ID_BUREAU) -> groupBy(SK_ID_CURR)
+  description: 'Credit bureau monthly balance aggregate feature: BURO_BAL_MONTH_COUNT_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau_balance
+BURO_BAL_DPD_COUNT_SUM:
+  source: bureau_balance
+  source_columns:
+  - STATUS
+  - MONTHS_BALANCE
+  aggregation: groupBy(SK_ID_BUREAU) -> groupBy(SK_ID_CURR)
+  description: 'Credit bureau monthly balance aggregate feature: BURO_BAL_DPD_COUNT_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau_balance
+BURO_BAL_DPD_RATIO_MEAN:
+  source: bureau_balance
+  source_columns:
+  - STATUS
+  - MONTHS_BALANCE
+  aggregation: groupBy(SK_ID_BUREAU) -> groupBy(SK_ID_CURR)
+  description: 'Credit bureau monthly balance aggregate feature: BURO_BAL_DPD_RATIO_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau_balance
+BURO_BAL_STATUS_0_SUM:
+  source: bureau_balance
+  source_columns:
+  - STATUS
+  - MONTHS_BALANCE
+  aggregation: groupBy(SK_ID_BUREAU) -> groupBy(SK_ID_CURR)
+  description: 'Credit bureau monthly balance aggregate feature: BURO_BAL_STATUS_0_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau_balance
+BURO_BAL_STATUS_C_SUM:
+  source: bureau_balance
+  source_columns:
+  - STATUS
+  - MONTHS_BALANCE
+  aggregation: groupBy(SK_ID_BUREAU) -> groupBy(SK_ID_CURR)
+  description: 'Credit bureau monthly balance aggregate feature: BURO_BAL_STATUS_C_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau_balance
+BURO_ACTIVE_RATIO:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_ACTIVE_RATIO'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_DEBT_TO_CREDIT_RATIO:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_DEBT_TO_CREDIT_RATIO'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+BURO_OVERDUE_TO_CREDIT_RATIO:
+  source: bureau
+  source_columns:
+  - bureau attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit bureau historical aggregate feature: BURO_OVERDUE_TO_CREDIT_RATIO'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_bureau
+PREV_APPLICATION_COUNT:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_APPLICATION_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_APPROVED_COUNT:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_APPROVED_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_REFUSED_COUNT:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_REFUSED_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_CANCELED_COUNT:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_CANCELED_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_UNUSED_OFFER_COUNT:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_UNUSED_OFFER_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_AMT_CREDIT_SUM:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_AMT_CREDIT_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_AMT_CREDIT_MEAN:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_AMT_CREDIT_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_AMT_CREDIT_MAX:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_AMT_CREDIT_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_AMT_APPLICATION_SUM:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_AMT_APPLICATION_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_AMT_APPLICATION_MEAN:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_AMT_APPLICATION_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_AMT_APPLICATION_MAX:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_AMT_APPLICATION_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_AMT_ANNUITY_SUM:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_AMT_ANNUITY_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_AMT_ANNUITY_MEAN:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_AMT_ANNUITY_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_AMT_DOWN_PAYMENT_SUM:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_AMT_DOWN_PAYMENT_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_RATE_DOWN_PAYMENT_MEAN:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_RATE_DOWN_PAYMENT_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_DAYS_DECISION_MIN:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_DAYS_DECISION_MIN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_DAYS_DECISION_MAX:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_DAYS_DECISION_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_DAYS_DECISION_MEAN:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_DAYS_DECISION_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_CNT_PAYMENT_SUM:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_CNT_PAYMENT_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_CNT_PAYMENT_MEAN:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_CNT_PAYMENT_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_TERMINATION_SENTINEL_SUM:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_TERMINATION_SENTINEL_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_LAST_DUE_SENTINEL_SUM:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_LAST_DUE_SENTINEL_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_APPROVAL_RATE:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_APPROVAL_RATE'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_REFUSAL_RATE:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_REFUSAL_RATE'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+PREV_APPLICATION_TO_CREDIT_RATIO:
+  source: previous_application
+  source_columns:
+  - previous_application attributes
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Previous Home Credit application aggregate feature: PREV_APPLICATION_TO_CREDIT_RATIO'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_prev_app
+INST_RECORD_COUNT:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_RECORD_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_AMT_INSTALMENT_SUM:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_AMT_INSTALMENT_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_AMT_PAYMENT_SUM:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_AMT_PAYMENT_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_AMT_PAYMENT_MEAN:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_AMT_PAYMENT_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_AMT_PAYMENT_MAX:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_AMT_PAYMENT_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_AMT_SHORTFALL_SUM:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_AMT_SHORTFALL_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_DELAY_MEAN:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_DELAY_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_DELAY_MAX:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_DELAY_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_DELAY_MIN:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_DELAY_MIN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_LATE_COUNT:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_LATE_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_UNDERPAID_COUNT:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_UNDERPAID_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_DAYS_ENTRY_PAYMENT_MAX:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_DAYS_ENTRY_PAYMENT_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_NUM_INSTALMENT_VERSION_MAX:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_NUM_INSTALMENT_VERSION_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_PAYMENT_RATIO:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_PAYMENT_RATIO'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_LATE_RATE:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_LATE_RATE'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+INST_UNDERPAID_RATE:
+  source: installments_payments
+  source_columns:
+  - DAYS_INSTALMENT
+  - DAYS_ENTRY_PAYMENT
+  - AMT_INSTALMENT
+  - AMT_PAYMENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Installment payment behavioral aggregate feature: INST_UNDERPAID_RATE'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_installments
+CC_RECORD_COUNT:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_RECORD_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_MONTHS_COUNT:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_MONTHS_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_AMT_BALANCE_MEAN:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_AMT_BALANCE_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_AMT_BALANCE_MAX:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_AMT_BALANCE_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_AMT_BALANCE_MIN:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_AMT_BALANCE_MIN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_AMT_CREDIT_LIMIT_MEAN:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_AMT_CREDIT_LIMIT_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_AMT_CREDIT_LIMIT_MAX:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_AMT_CREDIT_LIMIT_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_AMT_DRAWINGS_ATM_SUM:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_AMT_DRAWINGS_ATM_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_AMT_DRAWINGS_CURRENT_SUM:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_AMT_DRAWINGS_CURRENT_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_AMT_DRAWINGS_CURRENT_MAX:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_AMT_DRAWINGS_CURRENT_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_CNT_DRAWINGS_CURRENT_SUM:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_CNT_DRAWINGS_CURRENT_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_CNT_DRAWINGS_CURRENT_MEAN:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_CNT_DRAWINGS_CURRENT_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_AMT_PAYMENT_TOTAL_SUM:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_AMT_PAYMENT_TOTAL_SUM'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_AMT_PAYMENT_TOTAL_MEAN:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_AMT_PAYMENT_TOTAL_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_AMT_TOTAL_RECEIVABLE_MAX:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_AMT_TOTAL_RECEIVABLE_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_SK_DPD_MAX:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_SK_DPD_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_SK_DPD_MEAN:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_SK_DPD_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_DPD_MONTH_COUNT:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_DPD_MONTH_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_SK_DPD_DEF_MAX:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_SK_DPD_DEF_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_UTILIZATION_MEAN:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_UTILIZATION_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+CC_UTILIZATION_MAX:
+  source: credit_card_balance
+  source_columns:
+  - AMT_BALANCE
+  - AMT_CREDIT_LIMIT_ACTUAL
+  - AMT_DRAWINGS_CURRENT
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'Credit card revolving balance aggregate feature: CC_UTILIZATION_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_credit_card
+POS_RECORD_COUNT:
+  source: POS_CASH_balance
+  source_columns:
+  - CNT_INSTALMENT
+  - CNT_INSTALMENT_FUTURE
+  - NAME_CONTRACT_STATUS
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'POS and cash loan monthly behavioral feature: POS_RECORD_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_pos_cash
+POS_MONTHS_COUNT:
+  source: POS_CASH_balance
+  source_columns:
+  - CNT_INSTALMENT
+  - CNT_INSTALMENT_FUTURE
+  - NAME_CONTRACT_STATUS
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'POS and cash loan monthly behavioral feature: POS_MONTHS_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_pos_cash
+POS_MONTHS_BALANCE_MAX:
+  source: POS_CASH_balance
+  source_columns:
+  - CNT_INSTALMENT
+  - CNT_INSTALMENT_FUTURE
+  - NAME_CONTRACT_STATUS
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'POS and cash loan monthly behavioral feature: POS_MONTHS_BALANCE_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_pos_cash
+POS_MONTHS_BALANCE_MIN:
+  source: POS_CASH_balance
+  source_columns:
+  - CNT_INSTALMENT
+  - CNT_INSTALMENT_FUTURE
+  - NAME_CONTRACT_STATUS
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'POS and cash loan monthly behavioral feature: POS_MONTHS_BALANCE_MIN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_pos_cash
+POS_CNT_INSTALMENT_MEAN:
+  source: POS_CASH_balance
+  source_columns:
+  - CNT_INSTALMENT
+  - CNT_INSTALMENT_FUTURE
+  - NAME_CONTRACT_STATUS
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'POS and cash loan monthly behavioral feature: POS_CNT_INSTALMENT_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_pos_cash
+POS_CNT_INSTALMENT_FUTURE_MEAN:
+  source: POS_CASH_balance
+  source_columns:
+  - CNT_INSTALMENT
+  - CNT_INSTALMENT_FUTURE
+  - NAME_CONTRACT_STATUS
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'POS and cash loan monthly behavioral feature: POS_CNT_INSTALMENT_FUTURE_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_pos_cash
+POS_ACTIVE_MONTH_COUNT:
+  source: POS_CASH_balance
+  source_columns:
+  - CNT_INSTALMENT
+  - CNT_INSTALMENT_FUTURE
+  - NAME_CONTRACT_STATUS
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'POS and cash loan monthly behavioral feature: POS_ACTIVE_MONTH_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_pos_cash
+POS_COMPLETED_MONTH_COUNT:
+  source: POS_CASH_balance
+  source_columns:
+  - CNT_INSTALMENT
+  - CNT_INSTALMENT_FUTURE
+  - NAME_CONTRACT_STATUS
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'POS and cash loan monthly behavioral feature: POS_COMPLETED_MONTH_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_pos_cash
+POS_SIGNED_MONTH_COUNT:
+  source: POS_CASH_balance
+  source_columns:
+  - CNT_INSTALMENT
+  - CNT_INSTALMENT_FUTURE
+  - NAME_CONTRACT_STATUS
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'POS and cash loan monthly behavioral feature: POS_SIGNED_MONTH_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_pos_cash
+POS_SK_DPD_MAX:
+  source: POS_CASH_balance
+  source_columns:
+  - CNT_INSTALMENT
+  - CNT_INSTALMENT_FUTURE
+  - NAME_CONTRACT_STATUS
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'POS and cash loan monthly behavioral feature: POS_SK_DPD_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_pos_cash
+POS_SK_DPD_MEAN:
+  source: POS_CASH_balance
+  source_columns:
+  - CNT_INSTALMENT
+  - CNT_INSTALMENT_FUTURE
+  - NAME_CONTRACT_STATUS
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'POS and cash loan monthly behavioral feature: POS_SK_DPD_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_pos_cash
+POS_DPD_MONTH_COUNT:
+  source: POS_CASH_balance
+  source_columns:
+  - CNT_INSTALMENT
+  - CNT_INSTALMENT_FUTURE
+  - NAME_CONTRACT_STATUS
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'POS and cash loan monthly behavioral feature: POS_DPD_MONTH_COUNT'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_pos_cash
+POS_SK_DPD_DEF_MAX:
+  source: POS_CASH_balance
+  source_columns:
+  - CNT_INSTALMENT
+  - CNT_INSTALMENT_FUTURE
+  - NAME_CONTRACT_STATUS
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'POS and cash loan monthly behavioral feature: POS_SK_DPD_DEF_MAX'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_pos_cash
+POS_COMPLETION_RATE_MEAN:
+  source: POS_CASH_balance
+  source_columns:
+  - CNT_INSTALMENT
+  - CNT_INSTALMENT_FUTURE
+  - NAME_CONTRACT_STATUS
+  aggregation: groupBy(SK_ID_CURR)
+  description: 'POS and cash loan monthly behavioral feature: POS_COMPLETION_RATE_MEAN'
+  output_type: numeric
+  leakage_risk: none
+  null_behavior: null_if_no_pos_cash
