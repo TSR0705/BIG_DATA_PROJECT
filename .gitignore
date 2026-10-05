@@ -25,6 +25,8 @@ logs/
 data/bronze/
 data/silver/
 data/gold/
+data/model_input/
+data/model_input_test/
 data/_verify.parquet/
 data/_phase0_spark_check/
 *.parquet

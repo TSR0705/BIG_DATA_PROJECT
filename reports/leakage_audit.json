@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-10-05T14:58:43.550228+00:00",
+  "overall_leakage_status": "PASS",
+  "target_in_train": true,
+  "target_in_test": false,
+  "target_rule_pass": true,
+  "id_rule_pass": true,
+  "target_derived_columns": [],
+  "target_derived_pass": true,
+  "suspicious_features_evaluated": [
+    {
+      "column": "TARGET",
+      "pattern": "TARGET",
+      "classification": "EXCLUDED_LABEL",
+      "reason": "Supervised target label, excluded from predictive model matrix"
+    }
+  ]
+}
