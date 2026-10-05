@@ -1,0 +1,62 @@
+{
+  "table": "bureau_balance",
+  "source": "C:\\Users\\ACER\\Desktop\\BIG_DATA_PROJECT\\dataset\\bureau_balance.csv",
+  "rows": 27299925,
+  "columns": 3,
+  "column_names": [
+    "SK_ID_BUREAU",
+    "MONTHS_BALANCE",
+    "STATUS"
+  ],
+  "profiling_timestamp": "2026-10-05T13:52:33.739341+00:00",
+  "primary_key": null,
+  "candidate_grain": {
+    "columns": [
+      "SK_ID_BUREAU",
+      "MONTHS_BALANCE"
+    ],
+    "total_rows": 27299925,
+    "distinct": 27299925,
+    "duplicates": 0,
+    "unique": true
+  },
+  "columns_profile": [
+    {
+      "name": "SK_ID_BUREAU",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 824716,
+      "is_distinct_approx": true,
+      "min": 5001709,
+      "max": 6842888,
+      "mean": 6036297.332973552,
+      "stddev": 492348.8569038533
+    },
+    {
+      "name": "MONTHS_BALANCE",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 95,
+      "is_distinct_approx": true,
+      "min": -96,
+      "max": 0,
+      "mean": -30.74168665298531,
+      "stddev": 23.864508978011177
+    },
+    {
+      "name": "STATUS",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 8,
+      "is_distinct_approx": true,
+      "xna_count": 0,
+      "xna_pct": 0.0
+    }
+  ]
+}

@@ -1,0 +1,1968 @@
+{
+  "table": "application_train",
+  "source": "C:\\Users\\ACER\\Desktop\\BIG_DATA_PROJECT\\dataset\\application_train.csv",
+  "rows": 307511,
+  "columns": 122,
+  "column_names": [
+    "SK_ID_CURR",
+    "TARGET",
+    "NAME_CONTRACT_TYPE",
+    "CODE_GENDER",
+    "FLAG_OWN_CAR",
+    "FLAG_OWN_REALTY",
+    "CNT_CHILDREN",
+    "AMT_INCOME_TOTAL",
+    "AMT_CREDIT",
+    "AMT_ANNUITY",
+    "AMT_GOODS_PRICE",
+    "NAME_TYPE_SUITE",
+    "NAME_INCOME_TYPE",
+    "NAME_EDUCATION_TYPE",
+    "NAME_FAMILY_STATUS",
+    "NAME_HOUSING_TYPE",
+    "REGION_POPULATION_RELATIVE",
+    "DAYS_BIRTH",
+    "DAYS_EMPLOYED",
+    "DAYS_REGISTRATION",
+    "DAYS_ID_PUBLISH",
+    "OWN_CAR_AGE",
+    "FLAG_MOBIL",
+    "FLAG_EMP_PHONE",
+    "FLAG_WORK_PHONE",
+    "FLAG_CONT_MOBILE",
+    "FLAG_PHONE",
+    "FLAG_EMAIL",
+    "OCCUPATION_TYPE",
+    "CNT_FAM_MEMBERS",
+    "REGION_RATING_CLIENT",
+    "REGION_RATING_CLIENT_W_CITY",
+    "WEEKDAY_APPR_PROCESS_START",
+    "HOUR_APPR_PROCESS_START",
+    "REG_REGION_NOT_LIVE_REGION",
+    "REG_REGION_NOT_WORK_REGION",
+    "LIVE_REGION_NOT_WORK_REGION",
+    "REG_CITY_NOT_LIVE_CITY",
+    "REG_CITY_NOT_WORK_CITY",
+    "LIVE_CITY_NOT_WORK_CITY",
+    "ORGANIZATION_TYPE",
+    "EXT_SOURCE_1",
+    "EXT_SOURCE_2",
+    "EXT_SOURCE_3",
+    "APARTMENTS_AVG",
+    "BASEMENTAREA_AVG",
+    "YEARS_BEGINEXPLUATATION_AVG",
+    "YEARS_BUILD_AVG",
+    "COMMONAREA_AVG",
+    "ELEVATORS_AVG",
+    "ENTRANCES_AVG",
+    "FLOORSMAX_AVG",
+    "FLOORSMIN_AVG",
+    "LANDAREA_AVG",
+    "LIVINGAPARTMENTS_AVG",
+    "LIVINGAREA_AVG",
+    "NONLIVINGAPARTMENTS_AVG",
+    "NONLIVINGAREA_AVG",
+    "APARTMENTS_MODE",
+    "BASEMENTAREA_MODE",
+    "YEARS_BEGINEXPLUATATION_MODE",
+    "YEARS_BUILD_MODE",
+    "COMMONAREA_MODE",
+    "ELEVATORS_MODE",
+    "ENTRANCES_MODE",
+    "FLOORSMAX_MODE",
+    "FLOORSMIN_MODE",
+    "LANDAREA_MODE",
+    "LIVINGAPARTMENTS_MODE",
+    "LIVINGAREA_MODE",
+    "NONLIVINGAPARTMENTS_MODE",
+    "NONLIVINGAREA_MODE",
+    "APARTMENTS_MEDI",
+    "BASEMENTAREA_MEDI",
+    "YEARS_BEGINEXPLUATATION_MEDI",
+    "YEARS_BUILD_MEDI",
+    "COMMONAREA_MEDI",
+    "ELEVATORS_MEDI",
+    "ENTRANCES_MEDI",
+    "FLOORSMAX_MEDI",
+    "FLOORSMIN_MEDI",
+    "LANDAREA_MEDI",
+    "LIVINGAPARTMENTS_MEDI",
+    "LIVINGAREA_MEDI",
+    "NONLIVINGAPARTMENTS_MEDI",
+    "NONLIVINGAREA_MEDI",
+    "FONDKAPREMONT_MODE",
+    "HOUSETYPE_MODE",
+    "TOTALAREA_MODE",
+    "WALLSMATERIAL_MODE",
+    "EMERGENCYSTATE_MODE",
+    "OBS_30_CNT_SOCIAL_CIRCLE",
+    "DEF_30_CNT_SOCIAL_CIRCLE",
+    "OBS_60_CNT_SOCIAL_CIRCLE",
+    "DEF_60_CNT_SOCIAL_CIRCLE",
+    "DAYS_LAST_PHONE_CHANGE",
+    "FLAG_DOCUMENT_2",
+    "FLAG_DOCUMENT_3",
+    "FLAG_DOCUMENT_4",
+    "FLAG_DOCUMENT_5",
+    "FLAG_DOCUMENT_6",
+    "FLAG_DOCUMENT_7",
+    "FLAG_DOCUMENT_8",
+    "FLAG_DOCUMENT_9",
+    "FLAG_DOCUMENT_10",
+    "FLAG_DOCUMENT_11",
+    "FLAG_DOCUMENT_12",
+    "FLAG_DOCUMENT_13",
+    "FLAG_DOCUMENT_14",
+    "FLAG_DOCUMENT_15",
+    "FLAG_DOCUMENT_16",
+    "FLAG_DOCUMENT_17",
+    "FLAG_DOCUMENT_18",
+    "FLAG_DOCUMENT_19",
+    "FLAG_DOCUMENT_20",
+    "FLAG_DOCUMENT_21",
+    "AMT_REQ_CREDIT_BUREAU_HOUR",
+    "AMT_REQ_CREDIT_BUREAU_DAY",
+    "AMT_REQ_CREDIT_BUREAU_WEEK",
+    "AMT_REQ_CREDIT_BUREAU_MON",
+    "AMT_REQ_CREDIT_BUREAU_QRT",
+    "AMT_REQ_CREDIT_BUREAU_YEAR"
+  ],
+  "profiling_timestamp": "2026-10-05T13:49:57.122166+00:00",
+  "primary_key": {
+    "columns": [
+      "SK_ID_CURR"
+    ],
+    "total_rows": 307511,
+    "nulls": 0,
+    "distinct": 307511,
+    "duplicates": 0,
+    "unique": true
+  },
+  "candidate_grain": {
+    "columns": [
+      "SK_ID_CURR"
+    ],
+    "total_rows": 307511,
+    "distinct": 307511,
+    "duplicates": 0,
+    "unique": true
+  },
+  "columns_profile": [
+    {
+      "name": "SK_ID_CURR",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 307511,
+      "is_distinct_approx": false,
+      "min": 100002,
+      "max": 456255,
+      "mean": 278180.51857657125,
+      "stddev": 102790.17534842457
+    },
+    {
+      "name": "TARGET",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.08072881945686496,
+      "stddev": 0.27241864564839374
+    },
+    {
+      "name": "NAME_CONTRACT_TYPE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Cash loans",
+          "count": 278232
+        },
+        {
+          "value": "Revolving loans",
+          "count": 29279
+        }
+      ]
+    },
+    {
+      "name": "CODE_GENDER",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 3,
+      "is_distinct_approx": false,
+      "xna_count": 4,
+      "xna_pct": 0.0013,
+      "top_values": [
+        {
+          "value": "F",
+          "count": 202448
+        },
+        {
+          "value": "M",
+          "count": 105059
+        },
+        {
+          "value": "XNA",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "name": "FLAG_OWN_CAR",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "N",
+          "count": 202924
+        },
+        {
+          "value": "Y",
+          "count": 104587
+        }
+      ]
+    },
+    {
+      "name": "FLAG_OWN_REALTY",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Y",
+          "count": 213312
+        },
+        {
+          "value": "N",
+          "count": 94199
+        }
+      ]
+    },
+    {
+      "name": "CNT_CHILDREN",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 15,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 19,
+      "mean": 0.4170517477423572,
+      "stddev": 0.7221213844376254
+    },
+    {
+      "name": "AMT_INCOME_TOTAL",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2548,
+      "is_distinct_approx": false,
+      "min": 25650.0,
+      "max": 117000000.0,
+      "mean": 168797.9192969845,
+      "stddev": 237123.14627885647
+    },
+    {
+      "name": "AMT_CREDIT",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 5603,
+      "is_distinct_approx": false,
+      "min": 45000.0,
+      "max": 4050000.0,
+      "mean": 599025.9997057016,
+      "stddev": 402490.776995855
+    },
+    {
+      "name": "AMT_ANNUITY",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 12,
+      "null_pct": 0.0039,
+      "distinct_count": 13672,
+      "is_distinct_approx": false,
+      "min": 1615.5,
+      "max": 258025.5,
+      "mean": 27108.573909183444,
+      "stddev": 14493.73731511833
+    },
+    {
+      "name": "AMT_GOODS_PRICE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 278,
+      "null_pct": 0.0904,
+      "distinct_count": 1002,
+      "is_distinct_approx": false,
+      "min": 40500.0,
+      "max": 4050000.0,
+      "mean": 538396.2074288895,
+      "stddev": 369446.46054005757
+    },
+    {
+      "name": "NAME_TYPE_SUITE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 1292,
+      "null_pct": 0.4201,
+      "distinct_count": 7,
+      "is_distinct_approx": false,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Unaccompanied",
+          "count": 248526
+        },
+        {
+          "value": "Family",
+          "count": 40149
+        },
+        {
+          "value": "Spouse, partner",
+          "count": 11370
+        },
+        {
+          "value": "Children",
+          "count": 3267
+        },
+        {
+          "value": "Other_B",
+          "count": 1770
+        }
+      ]
+    },
+    {
+      "name": "NAME_INCOME_TYPE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 8,
+      "is_distinct_approx": false,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Working",
+          "count": 158774
+        },
+        {
+          "value": "Commercial associate",
+          "count": 71617
+        },
+        {
+          "value": "Pensioner",
+          "count": 55362
+        },
+        {
+          "value": "State servant",
+          "count": 21703
+        },
+        {
+          "value": "Unemployed",
+          "count": 22
+        }
+      ]
+    },
+    {
+      "name": "NAME_EDUCATION_TYPE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 5,
+      "is_distinct_approx": false,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Secondary / secondary special",
+          "count": 218391
+        },
+        {
+          "value": "Higher education",
+          "count": 74863
+        },
+        {
+          "value": "Incomplete higher",
+          "count": 10277
+        },
+        {
+          "value": "Lower secondary",
+          "count": 3816
+        },
+        {
+          "value": "Academic degree",
+          "count": 164
+        }
+      ]
+    },
+    {
+      "name": "NAME_FAMILY_STATUS",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 6,
+      "is_distinct_approx": false,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Married",
+          "count": 196432
+        },
+        {
+          "value": "Single / not married",
+          "count": 45444
+        },
+        {
+          "value": "Civil marriage",
+          "count": 29775
+        },
+        {
+          "value": "Separated",
+          "count": 19770
+        },
+        {
+          "value": "Widow",
+          "count": 16088
+        }
+      ]
+    },
+    {
+      "name": "NAME_HOUSING_TYPE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 6,
+      "is_distinct_approx": false,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "House / apartment",
+          "count": 272868
+        },
+        {
+          "value": "With parents",
+          "count": 14840
+        },
+        {
+          "value": "Municipal apartment",
+          "count": 11183
+        },
+        {
+          "value": "Rented apartment",
+          "count": 4881
+        },
+        {
+          "value": "Office apartment",
+          "count": 2617
+        }
+      ]
+    },
+    {
+      "name": "REGION_POPULATION_RELATIVE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 81,
+      "is_distinct_approx": false,
+      "min": 0.00029,
+      "max": 0.072508,
+      "mean": 0.020868112057779293,
+      "stddev": 0.013831280122704704
+    },
+    {
+      "name": "DAYS_BIRTH",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 17460,
+      "is_distinct_approx": false,
+      "min": -25229,
+      "max": -7489,
+      "mean": -16036.995066843137,
+      "stddev": 4363.98863178556
+    },
+    {
+      "name": "DAYS_EMPLOYED",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 12574,
+      "is_distinct_approx": false,
+      "min": -17912,
+      "max": 365243,
+      "mean": 63815.04590404896,
+      "stddev": 141275.76651872727
+    },
+    {
+      "name": "DAYS_REGISTRATION",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 15688,
+      "is_distinct_approx": false,
+      "min": -24672.0,
+      "max": 0.0,
+      "mean": -4986.120327538419,
+      "stddev": 3522.8863209630713
+    },
+    {
+      "name": "DAYS_ID_PUBLISH",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 6168,
+      "is_distinct_approx": false,
+      "min": -7197,
+      "max": 0,
+      "mean": -2994.2023732484367,
+      "stddev": 1509.450419003023
+    },
+    {
+      "name": "OWN_CAR_AGE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 202929,
+      "null_pct": 65.9908,
+      "distinct_count": 62,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 91.0,
+      "mean": 12.061090818687727,
+      "stddev": 11.944811582242759
+    },
+    {
+      "name": "FLAG_MOBIL",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.9999967480838083,
+      "stddev": 0.0018033070153514925
+    },
+    {
+      "name": "FLAG_EMP_PHONE",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.8198893698111612,
+      "stddev": 0.38428019893876425
+    },
+    {
+      "name": "FLAG_WORK_PHONE",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.1993684778755882,
+      "stddev": 0.39952622815022637
+    },
+    {
+      "name": "FLAG_CONT_MOBILE",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.9981334001060125,
+      "stddev": 0.043163894142432394
+    },
+    {
+      "name": "FLAG_PHONE",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.28106636835755466,
+      "stddev": 0.44952054685675835
+    },
+    {
+      "name": "FLAG_EMAIL",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.0567199222141647,
+      "stddev": 0.23130703972270764
+    },
+    {
+      "name": "OCCUPATION_TYPE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 96391,
+      "null_pct": 31.3455,
+      "distinct_count": 18,
+      "is_distinct_approx": false,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Laborers",
+          "count": 55186
+        },
+        {
+          "value": "Sales staff",
+          "count": 32102
+        },
+        {
+          "value": "Core staff",
+          "count": 27570
+        },
+        {
+          "value": "Managers",
+          "count": 21371
+        },
+        {
+          "value": "Drivers",
+          "count": 18603
+        }
+      ]
+    },
+    {
+      "name": "CNT_FAM_MEMBERS",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 2,
+      "null_pct": 0.0007,
+      "distinct_count": 17,
+      "is_distinct_approx": false,
+      "min": 1.0,
+      "max": 20.0,
+      "mean": 2.152665450442101,
+      "stddev": 0.9106815691792972
+    },
+    {
+      "name": "REGION_RATING_CLIENT",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 3,
+      "is_distinct_approx": false,
+      "min": 1,
+      "max": 3,
+      "mean": 2.0524631639193394,
+      "stddev": 0.5090339028156798
+    },
+    {
+      "name": "REGION_RATING_CLIENT_W_CITY",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 3,
+      "is_distinct_approx": false,
+      "min": 1,
+      "max": 3,
+      "mean": 2.031520823645333,
+      "stddev": 0.502737032914769
+    },
+    {
+      "name": "WEEKDAY_APPR_PROCESS_START",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 7,
+      "is_distinct_approx": false,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "TUESDAY",
+          "count": 53901
+        },
+        {
+          "value": "WEDNESDAY",
+          "count": 51934
+        },
+        {
+          "value": "MONDAY",
+          "count": 50714
+        },
+        {
+          "value": "THURSDAY",
+          "count": 50591
+        },
+        {
+          "value": "FRIDAY",
+          "count": 50338
+        }
+      ]
+    },
+    {
+      "name": "HOUR_APPR_PROCESS_START",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 24,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 23,
+      "mean": 12.063418869568894,
+      "stddev": 3.265832255437872
+    },
+    {
+      "name": "REG_REGION_NOT_LIVE_REGION",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.015144173704355291,
+      "stddev": 0.12212647628215204
+    },
+    {
+      "name": "REG_REGION_NOT_WORK_REGION",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.05076891558350758,
+      "stddev": 0.21952582879696064
+    },
+    {
+      "name": "LIVE_REGION_NOT_WORK_REGION",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.04065870814377372,
+      "stddev": 0.19749861882842368
+    },
+    {
+      "name": "REG_CITY_NOT_LIVE_CITY",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.07817281333025486,
+      "stddev": 0.26844377237340444
+    },
+    {
+      "name": "REG_CITY_NOT_WORK_CITY",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.23045354475124466,
+      "stddev": 0.42112383591389746
+    },
+    {
+      "name": "LIVE_CITY_NOT_WORK_CITY",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.17955455252007246,
+      "stddev": 0.3838166153855959
+    },
+    {
+      "name": "ORGANIZATION_TYPE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 58,
+      "is_distinct_approx": false,
+      "xna_count": 55374,
+      "xna_pct": 18.0072
+    },
+    {
+      "name": "EXT_SOURCE_1",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 173378,
+      "null_pct": 56.3811,
+      "distinct_count": 114584,
+      "is_distinct_approx": false,
+      "min": 0.014568132412445587,
+      "max": 0.9626927705613059,
+      "mean": 0.5021298056566627,
+      "stddev": 0.2110622492739249
+    },
+    {
+      "name": "EXT_SOURCE_2",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 660,
+      "null_pct": 0.2146,
+      "distinct_count": 119831,
+      "is_distinct_approx": false,
+      "min": 8.173616518884397e-08,
+      "max": 0.8549996664047012,
+      "mean": 0.5143926741308463,
+      "stddev": 0.19106015498493653
+    },
+    {
+      "name": "EXT_SOURCE_3",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 60965,
+      "null_pct": 19.8253,
+      "distinct_count": 814,
+      "is_distinct_approx": false,
+      "min": 0.0005272652387098817,
+      "max": 0.8960095494948396,
+      "mean": 0.5108529061799659,
+      "stddev": 0.1948443644637488
+    },
+    {
+      "name": "APARTMENTS_AVG",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 156061,
+      "null_pct": 50.7497,
+      "distinct_count": 2339,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.11744049917464498,
+      "stddev": 0.10824029130032227
+    },
+    {
+      "name": "BASEMENTAREA_AVG",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 179943,
+      "null_pct": 58.516,
+      "distinct_count": 3780,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.08844221905179983,
+      "stddev": 0.08243815873568514
+    },
+    {
+      "name": "YEARS_BEGINEXPLUATATION_AVG",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 150007,
+      "null_pct": 48.781,
+      "distinct_count": 285,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.9777348581623281,
+      "stddev": 0.059223314358362825
+    },
+    {
+      "name": "YEARS_BUILD_AVG",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 204488,
+      "null_pct": 66.4978,
+      "distinct_count": 149,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.7524714325927216,
+      "stddev": 0.11327992663224715
+    },
+    {
+      "name": "COMMONAREA_AVG",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 214865,
+      "null_pct": 69.8723,
+      "distinct_count": 3181,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.04462071541135075,
+      "stddev": 0.07603574505040937
+    },
+    {
+      "name": "ELEVATORS_AVG",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 163891,
+      "null_pct": 53.296,
+      "distinct_count": 257,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.0789415123241893,
+      "stddev": 0.13457600110034412
+    },
+    {
+      "name": "ENTRANCES_AVG",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 154828,
+      "null_pct": 50.3488,
+      "distinct_count": 285,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.149724670068042,
+      "stddev": 0.10004912076035906
+    },
+    {
+      "name": "FLOORSMAX_AVG",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 153020,
+      "null_pct": 49.7608,
+      "distinct_count": 403,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.22628190703665385,
+      "stddev": 0.14464069954800396
+    },
+    {
+      "name": "FLOORSMIN_AVG",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 208642,
+      "null_pct": 67.8486,
+      "distinct_count": 305,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.23189350049054896,
+      "stddev": 0.16138028880013738
+    },
+    {
+      "name": "LANDAREA_AVG",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 182590,
+      "null_pct": 59.3767,
+      "distinct_count": 3527,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.06633318417239698,
+      "stddev": 0.08118364070179358
+    },
+    {
+      "name": "LIVINGAPARTMENTS_AVG",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 210199,
+      "null_pct": 68.355,
+      "distinct_count": 1868,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.10077477495067487,
+      "stddev": 0.09257613396049744
+    },
+    {
+      "name": "LIVINGAREA_AVG",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 154350,
+      "null_pct": 50.1933,
+      "distinct_count": 5199,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.10739901933259771,
+      "stddev": 0.11056452318371335
+    },
+    {
+      "name": "NONLIVINGAPARTMENTS_AVG",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 213514,
+      "null_pct": 69.433,
+      "distinct_count": 386,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.008808672617211275,
+      "stddev": 0.047731662050347935
+    },
+    {
+      "name": "NONLIVINGAREA_AVG",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 169682,
+      "null_pct": 55.1792,
+      "distinct_count": 3290,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.028357757075796814,
+      "stddev": 0.06952318332123604
+    },
+    {
+      "name": "APARTMENTS_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 156061,
+      "null_pct": 50.7497,
+      "distinct_count": 760,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.1142310069329809,
+      "stddev": 0.10793603908753287
+    },
+    {
+      "name": "BASEMENTAREA_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 179943,
+      "null_pct": 58.516,
+      "distinct_count": 3841,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.08754321224758559,
+      "stddev": 0.0843071748692456
+    },
+    {
+      "name": "YEARS_BEGINEXPLUATATION_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 150007,
+      "null_pct": 48.781,
+      "distinct_count": 221,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.9770653729429001,
+      "stddev": 0.06457543708048015
+    },
+    {
+      "name": "YEARS_BUILD_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 204488,
+      "null_pct": 66.4978,
+      "distinct_count": 154,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.7596373227337605,
+      "stddev": 0.11011102734194828
+    },
+    {
+      "name": "COMMONAREA_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 214865,
+      "null_pct": 69.8723,
+      "distinct_count": 3128,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.042553137750145735,
+      "stddev": 0.07444452253839155
+    },
+    {
+      "name": "ELEVATORS_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 163891,
+      "null_pct": 53.296,
+      "distinct_count": 26,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.07448973610917647,
+      "stddev": 0.13225614415050657
+    },
+    {
+      "name": "ENTRANCES_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 154828,
+      "null_pct": 50.3488,
+      "distinct_count": 30,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.14519265864568276,
+      "stddev": 0.10097698816024664
+    },
+    {
+      "name": "FLOORSMAX_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 153020,
+      "null_pct": 49.7608,
+      "distinct_count": 25,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.22231504747849204,
+      "stddev": 0.14370940659531573
+    },
+    {
+      "name": "FLOORSMIN_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 208642,
+      "null_pct": 67.8486,
+      "distinct_count": 25,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.22805849255074984,
+      "stddev": 0.161159771495476
+    },
+    {
+      "name": "LANDAREA_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 182590,
+      "null_pct": 59.3767,
+      "distinct_count": 3563,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.0649576844565766,
+      "stddev": 0.08175027780843545
+    },
+    {
+      "name": "LIVINGAPARTMENTS_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 210199,
+      "null_pct": 68.355,
+      "distinct_count": 736,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.10564485674942524,
+      "stddev": 0.0978804465787937
+    },
+    {
+      "name": "LIVINGAREA_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 154350,
+      "null_pct": 50.1933,
+      "distinct_count": 5301,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.10597505043712173,
+      "stddev": 0.11184526587783379
+    },
+    {
+      "name": "NONLIVINGAPARTMENTS_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 213514,
+      "null_pct": 69.433,
+      "distinct_count": 167,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.008076387544283392,
+      "stddev": 0.046276266219835625
+    },
+    {
+      "name": "NONLIVINGAREA_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 169682,
+      "null_pct": 55.1792,
+      "distinct_count": 3327,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.02702231968598772,
+      "stddev": 0.07025385904394453
+    },
+    {
+      "name": "APARTMENTS_MEDI",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 156061,
+      "null_pct": 50.7497,
+      "distinct_count": 1148,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.11784992076593045,
+      "stddev": 0.10907590600115319
+    },
+    {
+      "name": "BASEMENTAREA_MEDI",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 179943,
+      "null_pct": 58.516,
+      "distinct_count": 3772,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.08795485466574687,
+      "stddev": 0.08217874951463419
+    },
+    {
+      "name": "YEARS_BEGINEXPLUATATION_MEDI",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 150007,
+      "null_pct": 48.781,
+      "distinct_count": 245,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.9777522640694792,
+      "stddev": 0.059897318505119646
+    },
+    {
+      "name": "YEARS_BUILD_MEDI",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 204488,
+      "null_pct": 66.4978,
+      "distinct_count": 151,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.7557462721916504,
+      "stddev": 0.11206630964404385
+    },
+    {
+      "name": "COMMONAREA_MEDI",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 214865,
+      "null_pct": 69.8723,
+      "distinct_count": 3202,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.04459510178529025,
+      "stddev": 0.07614426224091465
+    },
+    {
+      "name": "ELEVATORS_MEDI",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 163891,
+      "null_pct": 53.296,
+      "distinct_count": 46,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.07807784431137774,
+      "stddev": 0.134467147690675
+    },
+    {
+      "name": "ENTRANCES_MEDI",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 154828,
+      "null_pct": 50.3488,
+      "distinct_count": 46,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.1492127807286916,
+      "stddev": 0.10036839449763224
+    },
+    {
+      "name": "FLOORSMAX_MEDI",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 153020,
+      "null_pct": 49.7608,
+      "distinct_count": 49,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.22589659009262503,
+      "stddev": 0.14506702591935142
+    },
+    {
+      "name": "FLOORSMIN_MEDI",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 208642,
+      "null_pct": 67.8486,
+      "distinct_count": 47,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.23162493804933887,
+      "stddev": 0.16193354145715613
+    },
+    {
+      "name": "LANDAREA_MEDI",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 182590,
+      "null_pct": 59.3767,
+      "distinct_count": 3560,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.06716874904939918,
+      "stddev": 0.08216701028007205
+    },
+    {
+      "name": "LIVINGAPARTMENTS_MEDI",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 210199,
+      "null_pct": 68.355,
+      "distinct_count": 1097,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.10195447324071105,
+      "stddev": 0.09364233271153831
+    },
+    {
+      "name": "LIVINGAREA_MEDI",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 154350,
+      "null_pct": 50.1933,
+      "distinct_count": 5281,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.10860673604899419,
+      "stddev": 0.11226025867534756
+    },
+    {
+      "name": "NONLIVINGAPARTMENTS_MEDI",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 213514,
+      "null_pct": 69.433,
+      "distinct_count": 214,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.008651013330212731,
+      "stddev": 0.04741472790780269
+    },
+    {
+      "name": "NONLIVINGAREA_MEDI",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 169682,
+      "null_pct": 55.1792,
+      "distinct_count": 3323,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.028235920597261842,
+      "stddev": 0.0701664815068248
+    },
+    {
+      "name": "FONDKAPREMONT_MODE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 210295,
+      "null_pct": 68.3862,
+      "distinct_count": 4,
+      "is_distinct_approx": false,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "reg oper account",
+          "count": 73830
+        },
+        {
+          "value": "reg oper spec account",
+          "count": 12080
+        },
+        {
+          "value": "not specified",
+          "count": 5687
+        },
+        {
+          "value": "org spec account",
+          "count": 5619
+        }
+      ]
+    },
+    {
+      "name": "HOUSETYPE_MODE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 154297,
+      "null_pct": 50.1761,
+      "distinct_count": 3,
+      "is_distinct_approx": false,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "block of flats",
+          "count": 150503
+        },
+        {
+          "value": "specific housing",
+          "count": 1499
+        },
+        {
+          "value": "terraced house",
+          "count": 1212
+        }
+      ]
+    },
+    {
+      "name": "TOTALAREA_MODE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 148431,
+      "null_pct": 48.2685,
+      "distinct_count": 5116,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.1025466626854413,
+      "stddev": 0.10746232414961879
+    },
+    {
+      "name": "WALLSMATERIAL_MODE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 156341,
+      "null_pct": 50.8408,
+      "distinct_count": 7,
+      "is_distinct_approx": false,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Panel",
+          "count": 66040
+        },
+        {
+          "value": "Stone, brick",
+          "count": 64815
+        },
+        {
+          "value": "Block",
+          "count": 9253
+        },
+        {
+          "value": "Wooden",
+          "count": 5362
+        },
+        {
+          "value": "Mixed",
+          "count": 2296
+        }
+      ]
+    },
+    {
+      "name": "EMERGENCYSTATE_MODE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 145755,
+      "null_pct": 47.3983,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "No",
+          "count": 159428
+        },
+        {
+          "value": "Yes",
+          "count": 2328
+        }
+      ]
+    },
+    {
+      "name": "OBS_30_CNT_SOCIAL_CIRCLE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 1021,
+      "null_pct": 0.332,
+      "distinct_count": 33,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 348.0,
+      "mean": 1.4222454239942575,
+      "stddev": 2.4009887461090083
+    },
+    {
+      "name": "DEF_30_CNT_SOCIAL_CIRCLE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 1021,
+      "null_pct": 0.332,
+      "distinct_count": 10,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 34.0,
+      "mean": 0.1434206662533851,
+      "stddev": 0.44669842938152865
+    },
+    {
+      "name": "OBS_60_CNT_SOCIAL_CIRCLE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 1021,
+      "null_pct": 0.332,
+      "distinct_count": 33,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 344.0,
+      "mean": 1.4052921791901856,
+      "stddev": 2.3798033519793798
+    },
+    {
+      "name": "DEF_60_CNT_SOCIAL_CIRCLE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 1021,
+      "null_pct": 0.332,
+      "distinct_count": 9,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 24.0,
+      "mean": 0.10004894123788705,
+      "stddev": 0.3622908039755739
+    },
+    {
+      "name": "DAYS_LAST_PHONE_CHANGE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 1,
+      "null_pct": 0.0003,
+      "distinct_count": 3773,
+      "is_distinct_approx": false,
+      "min": -4292.0,
+      "max": 0.0,
+      "mean": -962.8587883320868,
+      "stddev": 826.8084870406565
+    },
+    {
+      "name": "FLAG_DOCUMENT_2",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 4.2274910491006824e-05,
+      "stddev": 0.006501789045489789
+    },
+    {
+      "name": "FLAG_DOCUMENT_3",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.7100233812774177,
+      "stddev": 0.45375196843273913
+    },
+    {
+      "name": "FLAG_DOCUMENT_4",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 8.129790479039775e-05,
+      "stddev": 0.009016183216550889
+    },
+    {
+      "name": "FLAG_DOCUMENT_5",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.015114906458630749,
+      "stddev": 0.12201022281354126
+    },
+    {
+      "name": "FLAG_DOCUMENT_6",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.0880553866365756,
+      "stddev": 0.28337589286299
+    },
+    {
+      "name": "FLAG_DOCUMENT_7",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.00019186305530533867,
+      "stddev": 0.013850157677017414
+    },
+    {
+      "name": "FLAG_DOCUMENT_8",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.08137595077899652,
+      "stddev": 0.27341204894451293
+    },
+    {
+      "name": "FLAG_DOCUMENT_9",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.00389579559755586,
+      "stddev": 0.062294710800393685
+    },
+    {
+      "name": "FLAG_DOCUMENT_10",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 2.276341334131137e-05,
+      "stddev": 0.004771055354069214
+    },
+    {
+      "name": "FLAG_DOCUMENT_11",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.003912055178513939,
+      "stddev": 0.0624240632668452
+    },
+    {
+      "name": "FLAG_DOCUMENT_12",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 6.503832383231819e-06,
+      "stddev": 0.0025502570915978662
+    },
+    {
+      "name": "FLAG_DOCUMENT_13",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.003525077151711646,
+      "stddev": 0.05926771807375311
+    },
+    {
+      "name": "FLAG_DOCUMENT_14",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.0029364803210291664,
+      "stddev": 0.05410976737642879
+    },
+    {
+      "name": "FLAG_DOCUMENT_15",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.0012097128232811183,
+      "stddev": 0.03475993882769259
+    },
+    {
+      "name": "FLAG_DOCUMENT_16",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.009928100133003373,
+      "stddev": 0.09914416233784902
+    },
+    {
+      "name": "FLAG_DOCUMENT_17",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.0002666571277125046,
+      "stddev": 0.016327488741596608
+    },
+    {
+      "name": "FLAG_DOCUMENT_18",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.008129790479039774,
+      "stddev": 0.08979823610939554
+    },
+    {
+      "name": "FLAG_DOCUMENT_19",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.0005951006630657115,
+      "stddev": 0.024387465065862264
+    },
+    {
+      "name": "FLAG_DOCUMENT_20",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.0005072989258920819,
+      "stddev": 0.022517620268446125
+    },
+    {
+      "name": "FLAG_DOCUMENT_21",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": false,
+      "min": 0,
+      "max": 1,
+      "mean": 0.0003349473677364387,
+      "stddev": 0.018298531822437642
+    },
+    {
+      "name": "AMT_REQ_CREDIT_BUREAU_HOUR",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 41519,
+      "null_pct": 13.5016,
+      "distinct_count": 5,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 4.0,
+      "mean": 0.006402448193930645,
+      "stddev": 0.08384912844747722
+    },
+    {
+      "name": "AMT_REQ_CREDIT_BUREAU_DAY",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 41519,
+      "null_pct": 13.5016,
+      "distinct_count": 9,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 9.0,
+      "mean": 0.0070002105326475985,
+      "stddev": 0.11075740632435445
+    },
+    {
+      "name": "AMT_REQ_CREDIT_BUREAU_WEEK",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 41519,
+      "null_pct": 13.5016,
+      "distinct_count": 9,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 8.0,
+      "mean": 0.0343619356973142,
+      "stddev": 0.2046848758128244
+    },
+    {
+      "name": "AMT_REQ_CREDIT_BUREAU_MON",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 41519,
+      "null_pct": 13.5016,
+      "distinct_count": 24,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 27.0,
+      "mean": 0.26739526000781977,
+      "stddev": 0.9160023961526178
+    },
+    {
+      "name": "AMT_REQ_CREDIT_BUREAU_QRT",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 41519,
+      "null_pct": 13.5016,
+      "distinct_count": 11,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 261.0,
+      "mean": 0.26547414959848414,
+      "stddev": 0.7940556483207565
+    },
+    {
+      "name": "AMT_REQ_CREDIT_BUREAU_YEAR",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 41519,
+      "null_pct": 13.5016,
+      "distinct_count": 25,
+      "is_distinct_approx": false,
+      "min": 0.0,
+      "max": 25.0,
+      "mean": 1.899974435321363,
+      "stddev": 1.8692949981815568
+    }
+  ]
+}

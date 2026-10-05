@@ -1,0 +1,135 @@
+{
+  "table": "installments_payments",
+  "source": "C:\\Users\\ACER\\Desktop\\BIG_DATA_PROJECT\\dataset\\installments_payments.csv",
+  "rows": 13605401,
+  "columns": 8,
+  "column_names": [
+    "SK_ID_PREV",
+    "SK_ID_CURR",
+    "NUM_INSTALMENT_VERSION",
+    "NUM_INSTALMENT_NUMBER",
+    "DAYS_INSTALMENT",
+    "DAYS_ENTRY_PAYMENT",
+    "AMT_INSTALMENT",
+    "AMT_PAYMENT"
+  ],
+  "profiling_timestamp": "2026-10-05T13:53:12.423387+00:00",
+  "primary_key": null,
+  "candidate_grain": {
+    "columns": [
+      "SK_ID_PREV",
+      "NUM_INSTALMENT_NUMBER",
+      "NUM_INSTALMENT_VERSION"
+    ],
+    "total_rows": 13605401,
+    "distinct": 12951918,
+    "duplicates": 653483,
+    "unique": false
+  },
+  "columns_profile": [
+    {
+      "name": "SK_ID_PREV",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 985631,
+      "is_distinct_approx": true,
+      "min": 1000001,
+      "max": 2843499,
+      "mean": 1903364.9695492988,
+      "stddev": 536202.9055457396
+    },
+    {
+      "name": "SK_ID_CURR",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 342285,
+      "is_distinct_approx": true,
+      "min": 100001,
+      "max": 456255,
+      "mean": 278444.88173821557,
+      "stddev": 102718.31041149895
+    },
+    {
+      "name": "NUM_INSTALMENT_VERSION",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 64,
+      "is_distinct_approx": true,
+      "min": 0.0,
+      "max": 178.0,
+      "mean": 0.8566373016127933,
+      "stddev": 1.035215735775112
+    },
+    {
+      "name": "NUM_INSTALMENT_NUMBER",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 273,
+      "is_distinct_approx": true,
+      "min": 1,
+      "max": 277,
+      "mean": 18.87089583026623,
+      "stddev": 26.664066896976482
+    },
+    {
+      "name": "DAYS_INSTALMENT",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2912,
+      "is_distinct_approx": true,
+      "min": -2922.0,
+      "max": -1.0,
+      "mean": -1042.2699916011295,
+      "stddev": 800.9462842777981
+    },
+    {
+      "name": "DAYS_ENTRY_PAYMENT",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 2905,
+      "null_pct": 0.0214,
+      "distinct_count": 3045,
+      "is_distinct_approx": true,
+      "min": -4921.0,
+      "max": -1.0,
+      "mean": -1051.1136840621016,
+      "stddev": 800.5858832923432
+    },
+    {
+      "name": "AMT_INSTALMENT",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 883675,
+      "is_distinct_approx": true,
+      "min": 0.0,
+      "max": 3771487.845,
+      "mean": 17050.906988971183,
+      "stddev": 50570.254428609296
+    },
+    {
+      "name": "AMT_PAYMENT",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 2905,
+      "null_pct": 0.0214,
+      "distinct_count": 954483,
+      "is_distinct_approx": true,
+      "min": 0.0,
+      "max": 3771487.845,
+      "mean": 17238.22324958756,
+      "stddev": 54735.7839809611
+    }
+  ]
+}

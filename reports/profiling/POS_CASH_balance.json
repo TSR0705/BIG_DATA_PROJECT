@@ -1,0 +1,132 @@
+{
+  "table": "POS_CASH_balance",
+  "source": "C:\\Users\\ACER\\Desktop\\BIG_DATA_PROJECT\\dataset\\POS_CASH_balance.csv",
+  "rows": 10001358,
+  "columns": 8,
+  "column_names": [
+    "SK_ID_PREV",
+    "SK_ID_CURR",
+    "MONTHS_BALANCE",
+    "CNT_INSTALMENT",
+    "CNT_INSTALMENT_FUTURE",
+    "NAME_CONTRACT_STATUS",
+    "SK_DPD",
+    "SK_DPD_DEF"
+  ],
+  "profiling_timestamp": "2026-10-05T13:54:13.190437+00:00",
+  "primary_key": null,
+  "candidate_grain": {
+    "columns": [
+      "SK_ID_PREV",
+      "MONTHS_BALANCE"
+    ],
+    "total_rows": 10001358,
+    "distinct": 10001358,
+    "duplicates": 0,
+    "unique": true
+  },
+  "columns_profile": [
+    {
+      "name": "SK_ID_PREV",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 928052,
+      "is_distinct_approx": true,
+      "min": 1000001,
+      "max": 2843499,
+      "mean": 1903216.5989568618,
+      "stddev": 535846.5307217421
+    },
+    {
+      "name": "SK_ID_CURR",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 341615,
+      "is_distinct_approx": true,
+      "min": 100001,
+      "max": 456255,
+      "mean": 278403.8633055631,
+      "stddev": 102763.74508968927
+    },
+    {
+      "name": "MONTHS_BALANCE",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 94,
+      "is_distinct_approx": true,
+      "min": -96,
+      "max": -1,
+      "mean": -35.012587990550884,
+      "stddev": 26.066569967590624
+    },
+    {
+      "name": "CNT_INSTALMENT",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 26071,
+      "null_pct": 0.2607,
+      "distinct_count": 72,
+      "is_distinct_approx": true,
+      "min": 1.0,
+      "max": 92.0,
+      "mean": 17.089650453164907,
+      "stddev": 11.995055980335964
+    },
+    {
+      "name": "CNT_INSTALMENT_FUTURE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 26087,
+      "null_pct": 0.2608,
+      "distinct_count": 78,
+      "is_distinct_approx": true,
+      "min": 0.0,
+      "max": 85.0,
+      "mean": 10.483840388897706,
+      "stddev": 11.109057668950745
+    },
+    {
+      "name": "NAME_CONTRACT_STATUS",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 9,
+      "is_distinct_approx": true,
+      "xna_count": 2,
+      "xna_pct": 0.0
+    },
+    {
+      "name": "SK_DPD",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 3391,
+      "is_distinct_approx": true,
+      "min": 0,
+      "max": 4231,
+      "mean": 11.606928279139693,
+      "stddev": 132.7140434930968
+    },
+    {
+      "name": "SK_DPD_DEF",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2360,
+      "is_distinct_approx": true,
+      "min": 0,
+      "max": 3595,
+      "mean": 0.654468423188131,
+      "stddev": 32.76249054396264
+    }
+  ]
+}

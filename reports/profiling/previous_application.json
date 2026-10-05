@@ -1,0 +1,832 @@
+{
+  "table": "previous_application",
+  "source": "C:\\Users\\ACER\\Desktop\\BIG_DATA_PROJECT\\dataset\\previous_application.csv",
+  "rows": 1670214,
+  "columns": 37,
+  "column_names": [
+    "SK_ID_PREV",
+    "SK_ID_CURR",
+    "NAME_CONTRACT_TYPE",
+    "AMT_ANNUITY",
+    "AMT_APPLICATION",
+    "AMT_CREDIT",
+    "AMT_DOWN_PAYMENT",
+    "AMT_GOODS_PRICE",
+    "WEEKDAY_APPR_PROCESS_START",
+    "HOUR_APPR_PROCESS_START",
+    "FLAG_LAST_APPL_PER_CONTRACT",
+    "NFLAG_LAST_APPL_IN_DAY",
+    "RATE_DOWN_PAYMENT",
+    "RATE_INTEREST_PRIMARY",
+    "RATE_INTEREST_PRIVILEGED",
+    "NAME_CASH_LOAN_PURPOSE",
+    "NAME_CONTRACT_STATUS",
+    "DAYS_DECISION",
+    "NAME_PAYMENT_TYPE",
+    "CODE_REJECT_REASON",
+    "NAME_TYPE_SUITE",
+    "NAME_CLIENT_TYPE",
+    "NAME_GOODS_CATEGORY",
+    "NAME_PORTFOLIO",
+    "NAME_PRODUCT_TYPE",
+    "CHANNEL_TYPE",
+    "SELLERPLACE_AREA",
+    "NAME_SELLER_INDUSTRY",
+    "CNT_PAYMENT",
+    "NAME_YIELD_GROUP",
+    "PRODUCT_COMBINATION",
+    "DAYS_FIRST_DRAWING",
+    "DAYS_FIRST_DUE",
+    "DAYS_LAST_DUE_1ST_VERSION",
+    "DAYS_LAST_DUE",
+    "DAYS_TERMINATION",
+    "NFLAG_INSURED_ON_APPROVAL"
+  ],
+  "profiling_timestamp": "2026-10-05T13:52:48.773401+00:00",
+  "primary_key": {
+    "columns": [
+      "SK_ID_PREV"
+    ],
+    "total_rows": 1670214,
+    "nulls": 0,
+    "distinct": 1670214,
+    "duplicates": 0,
+    "unique": true
+  },
+  "candidate_grain": {
+    "columns": [
+      "SK_ID_PREV"
+    ],
+    "total_rows": 1670214,
+    "distinct": 1670214,
+    "duplicates": 0,
+    "unique": true
+  },
+  "columns_profile": [
+    {
+      "name": "SK_ID_PREV",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 1635309,
+      "is_distinct_approx": true,
+      "min": 1000001,
+      "max": 2845382,
+      "mean": 1923089.1353305625,
+      "stddev": 532597.9586955351
+    },
+    {
+      "name": "SK_ID_CURR",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 339815,
+      "is_distinct_approx": true,
+      "min": 100001,
+      "max": 456255,
+      "mean": 278357.1740986484,
+      "stddev": 102814.82384855817
+    },
+    {
+      "name": "NAME_CONTRACT_TYPE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 4,
+      "is_distinct_approx": true,
+      "xna_count": 346,
+      "xna_pct": 0.0207,
+      "top_values": [
+        {
+          "value": "Cash loans",
+          "count": 747553
+        },
+        {
+          "value": "Consumer loans",
+          "count": 729151
+        },
+        {
+          "value": "Revolving loans",
+          "count": 193164
+        },
+        {
+          "value": "XNA",
+          "count": 346
+        }
+      ]
+    },
+    {
+      "name": "AMT_ANNUITY",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 372235,
+      "null_pct": 22.2867,
+      "distinct_count": 364582,
+      "is_distinct_approx": true,
+      "min": 0.0,
+      "max": 418058.145,
+      "mean": 15955.12065945209,
+      "stddev": 14782.137334706182
+    },
+    {
+      "name": "AMT_APPLICATION",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 95921,
+      "is_distinct_approx": true,
+      "min": 0.0,
+      "max": 6905160.0,
+      "mean": 175233.86036042916,
+      "stddev": 292779.76238609565
+    },
+    {
+      "name": "AMT_CREDIT",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 1,
+      "null_pct": 0.0001,
+      "distinct_count": 85998,
+      "is_distinct_approx": true,
+      "min": 0.0,
+      "max": 6905160.0,
+      "mean": 196114.02121797926,
+      "stddev": 318574.61654689774
+    },
+    {
+      "name": "AMT_DOWN_PAYMENT",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 895844,
+      "null_pct": 53.6365,
+      "distinct_count": 29036,
+      "is_distinct_approx": true,
+      "min": -0.9,
+      "max": 3060045.0,
+      "mean": 6697.4021387967,
+      "stddev": 20921.49540968098
+    },
+    {
+      "name": "AMT_GOODS_PRICE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 385515,
+      "null_pct": 23.0818,
+      "distinct_count": 95921,
+      "is_distinct_approx": true,
+      "min": 0.0,
+      "max": 6905160.0,
+      "mean": 227847.27928334483,
+      "stddev": 315396.5579370122
+    },
+    {
+      "name": "WEEKDAY_APPR_PROCESS_START",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 7,
+      "is_distinct_approx": true,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "TUESDAY",
+          "count": 255118
+        },
+        {
+          "value": "WEDNESDAY",
+          "count": 255010
+        },
+        {
+          "value": "MONDAY",
+          "count": 253557
+        },
+        {
+          "value": "FRIDAY",
+          "count": 252048
+        },
+        {
+          "value": "THURSDAY",
+          "count": 249099
+        }
+      ]
+    },
+    {
+      "name": "HOUR_APPR_PROCESS_START",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 24,
+      "is_distinct_approx": true,
+      "min": 0,
+      "max": 23,
+      "mean": 12.484181667738385,
+      "stddev": 3.334027964934799
+    },
+    {
+      "name": "FLAG_LAST_APPL_PER_CONTRACT",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": true,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Y",
+          "count": 1661739
+        },
+        {
+          "value": "N",
+          "count": 8475
+        }
+      ]
+    },
+    {
+      "name": "NFLAG_LAST_APPL_IN_DAY",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2,
+      "is_distinct_approx": true,
+      "min": 0,
+      "max": 1,
+      "mean": 0.9964675185335532,
+      "stddev": 0.059329631287017744
+    },
+    {
+      "name": "RATE_DOWN_PAYMENT",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 895844,
+      "null_pct": 53.6365,
+      "distinct_count": 207556,
+      "is_distinct_approx": true,
+      "min": -1.4978763414307847e-05,
+      "max": 1.0,
+      "mean": 0.07963681542840434,
+      "stddev": 0.10782331436180814
+    },
+    {
+      "name": "RATE_INTEREST_PRIMARY",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 1664263,
+      "null_pct": 99.6437,
+      "distinct_count": 146,
+      "is_distinct_approx": true,
+      "min": 0.03478125354187918,
+      "max": 1.0,
+      "mean": 0.18835688954982052,
+      "stddev": 0.08767110450633235
+    },
+    {
+      "name": "RATE_INTEREST_PRIVILEGED",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 1664263,
+      "null_pct": 99.6437,
+      "distinct_count": 25,
+      "is_distinct_approx": true,
+      "min": 0.3731501057082452,
+      "max": 1.0,
+      "mean": 0.773502543499183,
+      "stddev": 0.10087859145207416
+    },
+    {
+      "name": "NAME_CASH_LOAN_PURPOSE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 25,
+      "is_distinct_approx": true,
+      "xna_count": 677918,
+      "xna_pct": 40.5887,
+      "top_values": [
+        {
+          "value": "XAP",
+          "count": 922661
+        },
+        {
+          "value": "XNA",
+          "count": 677918
+        },
+        {
+          "value": "Repairs",
+          "count": 23765
+        },
+        {
+          "value": "Other",
+          "count": 15608
+        },
+        {
+          "value": "Urgent needs",
+          "count": 8412
+        }
+      ]
+    },
+    {
+      "name": "NAME_CONTRACT_STATUS",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 4,
+      "is_distinct_approx": true,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Approved",
+          "count": 1036781
+        },
+        {
+          "value": "Canceled",
+          "count": 316319
+        },
+        {
+          "value": "Refused",
+          "count": 290678
+        },
+        {
+          "value": "Unused offer",
+          "count": 26436
+        }
+      ]
+    },
+    {
+      "name": "DAYS_DECISION",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2892,
+      "is_distinct_approx": true,
+      "min": -2922,
+      "max": -1,
+      "mean": -880.6796679946402,
+      "stddev": 779.0996667603937
+    },
+    {
+      "name": "NAME_PAYMENT_TYPE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 4,
+      "is_distinct_approx": true,
+      "xna_count": 627384,
+      "xna_pct": 37.5631,
+      "top_values": [
+        {
+          "value": "Cash through the bank",
+          "count": 1033552
+        },
+        {
+          "value": "XNA",
+          "count": 627384
+        },
+        {
+          "value": "Non-cash from your account",
+          "count": 8193
+        },
+        {
+          "value": "Cashless from the account of the employer",
+          "count": 1085
+        }
+      ]
+    },
+    {
+      "name": "CODE_REJECT_REASON",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 9,
+      "is_distinct_approx": true,
+      "xna_count": 5244,
+      "xna_pct": 0.314,
+      "top_values": [
+        {
+          "value": "XAP",
+          "count": 1353093
+        },
+        {
+          "value": "HC",
+          "count": 175231
+        },
+        {
+          "value": "LIMIT",
+          "count": 55680
+        },
+        {
+          "value": "SCO",
+          "count": 37467
+        },
+        {
+          "value": "CLIENT",
+          "count": 26436
+        }
+      ]
+    },
+    {
+      "name": "NAME_TYPE_SUITE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 820405,
+      "null_pct": 49.1198,
+      "distinct_count": 7,
+      "is_distinct_approx": true,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Unaccompanied",
+          "count": 508970
+        },
+        {
+          "value": "Family",
+          "count": 213263
+        },
+        {
+          "value": "Spouse, partner",
+          "count": 67069
+        },
+        {
+          "value": "Children",
+          "count": 31566
+        },
+        {
+          "value": "Other_B",
+          "count": 17624
+        }
+      ]
+    },
+    {
+      "name": "NAME_CLIENT_TYPE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 4,
+      "is_distinct_approx": true,
+      "xna_count": 1941,
+      "xna_pct": 0.1162,
+      "top_values": [
+        {
+          "value": "Repeater",
+          "count": 1231261
+        },
+        {
+          "value": "New",
+          "count": 301363
+        },
+        {
+          "value": "Refreshed",
+          "count": 135649
+        },
+        {
+          "value": "XNA",
+          "count": 1941
+        }
+      ]
+    },
+    {
+      "name": "NAME_GOODS_CATEGORY",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 28,
+      "is_distinct_approx": true,
+      "xna_count": 950809,
+      "xna_pct": 56.9274,
+      "top_values": [
+        {
+          "value": "XNA",
+          "count": 950809
+        },
+        {
+          "value": "Mobile",
+          "count": 224708
+        },
+        {
+          "value": "Consumer Electronics",
+          "count": 121576
+        },
+        {
+          "value": "Computers",
+          "count": 105769
+        },
+        {
+          "value": "Audio/Video",
+          "count": 99441
+        }
+      ]
+    },
+    {
+      "name": "NAME_PORTFOLIO",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 5,
+      "is_distinct_approx": true,
+      "xna_count": 372230,
+      "xna_pct": 22.2864,
+      "top_values": [
+        {
+          "value": "POS",
+          "count": 691011
+        },
+        {
+          "value": "Cash",
+          "count": 461563
+        },
+        {
+          "value": "XNA",
+          "count": 372230
+        },
+        {
+          "value": "Cards",
+          "count": 144985
+        },
+        {
+          "value": "Cars",
+          "count": 425
+        }
+      ]
+    },
+    {
+      "name": "NAME_PRODUCT_TYPE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 3,
+      "is_distinct_approx": true,
+      "xna_count": 1063666,
+      "xna_pct": 63.6844,
+      "top_values": [
+        {
+          "value": "XNA",
+          "count": 1063666
+        },
+        {
+          "value": "x-sell",
+          "count": 456287
+        },
+        {
+          "value": "walk-in",
+          "count": 150261
+        }
+      ]
+    },
+    {
+      "name": "CHANNEL_TYPE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 8,
+      "is_distinct_approx": true,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Credit and cash offices",
+          "count": 719968
+        },
+        {
+          "value": "Country-wide",
+          "count": 494690
+        },
+        {
+          "value": "Stone",
+          "count": 212083
+        },
+        {
+          "value": "Regional / Local",
+          "count": 108528
+        },
+        {
+          "value": "Contact center",
+          "count": 71297
+        }
+      ]
+    },
+    {
+      "name": "SELLERPLACE_AREA",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2085,
+      "is_distinct_approx": true,
+      "min": -1,
+      "max": 4000000,
+      "mean": 313.95111524630977,
+      "stddev": 7127.443459227699
+    },
+    {
+      "name": "NAME_SELLER_INDUSTRY",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 11,
+      "is_distinct_approx": true,
+      "xna_count": 855720,
+      "xna_pct": 51.2342,
+      "top_values": [
+        {
+          "value": "XNA",
+          "count": 855720
+        },
+        {
+          "value": "Consumer electronics",
+          "count": 398265
+        },
+        {
+          "value": "Connectivity",
+          "count": 276029
+        },
+        {
+          "value": "Furniture",
+          "count": 57849
+        },
+        {
+          "value": "Construction",
+          "count": 29781
+        }
+      ]
+    },
+    {
+      "name": "CNT_PAYMENT",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 372230,
+      "null_pct": 22.2864,
+      "distinct_count": 48,
+      "is_distinct_approx": true,
+      "min": 0.0,
+      "max": 84.0,
+      "mean": 16.0540815603274,
+      "stddev": 14.567287743987578
+    },
+    {
+      "name": "NAME_YIELD_GROUP",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 5,
+      "is_distinct_approx": true,
+      "xna_count": 517215,
+      "xna_pct": 30.967,
+      "top_values": [
+        {
+          "value": "XNA",
+          "count": 517215
+        },
+        {
+          "value": "middle",
+          "count": 385532
+        },
+        {
+          "value": "high",
+          "count": 353331
+        },
+        {
+          "value": "low_normal",
+          "count": 322095
+        },
+        {
+          "value": "low_action",
+          "count": 92041
+        }
+      ]
+    },
+    {
+      "name": "PRODUCT_COMBINATION",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 346,
+      "null_pct": 0.0207,
+      "distinct_count": 17,
+      "is_distinct_approx": true,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Cash",
+          "count": 285990
+        },
+        {
+          "value": "POS household with interest",
+          "count": 263622
+        },
+        {
+          "value": "POS mobile with interest",
+          "count": 220670
+        },
+        {
+          "value": "Cash X-Sell: middle",
+          "count": 143883
+        },
+        {
+          "value": "Cash X-Sell: low",
+          "count": 130248
+        }
+      ]
+    },
+    {
+      "name": "DAYS_FIRST_DRAWING",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 673065,
+      "null_pct": 40.2981,
+      "distinct_count": 2827,
+      "is_distinct_approx": true,
+      "min": -2922.0,
+      "max": 365243.0,
+      "mean": 342209.85503871535,
+      "stddev": 88916.11583302682
+    },
+    {
+      "name": "DAYS_FIRST_DUE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 673065,
+      "null_pct": 40.2981,
+      "distinct_count": 2888,
+      "is_distinct_approx": true,
+      "min": -2892.0,
+      "max": 365243.0,
+      "mean": 13826.269336879443,
+      "stddev": 72444.86970788497
+    },
+    {
+      "name": "DAYS_LAST_DUE_1ST_VERSION",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 673065,
+      "null_pct": 40.2981,
+      "distinct_count": 4626,
+      "is_distinct_approx": true,
+      "min": -2801.0,
+      "max": 365243.0,
+      "mean": 33767.77405382746,
+      "stddev": 106857.03478913123
+    },
+    {
+      "name": "DAYS_LAST_DUE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 673065,
+      "null_pct": 40.2981,
+      "distinct_count": 2855,
+      "is_distinct_approx": true,
+      "min": -2889.0,
+      "max": 365243.0,
+      "mean": 76582.40306413585,
+      "stddev": 149647.4151231759
+    },
+    {
+      "name": "DAYS_TERMINATION",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 673065,
+      "null_pct": 40.2981,
+      "distinct_count": 2807,
+      "is_distinct_approx": true,
+      "min": -2874.0,
+      "max": 365243.0,
+      "mean": 81992.34383828295,
+      "stddev": 153303.51672930623
+    },
+    {
+      "name": "NFLAG_INSURED_ON_APPROVAL",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 673065,
+      "null_pct": 40.2981,
+      "distinct_count": 2,
+      "is_distinct_approx": true,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.3325701575190869,
+      "stddev": 0.471134238247366
+    }
+  ]
+}

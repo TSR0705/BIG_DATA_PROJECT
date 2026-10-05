@@ -1,0 +1,320 @@
+{
+  "table": "bureau",
+  "source": "C:\\Users\\ACER\\Desktop\\BIG_DATA_PROJECT\\dataset\\bureau.csv",
+  "rows": 1716428,
+  "columns": 17,
+  "column_names": [
+    "SK_ID_CURR",
+    "SK_ID_BUREAU",
+    "CREDIT_ACTIVE",
+    "CREDIT_CURRENCY",
+    "DAYS_CREDIT",
+    "CREDIT_DAY_OVERDUE",
+    "DAYS_CREDIT_ENDDATE",
+    "DAYS_ENDDATE_FACT",
+    "AMT_CREDIT_MAX_OVERDUE",
+    "CNT_CREDIT_PROLONG",
+    "AMT_CREDIT_SUM",
+    "AMT_CREDIT_SUM_DEBT",
+    "AMT_CREDIT_SUM_LIMIT",
+    "AMT_CREDIT_SUM_OVERDUE",
+    "CREDIT_TYPE",
+    "DAYS_CREDIT_UPDATE",
+    "AMT_ANNUITY"
+  ],
+  "profiling_timestamp": "2026-10-05T13:52:23.091274+00:00",
+  "primary_key": {
+    "columns": [
+      "SK_ID_BUREAU"
+    ],
+    "total_rows": 1716428,
+    "nulls": 0,
+    "distinct": 1716428,
+    "duplicates": 0,
+    "unique": true
+  },
+  "candidate_grain": {
+    "columns": [
+      "SK_ID_BUREAU"
+    ],
+    "total_rows": 1716428,
+    "distinct": 1716428,
+    "duplicates": 0,
+    "unique": true
+  },
+  "columns_profile": [
+    {
+      "name": "SK_ID_CURR",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 303459,
+      "is_distinct_approx": true,
+      "min": 100001,
+      "max": 456255,
+      "mean": 278214.9336447553,
+      "stddev": 102938.55811238312
+    },
+    {
+      "name": "SK_ID_BUREAU",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 1750311,
+      "is_distinct_approx": true,
+      "min": 5000000,
+      "max": 6843457,
+      "mean": 5924434.489031873,
+      "stddev": 532265.7285521412
+    },
+    {
+      "name": "CREDIT_ACTIVE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 4,
+      "is_distinct_approx": true,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Closed",
+          "count": 1079273
+        },
+        {
+          "value": "Active",
+          "count": 630607
+        },
+        {
+          "value": "Sold",
+          "count": 6527
+        },
+        {
+          "value": "Bad debt",
+          "count": 21
+        }
+      ]
+    },
+    {
+      "name": "CREDIT_CURRENCY",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 4,
+      "is_distinct_approx": true,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "currency 1",
+          "count": 1715020
+        },
+        {
+          "value": "currency 2",
+          "count": 1224
+        },
+        {
+          "value": "currency 3",
+          "count": 174
+        },
+        {
+          "value": "currency 4",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "name": "DAYS_CREDIT",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2896,
+      "is_distinct_approx": true,
+      "min": -2922,
+      "max": 0,
+      "mean": -1142.107684680045,
+      "stddev": 795.1649282053278
+    },
+    {
+      "name": "CREDIT_DAY_OVERDUE",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 945,
+      "is_distinct_approx": true,
+      "min": 0,
+      "max": 2792,
+      "mean": 0.8181665645165425,
+      "stddev": 36.544428006167024
+    },
+    {
+      "name": "DAYS_CREDIT_ENDDATE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 105553,
+      "null_pct": 6.1496,
+      "distinct_count": 13572,
+      "is_distinct_approx": true,
+      "min": -42060.0,
+      "max": 31199.0,
+      "mean": 510.51736230309615,
+      "stddev": 4994.219837125884
+    },
+    {
+      "name": "DAYS_ENDDATE_FACT",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 633653,
+      "null_pct": 36.917,
+      "distinct_count": 2908,
+      "is_distinct_approx": true,
+      "min": -42023.0,
+      "max": 0.0,
+      "mean": -1017.43714806862,
+      "stddev": 714.010626342394
+    },
+    {
+      "name": "AMT_CREDIT_MAX_OVERDUE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 1124488,
+      "null_pct": 65.5133,
+      "distinct_count": 67524,
+      "is_distinct_approx": true,
+      "min": 0.0,
+      "max": 115987185.0,
+      "mean": 3825.417661273103,
+      "stddev": 206031.60620691243
+    },
+    {
+      "name": "CNT_CREDIT_PROLONG",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 10,
+      "is_distinct_approx": true,
+      "min": 0,
+      "max": 9,
+      "mean": 0.00641040579622332,
+      "stddev": 0.0962239057199966
+    },
+    {
+      "name": "AMT_CREDIT_SUM",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 13,
+      "null_pct": 0.0008,
+      "distinct_count": 239753,
+      "is_distinct_approx": true,
+      "min": 0.0,
+      "max": 585000000.0,
+      "mean": 354994.5919176725,
+      "stddev": 1149811.3439797717
+    },
+    {
+      "name": "AMT_CREDIT_SUM_DEBT",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 257669,
+      "null_pct": 15.0119,
+      "distinct_count": 229262,
+      "is_distinct_approx": true,
+      "min": -4705600.32,
+      "max": 170100000.0,
+      "mean": 137085.1199521607,
+      "stddev": 677401.1309521442
+    },
+    {
+      "name": "AMT_CREDIT_SUM_LIMIT",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 591780,
+      "null_pct": 34.4774,
+      "distinct_count": 49086,
+      "is_distinct_approx": true,
+      "min": -586406.115,
+      "max": 4705600.32,
+      "mean": 6229.514980300504,
+      "stddev": 45032.03147586139
+    },
+    {
+      "name": "AMT_CREDIT_SUM_OVERDUE",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 1599,
+      "is_distinct_approx": true,
+      "min": 0.0,
+      "max": 3756681.0,
+      "mean": 37.912757741658844,
+      "stddev": 5937.650034902766
+    },
+    {
+      "name": "CREDIT_TYPE",
+      "spark_type": "StringType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 15,
+      "is_distinct_approx": true,
+      "xna_count": 0,
+      "xna_pct": 0.0,
+      "top_values": [
+        {
+          "value": "Consumer credit",
+          "count": 1251615
+        },
+        {
+          "value": "Credit card",
+          "count": 402195
+        },
+        {
+          "value": "Car loan",
+          "count": 27690
+        },
+        {
+          "value": "Mortgage",
+          "count": 18391
+        },
+        {
+          "value": "Microloan",
+          "count": 12413
+        }
+      ]
+    },
+    {
+      "name": "DAYS_CREDIT_UPDATE",
+      "spark_type": "IntegerType()",
+      "nullable": true,
+      "null_count": 0,
+      "null_pct": 0.0,
+      "distinct_count": 2967,
+      "is_distinct_approx": true,
+      "min": -41947,
+      "max": 372,
+      "mean": -593.7483197663986,
+      "stddev": 720.7473115011626
+    },
+    {
+      "name": "AMT_ANNUITY",
+      "spark_type": "DoubleType()",
+      "nullable": true,
+      "null_count": 1226791,
+      "null_pct": 71.4735,
+      "distinct_count": 40228,
+      "is_distinct_approx": true,
+      "min": 0.0,
+      "max": 118453423.5,
+      "mean": 15712.757700077815,
+      "stddev": 325826.94905335567
+    }
+  ]
+}

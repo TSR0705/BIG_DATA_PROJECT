@@ -1,8 +1,8 @@
-# Spark local-mode settings for BIG_DATA_PROJECT (designed for a 16 GB Windows laptop).
-# Read by scripts/verify_env.py and (from Phase 1) src/common/spark_session.py.
+# Spark local-mode settings for BIG_DATA_PROJECT (16 GB Windows laptop).
+# Read by src/common/spark_session.py and scripts.
 app_name: loan-default-bigdata
 master: local[*]
-driver_memory: 4g
+driver_memory: 8g
 shuffle_partitions: 32
 adaptive_enabled: true
 driver_host: 127.0.0.1

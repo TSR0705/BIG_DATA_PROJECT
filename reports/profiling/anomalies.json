@@ -1,0 +1,426 @@
+{
+  "days_employed_sentinel": {
+    "application_train": {
+      "sentinel_value": 365243,
+      "count": 55374,
+      "total_rows": 307511,
+      "percentage": 18.0072
+    },
+    "application_test": {
+      "sentinel_value": 365243,
+      "count": 9274,
+      "total_rows": 48744,
+      "percentage": 19.0259
+    },
+    "previous_application": {
+      "sentinel_value": 365243,
+      "columns": {
+        "DAYS_FIRST_DRAWING": {
+          "count": 934444,
+          "percentage": 55.9476
+        },
+        "DAYS_FIRST_DUE": {
+          "count": 40645,
+          "percentage": 2.4335
+        },
+        "DAYS_LAST_DUE_1ST_VERSION": {
+          "count": 93864,
+          "percentage": 5.6199
+        },
+        "DAYS_LAST_DUE": {
+          "count": 211221,
+          "percentage": 12.6463
+        },
+        "DAYS_TERMINATION": {
+          "count": 225913,
+          "percentage": 13.526
+        }
+      }
+    }
+  },
+  "xna_occurrences": [
+    {
+      "table": "application_train",
+      "column": "CODE_GENDER",
+      "xna_count": 4,
+      "total_rows": 307511,
+      "xna_percentage": 0.0013
+    },
+    {
+      "table": "application_train",
+      "column": "ORGANIZATION_TYPE",
+      "xna_count": 55374,
+      "total_rows": 307511,
+      "xna_percentage": 18.0072
+    },
+    {
+      "table": "application_test",
+      "column": "ORGANIZATION_TYPE",
+      "xna_count": 9274,
+      "total_rows": 48744,
+      "xna_percentage": 19.0259
+    },
+    {
+      "table": "previous_application",
+      "column": "NAME_CONTRACT_TYPE",
+      "xna_count": 346,
+      "total_rows": 1670214,
+      "xna_percentage": 0.0207
+    },
+    {
+      "table": "previous_application",
+      "column": "NAME_CASH_LOAN_PURPOSE",
+      "xna_count": 677918,
+      "total_rows": 1670214,
+      "xna_percentage": 40.5887
+    },
+    {
+      "table": "previous_application",
+      "column": "NAME_PAYMENT_TYPE",
+      "xna_count": 627384,
+      "total_rows": 1670214,
+      "xna_percentage": 37.5631
+    },
+    {
+      "table": "previous_application",
+      "column": "CODE_REJECT_REASON",
+      "xna_count": 5244,
+      "total_rows": 1670214,
+      "xna_percentage": 0.314
+    },
+    {
+      "table": "previous_application",
+      "column": "NAME_CLIENT_TYPE",
+      "xna_count": 1941,
+      "total_rows": 1670214,
+      "xna_percentage": 0.1162
+    },
+    {
+      "table": "previous_application",
+      "column": "NAME_GOODS_CATEGORY",
+      "xna_count": 950809,
+      "total_rows": 1670214,
+      "xna_percentage": 56.9274
+    },
+    {
+      "table": "previous_application",
+      "column": "NAME_PORTFOLIO",
+      "xna_count": 372230,
+      "total_rows": 1670214,
+      "xna_percentage": 22.2864
+    },
+    {
+      "table": "previous_application",
+      "column": "NAME_PRODUCT_TYPE",
+      "xna_count": 1063666,
+      "total_rows": 1670214,
+      "xna_percentage": 63.6844
+    },
+    {
+      "table": "previous_application",
+      "column": "NAME_SELLER_INDUSTRY",
+      "xna_count": 855720,
+      "total_rows": 1670214,
+      "xna_percentage": 51.2342
+    },
+    {
+      "table": "previous_application",
+      "column": "NAME_YIELD_GROUP",
+      "xna_count": 517215,
+      "total_rows": 1670214,
+      "xna_percentage": 30.967
+    },
+    {
+      "table": "POS_CASH_balance",
+      "column": "NAME_CONTRACT_STATUS",
+      "xna_count": 2,
+      "total_rows": 10001358,
+      "xna_percentage": 0.0
+    }
+  ],
+  "days_columns_ranges": [
+    {
+      "table": "application_train",
+      "column": "DAYS_BIRTH",
+      "min": -25229,
+      "max": -7489,
+      "negative_count": 307511,
+      "positive_count": 0,
+      "zero_count": 0,
+      "null_count": 0,
+      "total_rows": 307511,
+      "is_expected_negative": true
+    },
+    {
+      "table": "application_train",
+      "column": "DAYS_EMPLOYED",
+      "min": -17912,
+      "max": 365243,
+      "negative_count": 252135,
+      "positive_count": 55374,
+      "zero_count": 2,
+      "null_count": 0,
+      "total_rows": 307511,
+      "is_expected_negative": true
+    },
+    {
+      "table": "application_train",
+      "column": "DAYS_REGISTRATION",
+      "min": -24672.0,
+      "max": 0.0,
+      "negative_count": 307431,
+      "positive_count": 0,
+      "zero_count": 80,
+      "null_count": 0,
+      "total_rows": 307511,
+      "is_expected_negative": true
+    },
+    {
+      "table": "application_train",
+      "column": "DAYS_ID_PUBLISH",
+      "min": -7197,
+      "max": 0,
+      "negative_count": 307495,
+      "positive_count": 0,
+      "zero_count": 16,
+      "null_count": 0,
+      "total_rows": 307511,
+      "is_expected_negative": true
+    },
+    {
+      "table": "application_train",
+      "column": "DAYS_LAST_PHONE_CHANGE",
+      "min": -4292.0,
+      "max": 0.0,
+      "negative_count": 269838,
+      "positive_count": 0,
+      "zero_count": 37672,
+      "null_count": 1,
+      "total_rows": 307511,
+      "is_expected_negative": true
+    },
+    {
+      "table": "application_test",
+      "column": "DAYS_BIRTH",
+      "min": -25195,
+      "max": -7338,
+      "negative_count": 48744,
+      "positive_count": 0,
+      "zero_count": 0,
+      "null_count": 0,
+      "total_rows": 48744,
+      "is_expected_negative": true
+    },
+    {
+      "table": "application_test",
+      "column": "DAYS_EMPLOYED",
+      "min": -17463,
+      "max": 365243,
+      "negative_count": 39470,
+      "positive_count": 9274,
+      "zero_count": 0,
+      "null_count": 0,
+      "total_rows": 48744,
+      "is_expected_negative": true
+    },
+    {
+      "table": "application_test",
+      "column": "DAYS_REGISTRATION",
+      "min": -23722.0,
+      "max": 0.0,
+      "negative_count": 48731,
+      "positive_count": 0,
+      "zero_count": 13,
+      "null_count": 0,
+      "total_rows": 48744,
+      "is_expected_negative": true
+    },
+    {
+      "table": "application_test",
+      "column": "DAYS_ID_PUBLISH",
+      "min": -6348,
+      "max": 0,
+      "negative_count": 48739,
+      "positive_count": 0,
+      "zero_count": 5,
+      "null_count": 0,
+      "total_rows": 48744,
+      "is_expected_negative": true
+    },
+    {
+      "table": "application_test",
+      "column": "DAYS_LAST_PHONE_CHANGE",
+      "min": -4361.0,
+      "max": 0.0,
+      "negative_count": 42943,
+      "positive_count": 0,
+      "zero_count": 5801,
+      "null_count": 0,
+      "total_rows": 48744,
+      "is_expected_negative": true
+    },
+    {
+      "table": "bureau",
+      "column": "DAYS_CREDIT",
+      "min": -2922,
+      "max": 0,
+      "negative_count": 1716403,
+      "positive_count": 0,
+      "zero_count": 25,
+      "null_count": 0,
+      "total_rows": 1716428,
+      "is_expected_negative": true
+    },
+    {
+      "table": "bureau",
+      "column": "DAYS_CREDIT_ENDDATE",
+      "min": -42060.0,
+      "max": 31199.0,
+      "negative_count": 1007389,
+      "positive_count": 602603,
+      "zero_count": 883,
+      "null_count": 105553,
+      "total_rows": 1716428,
+      "is_expected_negative": true
+    },
+    {
+      "table": "bureau",
+      "column": "DAYS_ENDDATE_FACT",
+      "min": -42023.0,
+      "max": 0.0,
+      "negative_count": 1082711,
+      "positive_count": 0,
+      "zero_count": 64,
+      "null_count": 633653,
+      "total_rows": 1716428,
+      "is_expected_negative": true
+    },
+    {
+      "table": "bureau",
+      "column": "DAYS_CREDIT_UPDATE",
+      "min": -41947,
+      "max": 372,
+      "negative_count": 1715806,
+      "positive_count": 17,
+      "zero_count": 605,
+      "null_count": 0,
+      "total_rows": 1716428,
+      "is_expected_negative": true
+    },
+    {
+      "table": "previous_application",
+      "column": "DAYS_DECISION",
+      "min": -2922,
+      "max": -1,
+      "negative_count": 1670214,
+      "positive_count": 0,
+      "zero_count": 0,
+      "null_count": 0,
+      "total_rows": 1670214,
+      "is_expected_negative": true
+    },
+    {
+      "table": "previous_application",
+      "column": "DAYS_FIRST_DRAWING",
+      "min": -2922.0,
+      "max": 365243.0,
+      "negative_count": 62705,
+      "positive_count": 934444,
+      "zero_count": 0,
+      "null_count": 673065,
+      "total_rows": 1670214,
+      "is_expected_negative": true
+    },
+    {
+      "table": "previous_application",
+      "column": "DAYS_FIRST_DUE",
+      "min": -2892.0,
+      "max": 365243.0,
+      "negative_count": 956504,
+      "positive_count": 40645,
+      "zero_count": 0,
+      "null_count": 673065,
+      "total_rows": 1670214,
+      "is_expected_negative": true
+    },
+    {
+      "table": "previous_application",
+      "column": "DAYS_LAST_DUE_1ST_VERSION",
+      "min": -2801.0,
+      "max": 365243.0,
+      "negative_count": 678188,
+      "positive_count": 318256,
+      "zero_count": 705,
+      "null_count": 673065,
+      "total_rows": 1670214,
+      "is_expected_negative": true
+    },
+    {
+      "table": "previous_application",
+      "column": "DAYS_LAST_DUE",
+      "min": -2889.0,
+      "max": 365243.0,
+      "negative_count": 785928,
+      "positive_count": 211221,
+      "zero_count": 0,
+      "null_count": 673065,
+      "total_rows": 1670214,
+      "is_expected_negative": true
+    },
+    {
+      "table": "previous_application",
+      "column": "DAYS_TERMINATION",
+      "min": -2874.0,
+      "max": 365243.0,
+      "negative_count": 771236,
+      "positive_count": 225913,
+      "zero_count": 0,
+      "null_count": 673065,
+      "total_rows": 1670214,
+      "is_expected_negative": true
+    },
+    {
+      "table": "installments_payments",
+      "column": "DAYS_INSTALMENT",
+      "min": -2922.0,
+      "max": -1.0,
+      "negative_count": 13605401,
+      "positive_count": 0,
+      "zero_count": 0,
+      "null_count": 0,
+      "total_rows": 13605401,
+      "is_expected_negative": true
+    },
+    {
+      "table": "installments_payments",
+      "column": "DAYS_ENTRY_PAYMENT",
+      "min": -4921.0,
+      "max": -1.0,
+      "negative_count": 13602496,
+      "positive_count": 0,
+      "zero_count": 0,
+      "null_count": 2905,
+      "total_rows": 13605401,
+      "is_expected_negative": true
+    }
+  ],
+  "income_distribution": {
+    "table": "application_train",
+    "column": "AMT_INCOME_TOTAL",
+    "min": 25650.0,
+    "max": 117000000.0,
+    "mean": 168797.92,
+    "stddev": 237123.15,
+    "median_p50": 144000.0,
+    "p25": 112500.0,
+    "p75": 202500.0,
+    "p90": 270000.0,
+    "p95": 337500.0,
+    "p99": 450000.0,
+    "p99_9": 117000000.0,
+    "iqr": 90000.0,
+    "upper_whisker_1_5_iqr": 337500.0,
+    "outliers_above_whisker_count": 14035,
+    "outliers_percentage": 4.5641
+  }
+}
