@@ -1,0 +1,211 @@
+{
+  "project": "Loan Default Prediction Using Big Data Analytics",
+  "phase": "Phase 9 \u2014 Explainable AI with SHAP",
+  "timestamp": "2026-10-05 17:31:10 UTC",
+  "environment": {
+    "python_version": "3.11.9",
+    "shap_version": "0.51.0",
+    "xgboost_version": "3.2.0",
+    "numpy_version": "2.4.6",
+    "pandas_version": "2.3.3"
+  },
+  "random_state": 42,
+  "explanation_method": "shap.TreeExplainer",
+  "explanation_sample_size": 5000,
+  "model_path": "C:\\Users\\ACER\\Desktop\\BIG_DATA_PROJECT\\artifacts\\models\\phase8_best_xgboost.joblib",
+  "model_parameters": {
+    "objective": "binary:logistic",
+    "base_score": null,
+    "booster": null,
+    "callbacks": null,
+    "colsample_bylevel": null,
+    "colsample_bynode": null,
+    "colsample_bytree": 1.0,
+    "device": null,
+    "early_stopping_rounds": null,
+    "enable_categorical": false,
+    "eval_metric": "logloss",
+    "feature_types": null,
+    "feature_weights": null,
+    "gamma": null,
+    "grow_policy": null,
+    "importance_type": null,
+    "interaction_constraints": null,
+    "learning_rate": 0.1,
+    "max_bin": null,
+    "max_cat_threshold": null,
+    "max_cat_to_onehot": null,
+    "max_delta_step": null,
+    "max_depth": 3,
+    "max_leaves": null,
+    "min_child_weight": 10,
+    "missing": NaN,
+    "monotone_constraints": null,
+    "multi_strategy": null,
+    "n_estimators": 500,
+    "n_jobs": 6,
+    "num_parallel_tree": null,
+    "random_state": 42,
+    "reg_alpha": null,
+    "reg_lambda": null,
+    "sampling_method": null,
+    "scale_pos_weight": null,
+    "subsample": 0.8,
+    "tree_method": null,
+    "validate_parameters": null,
+    "verbosity": null
+  },
+  "stability_repetitions": 10,
+  "stability_sample_size": 5000,
+  "subgroup_variable": "CODE_GENDER",
+  "top_20_features": [
+    "APP_EXT_SOURCES_MEAN",
+    "CODE_GENDER",
+    "POS_COMPLETION_RATE_MEAN",
+    "APP_PAYMENT_RATE",
+    "DERIVED_PAYMENT_DISCIPLINE_SCORE",
+    "APP_GOODS_TO_CREDIT_RATIO",
+    "NAME_EDUCATION_TYPE",
+    "AMT_ANNUITY",
+    "INST_AMT_PAYMENT_SUM",
+    "BURO_DEBT_TO_CREDIT_RATIO",
+    "OWN_CAR_AGE",
+    "DERIVED_TOTAL_PAID_TO_INCOME_RATIO",
+    "PREV_REFUSAL_RATE",
+    "AMT_GOODS_PRICE",
+    "APP_EMPLOYED_YEARS",
+    "APP_ANNUITY_TO_INCOME_PERCENT",
+    "CC_CNT_DRAWINGS_CURRENT_MEAN",
+    "PREV_CNT_PAYMENT_MEAN",
+    "NAME_FAMILY_STATUS",
+    "PREV_APPLICATION_TO_CREDIT_RATIO"
+  ],
+  "local_cases": {
+    "high_risk": {
+      "applicant_id": 332851,
+      "predicted_probability": 0.9153000116348267,
+      "actual_target": 1,
+      "category": "High-Risk Applicant",
+      "base_value": -2.4660000801086426,
+      "model_output": 2.3803000450134277,
+      "top_risk_increasing": [
+        {
+          "feature": "APP_EXT_SOURCES_MEAN",
+          "shap_value": 1.271708369255066,
+          "feature_value": 0.018565602600574493
+        },
+        {
+          "feature": "BURO_AMT_CREDIT_SUM_OVERDUE_SUM",
+          "shap_value": 0.5055696368217468,
+          "feature_value": 131728.5
+        },
+        {
+          "feature": "BURO_AMT_CREDIT_SUM_OVERDUE_MAX",
+          "shap_value": 0.47633668780326843,
+          "feature_value": 53307.0
+        }
+      ],
+      "top_risk_decreasing": [
+        {
+          "feature": "DAYS_BIRTH",
+          "shap_value": -0.11529906094074249,
+          "feature_value": -8418.0
+        },
+        {
+          "feature": "FLAG_DOCUMENT_18",
+          "shap_value": -0.11501815915107727,
+          "feature_value": 1.0
+        },
+        {
+          "feature": "BURO_DEBT_TO_CREDIT_RATIO",
+          "shap_value": -0.09488694369792938,
+          "feature_value": 0.3197038471698761
+        }
+      ]
+    },
+    "medium_risk": {
+      "applicant_id": 133546,
+      "predicted_probability": 0.17000000178813934,
+      "actual_target": 1,
+      "category": "Borderline / Medium-Risk Applicant",
+      "base_value": -2.4660000801086426,
+      "model_output": -1.5853999853134155,
+      "top_risk_increasing": [
+        {
+          "feature": "CC_CNT_DRAWINGS_CURRENT_MEAN",
+          "shap_value": 0.5638030767440796,
+          "feature_value": 13.777777671813965
+        },
+        {
+          "feature": "DEF_30_CNT_SOCIAL_CIRCLE",
+          "shap_value": 0.1884191483259201,
+          "feature_value": 2.0
+        },
+        {
+          "feature": "BURO_ACTIVE_COUNT",
+          "shap_value": 0.14755141735076904,
+          "feature_value": 6.0
+        }
+      ],
+      "top_risk_decreasing": [
+        {
+          "feature": "CODE_GENDER",
+          "shap_value": -0.13422194123268127,
+          "feature_value": 0.0
+        },
+        {
+          "feature": "DAYS_ID_PUBLISH",
+          "shap_value": -0.10317043215036392,
+          "feature_value": -5174.0
+        },
+        {
+          "feature": "DERIVED_PAYMENT_DISCIPLINE_SCORE",
+          "shap_value": -0.10087180882692337,
+          "feature_value": 1.0
+        }
+      ]
+    },
+    "low_risk": {
+      "applicant_id": 183579,
+      "predicted_probability": 0.0013000000035390258,
+      "actual_target": 0,
+      "category": "Low-Risk Applicant",
+      "base_value": -2.4660000801086426,
+      "model_output": -6.669600009918213,
+      "top_risk_increasing": [
+        {
+          "feature": "BURO_AMT_CREDIT_SUM_SUM",
+          "shap_value": 0.16930219531059265,
+          "feature_value": 20700000.0
+        },
+        {
+          "feature": "BURO_DAYS_CREDIT_ENDDATE_MAX",
+          "shap_value": 0.08052589744329453,
+          "feature_value": 1292.0
+        },
+        {
+          "feature": "FLOORSMAX_AVG",
+          "shap_value": 0.05525457486510277,
+          "feature_value": 0.541700005531311
+        }
+      ],
+      "top_risk_decreasing": [
+        {
+          "feature": "APP_EXT_SOURCES_MEAN",
+          "shap_value": -0.9792789816856384,
+          "feature_value": 0.7892792820930481
+        },
+        {
+          "feature": "BURO_AMT_CREDIT_SUM_MAX",
+          "shap_value": -0.37222984433174133,
+          "feature_value": 16200000.0
+        },
+        {
+          "feature": "APP_EXT_SOURCES_PROD",
+          "shap_value": -0.29606062173843384,
+          "feature_value": 0.4884457290172577
+        }
+      ]
+    }
+  }
+}

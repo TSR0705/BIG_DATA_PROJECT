@@ -42,6 +42,8 @@ data/_phase0_spark_check/
 *.model
 !artifacts/preprocessing/*.joblib
 !artifacts/models/*.json
+!artifacts/explainability/
+!artifacts/explainability/*.csv
 
 # Reports (generated / transient)
 reports/generated/
