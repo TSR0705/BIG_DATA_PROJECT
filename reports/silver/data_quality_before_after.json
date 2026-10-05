@@ -1,0 +1,430 @@
+{
+  "generated_at": "2026-10-05T14:25:57.325097+00:00",
+  "columns": {
+    "application_train.DAYS_EMPLOYED": {
+      "table": "application_train",
+      "column": "DAYS_EMPLOYED",
+      "type": "sentinel_value",
+      "sentinel_value": 365243,
+      "flag_column": "FLAG_DAYS_EMPLOYED_SENTINEL",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 55374,
+        "xna_count": 0
+      },
+      "after": {
+        "null_count": 55374,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 55374
+      },
+      "affected_rows": 55374,
+      "status": "PASS"
+    },
+    "application_train.CODE_GENDER": {
+      "table": "application_train",
+      "column": "CODE_GENDER",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_CODE_GENDER_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 4
+      },
+      "after": {
+        "null_count": 4,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 4
+      },
+      "affected_rows": 4,
+      "status": "PASS"
+    },
+    "application_train.ORGANIZATION_TYPE": {
+      "table": "application_train",
+      "column": "ORGANIZATION_TYPE",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_ORGANIZATION_TYPE_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 55374
+      },
+      "after": {
+        "null_count": 55374,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 55374
+      },
+      "affected_rows": 55374,
+      "status": "PASS"
+    },
+    "application_test.DAYS_EMPLOYED": {
+      "table": "application_test",
+      "column": "DAYS_EMPLOYED",
+      "type": "sentinel_value",
+      "sentinel_value": 365243,
+      "flag_column": "FLAG_DAYS_EMPLOYED_SENTINEL",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 9274,
+        "xna_count": 0
+      },
+      "after": {
+        "null_count": 9274,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 9274
+      },
+      "affected_rows": 9274,
+      "status": "PASS"
+    },
+    "application_test.CODE_GENDER": {
+      "table": "application_test",
+      "column": "CODE_GENDER",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_CODE_GENDER_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 0
+      },
+      "after": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 0
+      },
+      "affected_rows": 0,
+      "status": "PASS"
+    },
+    "application_test.ORGANIZATION_TYPE": {
+      "table": "application_test",
+      "column": "ORGANIZATION_TYPE",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_ORGANIZATION_TYPE_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 9274
+      },
+      "after": {
+        "null_count": 9274,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 9274
+      },
+      "affected_rows": 9274,
+      "status": "PASS"
+    },
+    "previous_application.DAYS_FIRST_DRAWING": {
+      "table": "previous_application",
+      "column": "DAYS_FIRST_DRAWING",
+      "type": "sentinel_value",
+      "sentinel_value": 365243,
+      "flag_column": "FLAG_DAYS_FIRST_DRAWING_SENTINEL",
+      "before": {
+        "null_count": 673065,
+        "sentinel_count": 934444,
+        "xna_count": 0
+      },
+      "after": {
+        "null_count": 1607509,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 934444
+      },
+      "affected_rows": 934444,
+      "status": "PASS"
+    },
+    "previous_application.DAYS_FIRST_DUE": {
+      "table": "previous_application",
+      "column": "DAYS_FIRST_DUE",
+      "type": "sentinel_value",
+      "sentinel_value": 365243,
+      "flag_column": "FLAG_DAYS_FIRST_DUE_SENTINEL",
+      "before": {
+        "null_count": 673065,
+        "sentinel_count": 40645,
+        "xna_count": 0
+      },
+      "after": {
+        "null_count": 713710,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 40645
+      },
+      "affected_rows": 40645,
+      "status": "PASS"
+    },
+    "previous_application.DAYS_LAST_DUE_1ST_VERSION": {
+      "table": "previous_application",
+      "column": "DAYS_LAST_DUE_1ST_VERSION",
+      "type": "sentinel_value",
+      "sentinel_value": 365243,
+      "flag_column": "FLAG_DAYS_LAST_DUE_1ST_VERSION_SENTINEL",
+      "before": {
+        "null_count": 673065,
+        "sentinel_count": 93864,
+        "xna_count": 0
+      },
+      "after": {
+        "null_count": 766929,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 93864
+      },
+      "affected_rows": 93864,
+      "status": "PASS"
+    },
+    "previous_application.DAYS_LAST_DUE": {
+      "table": "previous_application",
+      "column": "DAYS_LAST_DUE",
+      "type": "sentinel_value",
+      "sentinel_value": 365243,
+      "flag_column": "FLAG_DAYS_LAST_DUE_SENTINEL",
+      "before": {
+        "null_count": 673065,
+        "sentinel_count": 211221,
+        "xna_count": 0
+      },
+      "after": {
+        "null_count": 884286,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 211221
+      },
+      "affected_rows": 211221,
+      "status": "PASS"
+    },
+    "previous_application.DAYS_TERMINATION": {
+      "table": "previous_application",
+      "column": "DAYS_TERMINATION",
+      "type": "sentinel_value",
+      "sentinel_value": 365243,
+      "flag_column": "FLAG_DAYS_TERMINATION_SENTINEL",
+      "before": {
+        "null_count": 673065,
+        "sentinel_count": 225913,
+        "xna_count": 0
+      },
+      "after": {
+        "null_count": 898978,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 225913
+      },
+      "affected_rows": 225913,
+      "status": "PASS"
+    },
+    "previous_application.NAME_CONTRACT_TYPE": {
+      "table": "previous_application",
+      "column": "NAME_CONTRACT_TYPE",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_NAME_CONTRACT_TYPE_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 346
+      },
+      "after": {
+        "null_count": 346,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 346
+      },
+      "affected_rows": 346,
+      "status": "PASS"
+    },
+    "previous_application.NAME_CASH_LOAN_PURPOSE": {
+      "table": "previous_application",
+      "column": "NAME_CASH_LOAN_PURPOSE",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_NAME_CASH_LOAN_PURPOSE_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 677918
+      },
+      "after": {
+        "null_count": 677918,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 677918
+      },
+      "affected_rows": 677918,
+      "status": "PASS"
+    },
+    "previous_application.NAME_PAYMENT_TYPE": {
+      "table": "previous_application",
+      "column": "NAME_PAYMENT_TYPE",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_NAME_PAYMENT_TYPE_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 627384
+      },
+      "after": {
+        "null_count": 627384,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 627384
+      },
+      "affected_rows": 627384,
+      "status": "PASS"
+    },
+    "previous_application.CODE_REJECT_REASON": {
+      "table": "previous_application",
+      "column": "CODE_REJECT_REASON",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_CODE_REJECT_REASON_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 5244
+      },
+      "after": {
+        "null_count": 5244,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 5244
+      },
+      "affected_rows": 5244,
+      "status": "PASS"
+    },
+    "previous_application.NAME_CLIENT_TYPE": {
+      "table": "previous_application",
+      "column": "NAME_CLIENT_TYPE",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_NAME_CLIENT_TYPE_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 1941
+      },
+      "after": {
+        "null_count": 1941,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 1941
+      },
+      "affected_rows": 1941,
+      "status": "PASS"
+    },
+    "previous_application.NAME_GOODS_CATEGORY": {
+      "table": "previous_application",
+      "column": "NAME_GOODS_CATEGORY",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_NAME_GOODS_CATEGORY_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 950809
+      },
+      "after": {
+        "null_count": 950809,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 950809
+      },
+      "affected_rows": 950809,
+      "status": "PASS"
+    },
+    "previous_application.NAME_PORTFOLIO": {
+      "table": "previous_application",
+      "column": "NAME_PORTFOLIO",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_NAME_PORTFOLIO_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 372230
+      },
+      "after": {
+        "null_count": 372230,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 372230
+      },
+      "affected_rows": 372230,
+      "status": "PASS"
+    },
+    "previous_application.NAME_PRODUCT_TYPE": {
+      "table": "previous_application",
+      "column": "NAME_PRODUCT_TYPE",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_NAME_PRODUCT_TYPE_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 1063666
+      },
+      "after": {
+        "null_count": 1063666,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 1063666
+      },
+      "affected_rows": 1063666,
+      "status": "PASS"
+    },
+    "previous_application.NAME_SELLER_INDUSTRY": {
+      "table": "previous_application",
+      "column": "NAME_SELLER_INDUSTRY",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_NAME_SELLER_INDUSTRY_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 855720
+      },
+      "after": {
+        "null_count": 855720,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 855720
+      },
+      "affected_rows": 855720,
+      "status": "PASS"
+    },
+    "previous_application.NAME_YIELD_GROUP": {
+      "table": "previous_application",
+      "column": "NAME_YIELD_GROUP",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_NAME_YIELD_GROUP_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 517215
+      },
+      "after": {
+        "null_count": 517215,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 517215
+      },
+      "affected_rows": 517215,
+      "status": "PASS"
+    },
+    "POS_CASH_balance.NAME_CONTRACT_STATUS": {
+      "table": "POS_CASH_balance",
+      "column": "NAME_CONTRACT_STATUS",
+      "type": "categorical_xna",
+      "flag_column": "FLAG_NAME_CONTRACT_STATUS_XNA",
+      "before": {
+        "null_count": 0,
+        "sentinel_count": 0,
+        "xna_count": 2
+      },
+      "after": {
+        "null_count": 2,
+        "sentinel_count": 0,
+        "xna_count": 0,
+        "flag_count": 2
+      },
+      "affected_rows": 2,
+      "status": "PASS"
+    }
+  }
+}
