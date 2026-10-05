@@ -1,0 +1,22 @@
+{
+  "features": [
+    "AMT_INCOME_TOTAL",
+    "AMT_CREDIT",
+    "AMT_ANNUITY",
+    "APP_EXT_SOURCES_MEAN",
+    "APP_PAYMENT_RATE",
+    "APP_GOODS_TO_CREDIT_RATIO",
+    "APP_AGE_YEARS",
+    "APP_EMPLOYED_YEARS",
+    "BURO_DEBT_TO_CREDIT_RATIO",
+    "POS_COMPLETION_RATE_MEAN",
+    "DERIVED_PAYMENT_DISCIPLINE_SCORE"
+  ],
+  "feature_count": 11,
+  "methodology": "Median imputation, 99.5th percentile upper-bound clipping on monetary attributes, StandardScaler",
+  "excluded_columns": [
+    "SK_ID_CURR",
+    "TARGET"
+  ],
+  "target_usage": "Strictly post-hoc only"
+}

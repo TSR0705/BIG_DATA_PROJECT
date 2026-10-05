@@ -12,3 +12,7 @@ joblib
 pyyaml
 pytest
 psutil
+nbformat
+nbclient
+nbconvert
+ipykernel
