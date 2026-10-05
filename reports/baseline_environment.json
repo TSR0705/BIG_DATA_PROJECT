@@ -1,0 +1,43 @@
+{
+  "python_version": "3.11.9",
+  "scikit_learn_version": "1.6.1",
+  "lightgbm_version": "4.7.0",
+  "xgboost_version": "3.2.0",
+  "numpy_version": "2.4.6",
+  "pandas_version": "2.3.3",
+  "joblib_version": "1.6.0",
+  "platform": "Windows-10-10.0.26300-SP0",
+  "random_state": 42,
+  "models_hyperparameters": {
+    "logistic_regression": {
+      "max_iter": 1000,
+      "random_state": 42,
+      "solver": "lbfgs"
+    },
+    "random_forest": {
+      "n_estimators": 300,
+      "random_state": 42,
+      "n_jobs": -1
+    },
+    "lightgbm": {
+      "objective": "binary",
+      "n_estimators": 300,
+      "learning_rate": 0.05,
+      "num_leaves": 31,
+      "random_state": 42,
+      "n_jobs": -1,
+      "verbosity": -1
+    },
+    "xgboost": {
+      "objective": "binary:logistic",
+      "n_estimators": 300,
+      "max_depth": 6,
+      "learning_rate": 0.05,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "random_state": 42,
+      "n_jobs": -1,
+      "eval_metric": "logloss"
+    }
+  }
+}

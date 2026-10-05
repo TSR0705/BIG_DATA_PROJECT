@@ -46,9 +46,10 @@ models/
 reports/generated/
 reports/benchmark_results.csv
 
-# Keep essential report directories tracked
+# Keep essential report directories and summary CSVs tracked
 !reports/profiling/
 !reports/figures/
+!reports/*.csv
 
 # Spark / Hadoop temporary artifacts
 derby.log
