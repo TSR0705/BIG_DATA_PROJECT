@@ -1,79 +1,52 @@
-# Byte-compiled / optimized / DLL files
+# Python virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python bytecode & cache
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# PyInstaller
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
+.pytest_cache/
 .coverage
 .coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py.cover
-.hypothesis/
-.pytest_cache/
+htmlcov/
 
-# Jupyter Notebooks checkpointing
-.ipynb_checkpoints
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
 
-# IPython
-.ipython/
-profile_default/
-ipython_config.py
+# Logs
+logs/
+*.log
 
-# Environments & Virtual Envs
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+# Data layers (Medallion architecture)
+data/bronze/
+data/silver/
+data/gold/
+data/_verify.parquet/
+data/_phase0_spark_check/
+*.parquet
+*.orc
+*.avro
+*.csv
 
-# IDE & Editor Settings
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.project
-.pydevproject
-.settings/
+# Models
+models/
+*.joblib
+*.pkl
+*.model
 
-# Big Data / PySpark / Metastore artifacts
+# Reports (generated / transient)
+reports/generated/
+reports/benchmark_results.csv
+
+# Keep essential report directories tracked
+!reports/profiling/
+!reports/figures/
+
+# Spark / Hadoop temporary artifacts
 derby.log
 metastore_db/
 spark-warehouse/
@@ -81,22 +54,19 @@ checkpoint/
 .spark/
 checkpoint_dir/
 
-# Data Files & Datasets (Prevent committing large files)
-data/*
-!data/README.md
-!data/.gitkeep
-*.csv
-*.parquet
-*.orc
-*.avro
-*.jsonl
-*.h5
-*.hd5
-*.tfrecord
-*.dat
+# Dataset directory (CRITICAL: local dataset must NEVER be committed)
+dataset/
+*.zip
 
-# OS Generated Files
+# OS files
 .DS_Store
 Thumbs.db
 ehthumbs.db
 desktop.ini
+
+# IDE & Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

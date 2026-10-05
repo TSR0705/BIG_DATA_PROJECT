@@ -1,0 +1,12 @@
+# Spark local-mode settings for BIG_DATA_PROJECT (designed for a 16 GB Windows laptop).
+# Read by scripts/verify_env.py and (from Phase 1) src/common/spark_session.py.
+app_name: loan-default-bigdata
+master: local[*]
+driver_memory: 4g
+shuffle_partitions: 32
+adaptive_enabled: true
+driver_host: 127.0.0.1
+
+# Project-scoped runtime pinning.
+java_home: 'C:\Java\jdk-17.0.20.1+1'
+hadoop_home: 'C:\hadoop'

@@ -1,0 +1,14 @@
+pyspark>=3.5.5,<4.0
+pandas>=2.2,<3
+pyarrow>=16
+scikit-learn>=1.6,<2
+xgboost>=3.0,<4
+lightgbm>=4.5,<5
+imbalanced-learn>=0.13
+shap>=0.48
+streamlit>=1.49
+matplotlib>=3.8
+joblib
+pyyaml
+pytest
+psutil
