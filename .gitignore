@@ -36,11 +36,12 @@ data/_phase0_spark_check/
 *.csv
 
 # Models & Preprocessing Artifacts
-models/
+/models/
 *.joblib
 *.pkl
 *.model
 !artifacts/preprocessing/*.joblib
+!artifacts/models/*.json
 
 # Reports (generated / transient)
 reports/generated/

@@ -1,0 +1,4 @@
+model,calibration_method,brier_score,log_loss,roc_auc,pr_auc
+Tuned XGBoost,Uncalibrated,0.065408,0.235252,0.791118,0.291375
+Tuned XGBoost,Sigmoid (Platt),0.066653,0.242223,0.791118,0.291375
+Tuned XGBoost,Isotonic,0.065166,0.234167,0.792769,0.285016
