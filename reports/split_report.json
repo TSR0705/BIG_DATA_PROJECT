@@ -1,0 +1,54 @@
+{
+  "project": "Loan Default Prediction Using Big Data Analytics",
+  "phase": "Phase 6: Train / Validation / Test Split",
+  "timestamp": "2026-10-05 15:38:25 UTC",
+  "source_dataset": "C:\\Users\\ACER\\Desktop\\BIG_DATA_PROJECT\\data\\model_input\\model_input.parquet",
+  "random_state": 42,
+  "split_ratio": {
+    "train": 0.6999977236586659,
+    "validation": 0.15000113817066707,
+    "test": 0.15000113817066707
+  },
+  "total_applicants": 307511,
+  "splits": {
+    "train": {
+      "rows": 215257,
+      "positive_count": 17377,
+      "negative_count": 197880,
+      "positive_rate": 0.08072675917624049,
+      "negative_rate": 0.9192732408237595
+    },
+    "validation": {
+      "rows": 46127,
+      "positive_count": 3724,
+      "negative_count": 42403,
+      "positive_rate": 0.08073362672621241,
+      "negative_rate": 0.9192663732737876
+    },
+    "test": {
+      "rows": 46127,
+      "positive_count": 3724,
+      "negative_count": 42403,
+      "positive_rate": 0.08073362672621241,
+      "negative_rate": 0.9192663732737876
+    },
+    "total": {
+      "rows": 307511,
+      "positive_count": 24825,
+      "negative_count": 282686,
+      "positive_rate": 0.08072881945686496,
+      "negative_rate": 0.9192711805431351
+    }
+  },
+  "invariants": {
+    "disjoint": true,
+    "overlaps": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "completeness_verified": true,
+    "max_rate_delta": 4.807269347456566e-06
+  },
+  "status": "PASS"
+}
