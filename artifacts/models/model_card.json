@@ -1,0 +1,175 @@
+{
+  "project_identification": {
+    "name": "Loan Default Prediction Using Big Data Analytics",
+    "phase": "Phase 11 (Final Research Validation)",
+    "model_identifier": "xgboost_finalist_v0.9",
+    "repository": "c:/Users/ACER/Desktop/BIG_DATA_PROJECT",
+    "git_commit": "72e6a9242dee98905984ccf5c1c8308c37979b69"
+  },
+  "model_architecture": {
+    "model_family": "Extreme Gradient Boosting (XGBoost)",
+    "algorithm": "XGBClassifier (Tree Boosting)",
+    "hyperparameters": {
+      "max_depth": 3,
+      "learning_rate": 0.1,
+      "n_estimators": 500,
+      "min_child_weight": 10,
+      "subsample": 0.8,
+      "colsample_bytree": 1.0,
+      "eval_metric": "logloss",
+      "random_state": 42
+    },
+    "feature_count": 256,
+    "feature_manifest_reference": "configs/features.yaml",
+    "feature_lineage_reconciliation": "reports/feature_family_reconciliation.csv"
+  },
+  "dataset_and_provenance": {
+    "source": "Kaggle Home Credit Default Risk",
+    "total_labeled_applicants": 307511,
+    "positive_default_rate": 0.080729,
+    "splits": {
+      "train_partition": {
+        "size": 215257,
+        "share": 0.7,
+        "path": "data/splits/train_indices.parquet"
+      },
+      "validation_partition": {
+        "size": 46127,
+        "share": 0.15,
+        "path": "data/splits/val_indices.parquet"
+      },
+      "test_partition": {
+        "size": 46127,
+        "share": 0.15,
+        "path": "data/splits/test_indices.parquet"
+      }
+    }
+  },
+  "preprocessing_and_lineage": {
+    "artifact": "artifacts/models/tree_preprocessor.joblib",
+    "numerical_features_count": 240,
+    "categorical_features_count": 16,
+    "encoding": "OrdinalEncoder with unknown category handling"
+  },
+  "calibration_and_decisioning": {
+    "calibration_method": "Isotonic Regression",
+    "calibration_holdout": "Internal stratified 80/20 train split (N=43,052)",
+    "operating_thresholds": {
+      "default": 0.5,
+      "optimal_f1": 0.17,
+      "cost_sensitive_1_to_5": 0.16,
+      "cost_sensitive_1_to_10": 0.09
+    },
+    "risk_band_boundaries": {
+      "LOW": [
+        0.0,
+        0.09
+      ],
+      "MEDIUM": [
+        0.09,
+        0.25
+      ],
+      "HIGH": [
+        0.25,
+        1.0
+      ]
+    }
+  },
+  "validation_performance": {
+    "validation_roc_auc": 0.7893,
+    "validation_pr_auc": 0.2834,
+    "validation_brier_score": 0.0658,
+    "validation_ece": 0.0024,
+    "validation_optimal_threshold": 0.16
+  },
+  "final_test_evaluation": {
+    "test_sample_size": 46127,
+    "test_roc_auc": 0.789748,
+    "test_pr_auc": 0.279044,
+    "test_brier_score": 0.065953,
+    "test_ece": 0.003876,
+    "test_recall_at_016": 0.431257,
+    "test_precision_at_016": 0.273688,
+    "test_historical_exposure_disclosure": "The test set was previously evaluated in Phase 7 and Phase 8 model comparison tables. This evaluation represents a final locked evaluation on a previously exposed holdout."
+  },
+  "risk_band_validation_test": {
+    "is_monotonic": true,
+    "ordering": "3.6% < 14.85% < 32.94%",
+    "tier_profiles": [
+      {
+        "risk_tier": "LOW",
+        "applicant_count": 33390,
+        "population_share": 72.39,
+        "defaults": 1201,
+        "observed_default_rate": 3.6,
+        "mean_predicted_risk": 3.57
+      },
+      {
+        "risk_tier": "MEDIUM",
+        "applicant_count": 9246,
+        "population_share": 20.04,
+        "defaults": 1373,
+        "observed_default_rate": 14.85,
+        "mean_predicted_risk": 13.84
+      },
+      {
+        "risk_tier": "HIGH",
+        "applicant_count": 3491,
+        "population_share": 7.57,
+        "defaults": 1150,
+        "observed_default_rate": 32.94,
+        "mean_predicted_risk": 33.87
+      }
+    ]
+  },
+  "explanation_stability_findings_e5": {
+    "standard_xgboost": {
+      "retrains": 15,
+      "panel_size": 5000,
+      "global_kendall_tau": 0.7182,
+      "top10_overlap_pct": 86.29,
+      "local_jaccard_k3": 0.4993,
+      "local_jaccard_k4": 0.4817,
+      "local_jaccard_k5": 0.4755,
+      "risk_band_change_pct": 10.39,
+      "low_band_retention_pct": 94.75,
+      "med_band_retention_pct": 76.51,
+      "high_band_retention_pct": 74.97
+    },
+    "smote_xgboost": {
+      "retrains": 15,
+      "panel_size": 5000,
+      "global_kendall_tau": 0.4845,
+      "top10_overlap_pct": 45.33,
+      "local_jaccard_k3": 0.2352,
+      "local_jaccard_k4": 0.2336,
+      "local_jaccard_k5": 0.2403,
+      "risk_band_change_pct": 36.79,
+      "low_band_retention_pct": 49.36,
+      "med_band_retention_pct": 38.59,
+      "high_band_retention_pct": 77.9
+    },
+    "summary": "Standard XGBoost exhibits strong global attribution stability (Kendall tau=0.7182, Top-10 overlap=86.3%) and reliable risk tier assignments (10.39% band shift rate, 94.7% low tier retention). SMOTE retraining severely destabilizes feature rankings (Kendall tau=0.4845, Top-10 overlap=45.3%) and local adverse action reason codes (Jaccard=0.2352)."
+  },
+  "subgroup_audit_findings_e7": {
+    "gender_groups_evaluated": [
+      "Female (F)",
+      "Male (M)",
+      "Unknown / Missing"
+    ],
+    "age_bands_evaluated": [
+      "Under 25",
+      "25-40",
+      "40-55",
+      "55 and above"
+    ],
+    "summary": "Observed default rates scale from 5.23% (55+) to 12.40% (Under 25); ECE <= 0.0031 across cohorts.",
+    "disclaimer": "Exploratory observational audit only; does not constitute legal fairness certification."
+  },
+  "governance_and_intended_use": {
+    "intended_use": "Credit default risk scoring and risk-tiered underwriting triaging for retail personal loans.",
+    "out_of_scope_uses": "Automated adverse action without human review in medium/high risk bands; corporate credit scoring.",
+    "known_limitations": "Model reflects historical 2018 credit bureau patterns; subject to macroeconomic regime shifts.",
+    "reproducibility": "Run 'python scripts/run_experiments.py --exp all' with random_state=42."
+  }
+}
