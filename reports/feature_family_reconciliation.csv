@@ -1,0 +1,257 @@
+feature_name,source_table,feature_family,derived_status,ablation_group,inclusion_exclusion_reason
+NAME_CONTRACT_TYPE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+CODE_GENDER,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_OWN_CAR,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_OWN_REALTY,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+CNT_CHILDREN,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+AMT_INCOME_TOTAL,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+AMT_CREDIT,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+AMT_ANNUITY,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+AMT_GOODS_PRICE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+NAME_TYPE_SUITE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+NAME_INCOME_TYPE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+NAME_EDUCATION_TYPE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+NAME_FAMILY_STATUS,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+NAME_HOUSING_TYPE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+REGION_POPULATION_RELATIVE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+DAYS_BIRTH,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+DAYS_EMPLOYED,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+DAYS_REGISTRATION,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+DAYS_ID_PUBLISH,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+OWN_CAR_AGE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_MOBIL,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_EMP_PHONE,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_WORK_PHONE,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_CONT_MOBILE,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_PHONE,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_EMAIL,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+OCCUPATION_TYPE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+CNT_FAM_MEMBERS,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+REGION_RATING_CLIENT,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+REGION_RATING_CLIENT_W_CITY,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+WEEKDAY_APPR_PROCESS_START,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+HOUR_APPR_PROCESS_START,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+REG_REGION_NOT_LIVE_REGION,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+REG_REGION_NOT_WORK_REGION,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+LIVE_REGION_NOT_WORK_REGION,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+REG_CITY_NOT_LIVE_CITY,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+REG_CITY_NOT_WORK_CITY,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+LIVE_CITY_NOT_WORK_CITY,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+ORGANIZATION_TYPE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+EXT_SOURCE_1,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+EXT_SOURCE_2,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+EXT_SOURCE_3,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APARTMENTS_AVG,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+BASEMENTAREA_AVG,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+YEARS_BEGINEXPLUATATION_AVG,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+YEARS_BUILD_AVG,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+COMMONAREA_AVG,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+ELEVATORS_AVG,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+ENTRANCES_AVG,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLOORSMAX_AVG,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLOORSMIN_AVG,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+LANDAREA_AVG,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+LIVINGAPARTMENTS_AVG,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+LIVINGAREA_AVG,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+NONLIVINGAPARTMENTS_AVG,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+NONLIVINGAREA_AVG,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APARTMENTS_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+BASEMENTAREA_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+YEARS_BEGINEXPLUATATION_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+YEARS_BUILD_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+COMMONAREA_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+ELEVATORS_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+ENTRANCES_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLOORSMAX_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLOORSMIN_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+LANDAREA_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+LIVINGAPARTMENTS_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+LIVINGAREA_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+NONLIVINGAPARTMENTS_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+NONLIVINGAREA_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APARTMENTS_MEDI,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+BASEMENTAREA_MEDI,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+YEARS_BEGINEXPLUATATION_MEDI,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+YEARS_BUILD_MEDI,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+COMMONAREA_MEDI,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+ELEVATORS_MEDI,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+ENTRANCES_MEDI,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLOORSMAX_MEDI,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLOORSMIN_MEDI,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+LANDAREA_MEDI,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+LIVINGAPARTMENTS_MEDI,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+LIVINGAREA_MEDI,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+NONLIVINGAPARTMENTS_MEDI,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+NONLIVINGAREA_MEDI,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FONDKAPREMONT_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+HOUSETYPE_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+TOTALAREA_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+WALLSMATERIAL_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+EMERGENCYSTATE_MODE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+OBS_30_CNT_SOCIAL_CIRCLE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+DEF_30_CNT_SOCIAL_CIRCLE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+OBS_60_CNT_SOCIAL_CIRCLE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+DEF_60_CNT_SOCIAL_CIRCLE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+DAYS_LAST_PHONE_CHANGE,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_2,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_3,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_4,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_5,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_6,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_7,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_8,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_9,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_10,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_11,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_12,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_13,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_14,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_15,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_16,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_17,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_18,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_19,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_20,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DOCUMENT_21,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+AMT_REQ_CREDIT_BUREAU_HOUR,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+AMT_REQ_CREDIT_BUREAU_DAY,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+AMT_REQ_CREDIT_BUREAU_WEEK,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+AMT_REQ_CREDIT_BUREAU_MON,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+AMT_REQ_CREDIT_BUREAU_QRT,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+AMT_REQ_CREDIT_BUREAU_YEAR,application,APP,Original Cleaned Attribute,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_DAYS_EMPLOYED_SENTINEL,application,APP,Data-Quality Sentinel Flag,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_CODE_GENDER_XNA,application,APP,Data-Quality Sentinel Flag,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+FLAG_ORGANIZATION_TYPE_XNA,application,APP,Data-Quality Sentinel Flag,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_CREDIT_TO_INCOME_RATIO,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_ANNUITY_TO_INCOME_RATIO,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_PAYMENT_RATE,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_GOODS_TO_CREDIT_RATIO,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_INCOME_PER_FAMILY_MEMBER,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_AGE_YEARS,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_EMPLOYED_YEARS,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_DAYS_EMPLOYED_TO_BIRTH_RATIO,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_INCOME_TO_EMPLOYED_RATIO,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_EXT_SOURCES_MEAN,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_EXT_SOURCES_PROD,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_EXT_SOURCE_1_TO_2_RATIO,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_EXT_SOURCE_2_TO_3_RATIO,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_DOCUMENT_FLAGS_COUNT,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+BURO_RECORD_COUNT,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_ACTIVE_COUNT,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_CLOSED_COUNT,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_DAYS_CREDIT_MIN,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_DAYS_CREDIT_MAX,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_DAYS_CREDIT_MEAN,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_DAYS_CREDIT_ENDDATE_MAX,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_AMT_CREDIT_SUM_SUM,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_AMT_CREDIT_SUM_MEAN,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_AMT_CREDIT_SUM_MAX,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_AMT_CREDIT_SUM_DEBT_SUM,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_AMT_CREDIT_SUM_DEBT_MEAN,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_AMT_CREDIT_SUM_OVERDUE_SUM,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_AMT_CREDIT_SUM_OVERDUE_MAX,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_CNT_CREDIT_PROLONG_SUM,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_AMT_ANNUITY_SUM,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_AMT_ANNUITY_MEAN,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_BAL_MONTH_COUNT_SUM,bureau_balance,BURO_BAL,Bureau Balance Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau_balance.
+BURO_BAL_MONTH_COUNT_MEAN,bureau_balance,BURO_BAL,Bureau Balance Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau_balance.
+BURO_BAL_DPD_COUNT_SUM,bureau_balance,BURO_BAL,Bureau Balance Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau_balance.
+BURO_BAL_DPD_RATIO_MEAN,bureau_balance,BURO_BAL,Bureau Balance Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau_balance.
+BURO_BAL_STATUS_0_SUM,bureau_balance,BURO_BAL,Bureau Balance Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau_balance.
+BURO_BAL_STATUS_C_SUM,bureau_balance,BURO_BAL,Bureau Balance Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau_balance.
+BURO_ACTIVE_RATIO,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_DEBT_TO_CREDIT_RATIO,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+BURO_OVERDUE_TO_CREDIT_RATIO,bureau,BURO,Bureau Aggregated Rollup,bureau,Included in model feature set; leakage=SAFE; excluded=False; provides signal from bureau.
+PREV_APPLICATION_COUNT,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_APPROVED_COUNT,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_REFUSED_COUNT,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_CANCELED_COUNT,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_UNUSED_OFFER_COUNT,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_AMT_CREDIT_SUM,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_AMT_CREDIT_MEAN,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_AMT_CREDIT_MAX,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_AMT_APPLICATION_SUM,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_AMT_APPLICATION_MEAN,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_AMT_APPLICATION_MAX,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_AMT_ANNUITY_SUM,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_AMT_ANNUITY_MEAN,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_AMT_DOWN_PAYMENT_SUM,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_RATE_DOWN_PAYMENT_MEAN,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_DAYS_DECISION_MIN,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_DAYS_DECISION_MAX,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_DAYS_DECISION_MEAN,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_CNT_PAYMENT_SUM,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_CNT_PAYMENT_MEAN,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_TERMINATION_SENTINEL_SUM,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_LAST_DUE_SENTINEL_SUM,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_APPROVAL_RATE,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_REFUSAL_RATE,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+PREV_APPLICATION_TO_CREDIT_RATIO,previous_application,PREV,Previous Application Aggregated Rollup,prev,Included in model feature set; leakage=SAFE; excluded=False; provides signal from previous_application.
+INST_RECORD_COUNT,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_AMT_INSTALMENT_SUM,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_AMT_PAYMENT_SUM,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_AMT_PAYMENT_MEAN,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_AMT_PAYMENT_MAX,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_AMT_SHORTFALL_SUM,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_DELAY_MEAN,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_DELAY_MAX,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_DELAY_MIN,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_LATE_COUNT,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_UNDERPAID_COUNT,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_DAYS_ENTRY_PAYMENT_MAX,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_NUM_INSTALMENT_VERSION_MAX,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_PAYMENT_RATIO,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_LATE_RATE,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+INST_UNDERPAID_RATE,installments_payments,INST,Installments Payment Aggregated Rollup,installments,Included in model feature set; leakage=SAFE; excluded=False; provides signal from installments_payments.
+CC_RECORD_COUNT,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_MONTHS_COUNT,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_AMT_BALANCE_MEAN,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_AMT_BALANCE_MAX,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_AMT_BALANCE_MIN,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_AMT_CREDIT_LIMIT_MEAN,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_AMT_CREDIT_LIMIT_MAX,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_AMT_DRAWINGS_ATM_SUM,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_AMT_DRAWINGS_CURRENT_SUM,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_AMT_DRAWINGS_CURRENT_MAX,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_CNT_DRAWINGS_CURRENT_SUM,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_CNT_DRAWINGS_CURRENT_MEAN,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_AMT_PAYMENT_TOTAL_SUM,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_AMT_PAYMENT_TOTAL_MEAN,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_AMT_TOTAL_RECEIVABLE_MAX,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_SK_DPD_MAX,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_SK_DPD_MEAN,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_DPD_MONTH_COUNT,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_SK_DPD_DEF_MAX,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_UTILIZATION_MEAN,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+CC_UTILIZATION_MAX,credit_card_balance,CC,Credit Card Balance Aggregated Rollup,credit_card,Included in model feature set; leakage=SAFE; excluded=False; provides signal from credit_card_balance.
+POS_RECORD_COUNT,POS_CASH_balance,POS,POS/CASH Balance Aggregated Rollup,pos_cash,Included in model feature set; leakage=SAFE; excluded=False; provides signal from POS_CASH_balance.
+POS_MONTHS_COUNT,POS_CASH_balance,POS,POS/CASH Balance Aggregated Rollup,pos_cash,Included in model feature set; leakage=SAFE; excluded=False; provides signal from POS_CASH_balance.
+POS_MONTHS_BALANCE_MAX,POS_CASH_balance,POS,POS/CASH Balance Aggregated Rollup,pos_cash,Included in model feature set; leakage=SAFE; excluded=False; provides signal from POS_CASH_balance.
+POS_MONTHS_BALANCE_MIN,POS_CASH_balance,POS,POS/CASH Balance Aggregated Rollup,pos_cash,Included in model feature set; leakage=SAFE; excluded=False; provides signal from POS_CASH_balance.
+POS_CNT_INSTALMENT_MEAN,POS_CASH_balance,POS,POS/CASH Balance Aggregated Rollup,pos_cash,Included in model feature set; leakage=SAFE; excluded=False; provides signal from POS_CASH_balance.
+POS_CNT_INSTALMENT_FUTURE_MEAN,POS_CASH_balance,POS,POS/CASH Balance Aggregated Rollup,pos_cash,Included in model feature set; leakage=SAFE; excluded=False; provides signal from POS_CASH_balance.
+POS_ACTIVE_MONTH_COUNT,POS_CASH_balance,POS,POS/CASH Balance Aggregated Rollup,pos_cash,Included in model feature set; leakage=SAFE; excluded=False; provides signal from POS_CASH_balance.
+POS_COMPLETED_MONTH_COUNT,POS_CASH_balance,POS,POS/CASH Balance Aggregated Rollup,pos_cash,Included in model feature set; leakage=SAFE; excluded=False; provides signal from POS_CASH_balance.
+POS_SIGNED_MONTH_COUNT,POS_CASH_balance,POS,POS/CASH Balance Aggregated Rollup,pos_cash,Included in model feature set; leakage=SAFE; excluded=False; provides signal from POS_CASH_balance.
+POS_SK_DPD_MAX,POS_CASH_balance,POS,POS/CASH Balance Aggregated Rollup,pos_cash,Included in model feature set; leakage=SAFE; excluded=False; provides signal from POS_CASH_balance.
+POS_SK_DPD_MEAN,POS_CASH_balance,POS,POS/CASH Balance Aggregated Rollup,pos_cash,Included in model feature set; leakage=SAFE; excluded=False; provides signal from POS_CASH_balance.
+POS_DPD_MONTH_COUNT,POS_CASH_balance,POS,POS/CASH Balance Aggregated Rollup,pos_cash,Included in model feature set; leakage=SAFE; excluded=False; provides signal from POS_CASH_balance.
+POS_SK_DPD_DEF_MAX,POS_CASH_balance,POS,POS/CASH Balance Aggregated Rollup,pos_cash,Included in model feature set; leakage=SAFE; excluded=False; provides signal from POS_CASH_balance.
+POS_COMPLETION_RATE_MEAN,POS_CASH_balance,POS,POS/CASH Balance Aggregated Rollup,pos_cash,Included in model feature set; leakage=SAFE; excluded=False; provides signal from POS_CASH_balance.
+APP_INCOME_TO_CREDIT_RATIO,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_ANNUITY_TO_INCOME_PERCENT,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_CHILDREN_TO_FAMILY_RATIO,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_CREDIT_PER_PERSON,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_INCOME_PER_CHILD,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_EXT_SOURCES_MIN,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_EXT_SOURCES_MAX,application,APP,Original Application Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_EXT_SOURCES_RANGE,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_MISSING_COUNT,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+APP_MISSING_RATIO,application,APP,Intra-Application Engineered Feature,app,Included in model feature set; leakage=SAFE; excluded=False; provides signal from application.
+DERIVED_TOTAL_DEBT_TO_INCOME_RATIO,cross_domain,DERIVED,Cross-Domain Interaction (Multi-Table),derived,Included in model feature set; leakage=SAFE; excluded=False; provides signal from cross_domain.
+DERIVED_BURO_TO_CURRENT_CREDIT_RATIO,cross_domain,DERIVED,Cross-Domain Interaction (Multi-Table),derived,Included in model feature set; leakage=SAFE; excluded=False; provides signal from cross_domain.
+DERIVED_PREV_APPROVED_TO_CURRENT_CREDIT_RATIO,cross_domain,DERIVED,Cross-Domain Interaction (Multi-Table),derived,Included in model feature set; leakage=SAFE; excluded=False; provides signal from cross_domain.
+DERIVED_OVERALL_OVERDUE_FLAG,cross_domain,DERIVED,Cross-Domain Interaction (Multi-Table),derived,Included in model feature set; leakage=SAFE; excluded=False; provides signal from cross_domain.
+DERIVED_PAYMENT_DISCIPLINE_SCORE,cross_domain,DERIVED,Cross-Domain Interaction (Multi-Table),derived,Included in model feature set; leakage=SAFE; excluded=False; provides signal from cross_domain.
+DERIVED_TOTAL_PAID_TO_INCOME_RATIO,cross_domain,DERIVED,Cross-Domain Interaction (Multi-Table),derived,Included in model feature set; leakage=SAFE; excluded=False; provides signal from cross_domain.
+DERIVED_CARD_UTILIZATION_BURDEN,cross_domain,DERIVED,Cross-Domain Interaction (Multi-Table),derived,Included in model feature set; leakage=SAFE; excluded=False; provides signal from cross_domain.

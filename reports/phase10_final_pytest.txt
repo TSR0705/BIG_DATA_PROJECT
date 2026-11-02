@@ -1,0 +1,39 @@
+........................................................................ [ 52%]
+..................................................................       [100%]
+============================== warnings summary ===============================
+venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:64
+  C:\Users\ACER\Desktop\BIG_DATA_PROJECT\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85
+  C:\Users\ACER\Desktop\BIG_DATA_PROJECT\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89
+  C:\Users\ACER\Desktop\BIG_DATA_PROJECT\venv\Lib\site-packages\matplotlib\_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+venv\Lib\site-packages\matplotlib\_mathtext.py:45
+  C:\Users\ACER\Desktop\BIG_DATA_PROJECT\venv\Lib\site-packages\matplotlib\_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+tests/test_baseline_models.py::test_synthetic_model_trainers_execution
+tests/test_phase10_imbalance.py::test_cox_calibration_slope_and_intercept
+  C:\Users\ACER\Desktop\BIG_DATA_PROJECT\venv\Lib\site-packages\sklearn\linear_model\_logistic.py:451: DeprecationWarning: scipy.optimize: The `disp` and `iprint` options of the L-BFGS-B solver are deprecated and will be removed in SciPy 1.18.0.
+    opt_res = optimize.minimize(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+138 passed, 16 warnings in 473.51s (0:07:53)
+SUCCESS: The process with PID 34996 (child process of PID 41716) has been terminated.
+SUCCESS: The process with PID 41716 (child process of PID 39288) has been terminated.
+SUCCESS: The process with PID 39288 (child process of PID 42804) has been terminated.

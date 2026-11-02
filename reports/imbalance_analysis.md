@@ -17,9 +17,10 @@
 3. *Can post-hoc Isotonic Calibration restore operational probability alignment without losing discrimination or using validation labels?*
 
 ### Key Empirical Findings:
-1. **Discrimination Invariance:** Synthetic resampling (SMOTE) and loss weighting do **not** meaningfully improve rank discrimination (ROC-AUC or PR-AUC). Across all models, baseline unweighted models achieve equal or superior PR-AUC to their SMOTE-augmented counterparts.
-2. **Severe Probability Distortion:** Class weighting (`class_weight='balanced'`) and positive weighting (`scale_pos_weight=11.3875`) inflate predicted probabilities by roughly an order of magnitude. At the default 0.50 cutoff, this gives the *illusion* of high recall, but drastically inflates the Brier score and log loss while destroying calibration.
-3. **Restoration via Isotonic Calibration:** Isotonic calibration fitted strictly on an internal holdout of the training set ($N=43,052$) successfully restores Expected Calibration Error (ECE) to low levels (e.g. from $>0.20$ down to $<0.015$), dramatically reducing Brier score and restoring Cox calibration slopes towards 1.0.
+1. **Discrimination Invariance:** Synthetic resampling (SMOTE) and loss weighting do **not** meaningfully improve rank discrimination (ROC-AUC or PR-AUC). Across all models, baseline unweighted models achieve equal or superior PR-AUC to their SMOTE-augmented counterparts (e.g. XGBoost PR-AUC: 0.2834 baseline vs 0.2708 SMOTE; RF PR-AUC: 0.2523 baseline vs 0.1880 SMOTE).
+2. **Severe Probability Distortion:** Class weighting (`class_weight='balanced'`) and positive weighting (`scale_pos_weight=11.3875`) inflate predicted probabilities by roughly an order of magnitude. At the default 0.50 cutoff, this gives the *illusion* of high recall ($\approx 65\text{--}70\%$), but drastically inflates the Brier score (from $\approx 0.066$ up to $0.16\text{--}0.19$) and destroys calibration (ECE increases from $<0.003$ to $0.25\text{--}0.33$; Cox intercept shifts to $-1.87$ to $-2.44$).
+3. **Isotonic Recalibration Protocol:** Post-hoc isotonic regression fitted strictly on an internal holdout of the training set ($N=43,052$, zero validation labels accessed) realigns empirical probabilities, reducing validation ECE to $<0.0038$, decreasing Brier scores back to $\approx 0.066$, and bringing Cox calibration slopes close to $1.00\text{--}1.02$.
+4. **Calibration Caveat:** While isotonic calibration reduces empirical ECE on validation data, it produces piecewise-constant step functions that discretize continuous probability predictions. Low validation ECE does not guarantee resilience to domain shifts or covariate distribution shifts in out-of-time credit environments, nor does it improve the fundamental discriminative capability (ROC-AUC / PR-AUC) of the underlying learner.
 
 ---
 
@@ -27,21 +28,21 @@
 
 ### Table 2.1: Discrimination and Calibration Metrics (Before vs. After Isotonic Calibration)
 
-| Config ID | Model | Strategy | Uncal ROC-AUC | Cal ROC-AUC | Uncal PR-AUC | Cal PR-AUC | Uncal Brier | Cal Brier | Uncal ECE | Cal ECE | Uncal Cox Slope | Cal Cox Slope |
-| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| `E3_A1_LR_None` | Logistic Regression | None | 0.7757 | 0.7751 | 0.2688 | 0.2578 | 0.0666 | 0.0666 | 0.0023 | 0.0032 | 1.00 | 1.01 |
-| `E3_A2_RF_None` | Random Forest | None | 0.7590 | 0.7582 | 0.2523 | 0.2429 | 0.0679 | 0.0676 | 0.0109 | 0.0015 | 1.29 | 1.00 |
-| `E3_A3_XGB_None` | XGBoost | None | 0.7893 | 0.7890 | 0.2834 | 0.2715 | 0.0657 | 0.0658 | 0.0025 | 0.0024 | 1.02 | 1.02 |
-| `E3_A4_LGBM_None` | LightGBM | None | 0.7859 | 0.7854 | 0.2830 | 0.2740 | 0.0658 | 0.0659 | 0.0020 | 0.0025 | 1.04 | 1.02 |
-| `E3_B5_LR_ClassWeight` | Logistic Regression | Class Weight | 0.7755 | 0.7750 | 0.2645 | 0.2562 | 0.1946 | 0.0668 | 0.3257 | 0.0022 | 0.98 | 1.01 |
-| `E3_B6_RF_ClassWeight` | Random Forest | Class Weight | 0.7567 | 0.7559 | 0.2382 | 0.2289 | 0.1411 | 0.0681 | 0.2540 | 0.0027 | 1.22 | 1.01 |
-| `E3_B7_LGBM_ClassWeight` | LightGBM | Class Weight | 0.7855 | 0.7851 | 0.2807 | 0.2706 | 0.1709 | 0.0660 | 0.2888 | 0.0020 | 1.03 | 1.01 |
-| `E3_C8_XGB_ScalePosWeight` | XGBoost | Positive-Class Weight | 0.7854 | 0.7851 | 0.2843 | 0.2726 | 0.1616 | 0.0659 | 0.2743 | 0.0024 | 1.01 | 1.02 |
-| `E3_C9_LGBM_ScalePosWeight` | LightGBM | Positive-Class Weight | 0.7855 | 0.7851 | 0.2803 | 0.2700 | 0.1707 | 0.0660 | 0.2869 | 0.0020 | 1.04 | 1.01 |
-| `E3_D10_LR_SMOTE` | Logistic Regression | SMOTE | 0.7648 | 0.7642 | 0.2521 | 0.2425 | 0.1908 | 0.0675 | 0.3063 | 0.0038 | 0.81 | 1.02 |
-| `E3_D11_RF_SMOTE` | Random Forest | SMOTE | 0.7323 | 0.7314 | 0.1880 | 0.1806 | 0.0882 | 0.0702 | 0.1218 | 0.0017 | 1.13 | 1.00 |
-| `E3_D12_XGB_SMOTE` | XGBoost | SMOTE | 0.7808 | 0.7802 | 0.2708 | 0.2623 | 0.0664 | 0.0664 | 0.0057 | 0.0023 | 1.03 | 1.01 |
-| `E3_D13_LGBM_SMOTE` | LightGBM | SMOTE | 0.7838 | 0.7832 | 0.2734 | 0.2643 | 0.0663 | 0.0663 | 0.0056 | 0.0031 | 1.06 | 1.00 |
+| Config ID | Model | Strategy | Uncal ROC-AUC | Cal ROC-AUC | Uncal PR-AUC | Cal PR-AUC | Uncal Log Loss | Cal Log Loss | Uncal Brier | Cal Brier | Uncal ECE | Cal ECE | Uncal Cox Slope | Cal Cox Slope |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `E3_A1_LR_None` | Logistic Regression | None | 0.7757 | 0.7751 | 0.2688 | 0.2578 | 0.2406 | 0.2409 | 0.0666 | 0.0666 | 0.0023 | 0.0032 | 1.00 | 1.01 |
+| `E3_A2_RF_None` | Random Forest | None | 0.7590 | 0.7582 | 0.2523 | 0.2429 | 0.2471 | 0.2469 | 0.0679 | 0.0676 | 0.0109 | 0.0015 | 1.29 | 1.00 |
+| `E3_A3_XGB_None` | XGBoost | None | 0.7893 | 0.7890 | 0.2834 | 0.2715 | 0.2362 | 0.2366 | 0.0657 | 0.0658 | 0.0025 | 0.0024 | 1.02 | 1.02 |
+| `E3_A4_LGBM_None` | LightGBM | None | 0.7859 | 0.7854 | 0.2830 | 0.2740 | 0.2371 | 0.2373 | 0.0658 | 0.0659 | 0.0020 | 0.0025 | 1.04 | 1.02 |
+| `E3_B5_LR_ClassWeight` | Logistic Regression | Class Weight | 0.7755 | 0.7750 | 0.2645 | 0.2562 | 0.5731 | 0.2419 | 0.1946 | 0.0668 | 0.3257 | 0.0022 | 0.98 | 1.01 |
+| `E3_B6_RF_ClassWeight` | Random Forest | Class Weight | 0.7567 | 0.7559 | 0.2382 | 0.2289 | 0.4515 | 0.2471 | 0.1411 | 0.0681 | 0.2540 | 0.0027 | 1.22 | 1.01 |
+| `E3_B7_LGBM_ClassWeight` | LightGBM | Class Weight | 0.7855 | 0.7851 | 0.2807 | 0.2706 | 0.5125 | 0.2388 | 0.1709 | 0.0660 | 0.2888 | 0.0020 | 1.03 | 1.01 |
+| `E3_C8_XGB_ScalePosWeight` | XGBoost | Positive-Class Weight | 0.7854 | 0.7851 | 0.2843 | 0.2726 | 0.4909 | 0.2379 | 0.1616 | 0.0659 | 0.2743 | 0.0024 | 1.01 | 1.02 |
+| `E3_C9_LGBM_ScalePosWeight` | LightGBM | Positive-Class Weight | 0.7855 | 0.7851 | 0.2803 | 0.2700 | 0.5103 | 0.2382 | 0.1707 | 0.0660 | 0.2869 | 0.0020 | 1.04 | 1.01 |
+| `E3_D10_LR_SMOTE` | Logistic Regression | SMOTE | 0.7648 | 0.7642 | 0.2521 | 0.2425 | 0.5628 | 0.2447 | 0.1908 | 0.0675 | 0.3063 | 0.0038 | 0.81 | 1.02 |
+| `E3_D11_RF_SMOTE` | Random Forest | SMOTE | 0.7323 | 0.7314 | 0.1880 | 0.1806 | 0.3159 | 0.2565 | 0.0882 | 0.0702 | 0.1218 | 0.0017 | 1.13 | 1.00 |
+| `E3_D12_XGB_SMOTE` | XGBoost | SMOTE | 0.7808 | 0.7802 | 0.2708 | 0.2623 | 0.2394 | 0.2396 | 0.0664 | 0.0664 | 0.0057 | 0.0023 | 1.03 | 1.01 |
+| `E3_D13_LGBM_SMOTE` | LightGBM | SMOTE | 0.7838 | 0.7832 | 0.2734 | 0.2643 | 0.2385 | 0.2391 | 0.0663 | 0.0663 | 0.0056 | 0.0031 | 1.06 | 1.00 |
 
 ---
 
@@ -73,4 +74,4 @@
    The recommended production workflow is:
    $$\text{Features} \xrightarrow{\text{LightGBM / XGBoost}} \hat{p}_{\text{raw}} \xrightarrow{\text{Isotonic Calibration}} \hat{p}_{\text{calibrated}} \xrightarrow{\text{Cost-Sensitive Threshold / Risk Bands}} \text{Decision}$$
 3. **Zero Test-Leakage Guarantee:**
-   Calibration models were trained strictly on internal training set holdouts. Validation data was evaluated solely on frozen distributions.
+   Calibration models were trained strictly on internal training set holdouts ($N=43,052$). Validation data ($N=46,127$) was evaluated solely on pre-fitted calibrators without observing validation labels.
