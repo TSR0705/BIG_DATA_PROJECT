@@ -1,0 +1,240 @@
+# Phase 10 Research Experiments Configuration
+# E1: Feature Ablation, E3: Class Imbalance × Calibration, E4: Decision Analysis
+
+phase: "Phase 10 — Research Experiments"
+random_state: 42
+
+split_references:
+  dataset_path: "data/model_input/model_input.parquet"
+  train_split: "data/splits/train_indices.parquet"
+  val_split: "data/splits/val_indices.parquet"
+  test_split: "data/splits/test_indices.parquet" # NOTE: Test split is strictly FROZEN and EXCLUDED from Phase 10
+
+# ======================================================================
+# Experiment E1: Feature Ablation
+# ======================================================================
+e1_ablation:
+  model_type: "xgboost"
+  model_params:
+    objective: "binary:logistic"
+    eval_metric: "logloss"
+    max_depth: 3
+    learning_rate: 0.1
+    n_estimators: 500
+    min_child_weight: 10
+    subsample: 0.8
+    colsample_bytree: 1.0
+    random_state: 42
+    n_jobs: 6
+  bootstrap_resamples: 30
+  confidence_level: 0.95
+
+  # Feature Group Definitions
+  feature_families:
+    app:
+      family_codes: ["APP"]
+      source_table: "application_train.csv"
+      feature_count: 147
+    bureau:
+      family_codes: ["BURO", "BURO_BAL"]
+      source_table: "bureau.csv, bureau_balance.csv"
+      feature_count: 26
+    prev:
+      family_codes: ["PREV"]
+      source_table: "previous_application.csv"
+      feature_count: 25
+    installments:
+      family_codes: ["INST"]
+      source_table: "installments_payments.csv"
+      feature_count: 16
+    credit_card:
+      family_codes: ["CC"]
+      source_table: "credit_card_balance.csv"
+      feature_count: 21
+    pos_cash:
+      family_codes: ["POS"]
+      source_table: "POS_CASH_balance.csv"
+      feature_count: 14
+    derived:
+      family_codes: ["DERIVED"]
+      source_table: "cross_domain"
+      feature_count: 7
+
+  # Named Comparisons (7 incremental + 6 leave-one-group-out)
+  configurations:
+    # 7 Named Incremental Feature Sets
+    app_only:
+      type: "incremental"
+      description: "Application-only baseline"
+      included_groups: ["app"]
+      expected_features: 147
+    app_bureau:
+      type: "incremental"
+      description: "Application + Credit Bureau"
+      included_groups: ["app", "bureau"]
+      expected_features: 173
+    app_prev:
+      type: "incremental"
+      description: "Application + Previous Applications"
+      included_groups: ["app", "prev"]
+      expected_features: 172
+    app_installments:
+      type: "incremental"
+      description: "Application + Installment Payments"
+      included_groups: ["app", "installments"]
+      expected_features: 163
+    app_credit_card:
+      type: "incremental"
+      description: "Application + Credit Card Balance"
+      included_groups: ["app", "credit_card"]
+      expected_features: 168
+    app_pos_cash:
+      type: "incremental"
+      description: "Application + POS/CASH Balance"
+      included_groups: ["app", "pos_cash"]
+      expected_features: 161
+    full_all_tables:
+      type: "full"
+      description: "All tables / full feature set"
+      included_groups: ["app", "bureau", "prev", "installments", "credit_card", "pos_cash", "derived"]
+      expected_features: 256
+
+    # 6 Leave-One-Feature-Group-Out (LOGO) Configurations
+    logo_bureau:
+      type: "leave_one_group_out"
+      description: "Full model excluding Credit Bureau"
+      excluded_groups: ["bureau"]
+      expected_features: 230
+    logo_prev:
+      type: "leave_one_group_out"
+      description: "Full model excluding Previous Applications"
+      excluded_groups: ["prev"]
+      expected_features: 231
+    logo_installments:
+      type: "leave_one_group_out"
+      description: "Full model excluding Installment Payments"
+      excluded_groups: ["installments"]
+      expected_features: 240
+    logo_credit_card:
+      type: "leave_one_group_out"
+      description: "Full model excluding Credit Card Balance"
+      excluded_groups: ["credit_card"]
+      expected_features: 235
+    logo_pos_cash:
+      type: "leave_one_group_out"
+      description: "Full model excluding POS/CASH Balance"
+      excluded_groups: ["pos_cash"]
+      expected_features: 242
+    logo_derived:
+      type: "leave_one_group_out"
+      description: "Full model excluding Cross-Domain Derived"
+      excluded_groups: ["derived"]
+      expected_features: 249
+
+# ======================================================================
+# Experiment E3: Class Imbalance × Calibration Grid (13 Configurations)
+# ======================================================================
+e3_imbalance_grid:
+  class_weight_ratio: 11.38746619094205 # derived from train: 197,880 neg / 17,377 pos
+  calibration_method: "isotonic"
+  n_bins_ece: 10
+  configurations:
+    # A. No imbalance correction (4 configs)
+    - id: "E3_A1_LR_None"
+      model: "Logistic Regression"
+      strategy: "None"
+      weighting: "none"
+      resampling: "none"
+    - id: "E3_A2_RF_None"
+      model: "Random Forest"
+      strategy: "None"
+      weighting: "none"
+      resampling: "none"
+    - id: "E3_A3_XGB_None"
+      model: "XGBoost"
+      strategy: "None"
+      weighting: "none"
+      resampling: "none"
+    - id: "E3_A4_LGBM_None"
+      model: "LightGBM"
+      strategy: "None"
+      weighting: "none"
+      resampling: "none"
+
+    # B. Class weighting (3 configs)
+    - id: "E3_B5_LR_ClassWeight"
+      model: "Logistic Regression"
+      strategy: "Class Weight"
+      weighting: "balanced"
+      resampling: "none"
+    - id: "E3_B6_RF_ClassWeight"
+      model: "Random Forest"
+      strategy: "Class Weight"
+      weighting: "balanced"
+      resampling: "none"
+    - id: "E3_B7_LGBM_ClassWeight"
+      model: "LightGBM"
+      strategy: "Class Weight"
+      weighting: "balanced"
+      resampling: "none"
+
+    # C. Positive-class weighting (2 configs)
+    - id: "E3_C8_XGB_ScalePosWeight"
+      model: "XGBoost"
+      strategy: "Positive-Class Weight"
+      weighting: "scale_pos_weight"
+      resampling: "none"
+    - id: "E3_C9_LGBM_ScalePosWeight"
+      model: "LightGBM"
+      strategy: "Positive-Class Weight"
+      weighting: "scale_pos_weight"
+      resampling: "none"
+
+    # D. SMOTE (4 configs)
+    - id: "E3_D10_LR_SMOTE"
+      model: "Logistic Regression"
+      strategy: "SMOTE"
+      weighting: "none"
+      resampling: "smote"
+    - id: "E3_D11_RF_SMOTE"
+      model: "Random Forest"
+      strategy: "SMOTE"
+      weighting: "none"
+      resampling: "smote"
+    - id: "E3_D12_XGB_SMOTE"
+      model: "XGBoost"
+      strategy: "SMOTE"
+      weighting: "none"
+      resampling: "smote"
+    - id: "E3_D13_LGBM_SMOTE"
+      model: "LightGBM"
+      strategy: "SMOTE"
+      weighting: "none"
+      resampling: "smote"
+
+# ======================================================================
+# Experiment E4: Decision Analysis
+# ======================================================================
+e4_decision_analysis:
+  model_artifact: "artifacts/models/phase8_best_xgboost.joblib"
+  cost_ratios:
+    - [1, 5]   # 5:1 (Cost of approving defaulter : rejecting non-defaulter)
+    - [1, 10]  # 10:1
+    - [1, 20]  # 20:1
+  operating_benchmarks:
+    default_cutoff: 0.50
+    phase8_opt_f1: 0.17
+    phase8_opt_f2: 0.09
+  risk_bands:
+    low:
+      label: "LOW"
+      threshold_range: [0.0, 0.09]
+      action: "Fast-track Approval / Prime Rate"
+    medium:
+      label: "MEDIUM"
+      threshold_range: [0.09, 0.25]
+      action: "Manual Review / Income Verification / Standard Rate"
+    high:
+      label: "HIGH"
+      threshold_range: [0.25, 1.0]
+      action: "Reject / Require Collateral / Strict Underwriting"
