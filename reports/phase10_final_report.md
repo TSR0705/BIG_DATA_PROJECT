@@ -196,11 +196,24 @@ All experimental executions across Phase 10 were recorded into the standardized 
 
 ---
 
-## 8. Documented Engineering Deviations
+## 8. Documented Engineering Deviations & Verification Notes
 
 1. **Lazy SMOTE Import:** Dynamic loading (`_get_smote()`) was implemented in `src/evaluation/imbalance_grid.py` to prevent module namespace pollution during full test collection.
 2. **Decision Artifact Separation:** Cost-optimization outputs were saved to `reports/decision_threshold_analysis.csv` to ensure Phase 8's frozen `reports/threshold_analysis.csv` remained unmodified.
 3. **Bootstrap Sample Size:** Resample iterations were capped at $B=30$ for computational tractability on 46,127 validation samples while still providing stable variance estimates.
+4. **Test Suite Count Reconciliation (138 Tests vs. Expected 136):**
+   - **Historical Phase 9 Test Suite (Commit `d791574`):** 124 tests across 10 test modules (`test_baseline_models.py`: 11, `test_bronze.py`: 5, `test_features.py`: 16, `test_gold.py`: 17, `test_phase1_profile.py`: 9, `test_phase8.py`: 13, `test_phase9.py`: 8, `test_schemas.py`: 5, `test_silver.py`: 22, `test_split.py`: 18).
+   - **Intermediate BDE Assignment (Commit `4c406b6`):** Added unsupervised customer segmentation (`src/ml/clustering.py`) and `tests/test_clustering.py` containing **2 tests**:
+     - `tests/test_clustering.py::test_clustering_features_specification`
+     - `tests/test_clustering.py::test_clustering_evaluation_and_profiling_synthetic`
+     This raised the pre-Phase 10 baseline from 124 to 126 tests.
+   - **Phase 10 Research Experiments (Commit `c6cfade`):** Added **12 tests** across three new test files:
+     - `tests/test_phase10_ablation.py`: 4 tests (`test_feature_manifest_integrity`, `test_ablation_configurations_definition`, `test_ablation_data_loading_no_test_leakage`, `test_bootstrap_reproducibility`)
+     - `tests/test_phase10_decision.py`: 3 tests (`test_cost_calculation_logic`, `test_risk_band_monotonicity_logic`, `test_no_test_set_leakage`)
+     - `tests/test_phase10_imbalance.py`: 5 tests (`test_e3_configurations_definition`, `test_ece_calculation`, `test_cox_calibration_slope_and_intercept`, `test_operational_metrics_correctness`, `test_no_test_set_leakage`)
+   - **Reconciliation Formula:**
+     $$124\text{ (Phase 9)} + 2\text{ (BDE Assignment Clustering)} + 12\text{ (Phase 10 Research)} = 138\text{ total tests (100% passing)}$$
+     An expectation of $124 + 12 = 136$ tests overlooks the 2 tests added in `tests/test_clustering.py`. The recorded 138 tests is the complete and verified suite.
 
 ---
 
