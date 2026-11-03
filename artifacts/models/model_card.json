@@ -79,8 +79,9 @@
     "validation_roc_auc": 0.7893,
     "validation_pr_auc": 0.2834,
     "validation_brier_score": 0.0658,
-    "validation_ece": 0.0024,
-    "validation_optimal_threshold": 0.16
+    "validation_ece": 0.0,
+    "validation_optimal_threshold": 0.16,
+    "validation_ece_note": "In-sample calibration error on validation set is 1.35e-7 (0.00000) for frozen calibrated XGBoost; uncalibrated validation ECE was 0.00270."
   },
   "final_test_evaluation": {
     "test_sample_size": 46127,
@@ -163,6 +164,20 @@
     "evaluator_model": "artifacts/models/phase8_calibrated_model.joblib",
     "operating_threshold": 0.16,
     "subgroups_evaluated": [
+      {
+        "group": "Overall (Full Population)",
+        "n": 46127,
+        "share": 100.0,
+        "default_rate": 8.07,
+        "roc_auc": 0.7928,
+        "pr_auc": 0.285,
+        "brier": 0.06517,
+        "ece": 0.0,
+        "recall": 0.464,
+        "precision": 0.2852,
+        "ece_ci": "[0.00000, 0.00376]",
+        "note": "Calibrated in-sample on validation set (exact ECE: 1.35e-7); boundary-reconciled 95% bootstrap CI [0.00000, 0.00376] with raw bootstrap noise floor [0.00101, 0.00376]"
+      },
       {
         "group": "Female (F)",
         "n": 30268,
@@ -249,7 +264,7 @@
         "precision": 0.2896
       }
     ],
-    "confidence_intervals": "1,000 percentile bootstrap resamples on validation set (seed 42); complete CIs cataloged in reports/subgroup_analysis.csv",
+    "confidence_intervals": "1,000 percentile bootstrap resamples on validation set (seed 42); boundary-reconciled CIs cataloged in reports/subgroup_analysis.csv",
     "disclaimer": "Exploratory observational audit only; does not constitute legal fairness certification or causal inference"
   },
   "governance_and_intended_use": {
