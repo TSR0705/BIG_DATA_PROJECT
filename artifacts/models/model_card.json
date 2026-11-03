@@ -73,15 +73,24 @@
         0.25,
         1.0
       ]
-    }
+    },
+    "independent_calibrator_artifact": "artifacts/models/phase11_independent_calibrator.joblib",
+    "calibration_fitting_method": "5-Fold Stratified Out-of-Fold (OOF) cross-fitting strictly on Training Set (N=215,257)",
+    "validation_leakage_status": "Zero validation or test data rows/labels accessed during calibration fitting"
   },
   "validation_performance": {
-    "validation_roc_auc": 0.7893,
-    "validation_pr_auc": 0.2834,
-    "validation_brier_score": 0.0658,
-    "validation_ece": 0.0,
+    "validation_roc_auc": 0.7909,
+    "validation_pr_auc": 0.2853,
+    "validation_brier_score": 0.065424,
+    "validation_ece": 0.004168,
     "validation_optimal_threshold": 0.16,
-    "validation_ece_note": "In-sample calibration error on validation set is 1.35e-7 (0.00000) for frozen calibrated XGBoost; uncalibrated validation ECE was 0.00270."
+    "validation_ece_note": "Independent out-of-sample calibration error on validation set (N=46,127); calibrator was fitted on 5-fold OOF training predictions with zero validation leakage.",
+    "validation_ece_ci_95": [
+      0.00232,
+      0.0068
+    ],
+    "validation_precision_at_016": 0.2851,
+    "validation_recall_at_016": 0.4619
   },
   "final_test_evaluation": {
     "test_sample_size": 46127,
@@ -161,7 +170,7 @@
   },
   "subgroup_audit_findings_e7": {
     "evaluation_partition": "Validation Split (N=46,127), strictly zero test data leakage",
-    "evaluator_model": "artifacts/models/phase8_calibrated_model.joblib",
+    "evaluator_model": "artifacts/models/phase11_independent_calibrator.joblib",
     "operating_threshold": 0.16,
     "subgroups_evaluated": [
       {
@@ -265,7 +274,13 @@
       }
     ],
     "confidence_intervals": "1,000 percentile bootstrap resamples on validation set (seed 42); boundary-reconciled CIs cataloged in reports/subgroup_analysis.csv",
-    "disclaimer": "Exploratory observational audit only; does not constitute legal fairness certification or causal inference"
+    "disclaimer": "Exploratory observational audit only; does not constitute legal fairness certification or causal inference",
+    "calibration_fitting": "5-fold Stratified OOF on Training Set (N=215,257); zero validation leakage",
+    "overall_ece": 0.004168,
+    "overall_ece_95_ci": [
+      0.00232,
+      0.0068
+    ]
   },
   "governance_and_intended_use": {
     "intended_use": "Credit default risk scoring and risk-tiered underwriting triaging for retail personal loans.",

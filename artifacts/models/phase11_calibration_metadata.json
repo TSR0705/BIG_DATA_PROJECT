@@ -1,0 +1,43 @@
+{
+  "project": "Loan Default Prediction Using Big Data Analytics",
+  "phase": "Phase 11 \u2014 Independent Probability Calibration (Leakage Remediation)",
+  "calibrator_artifact": "phase11_independent_calibrator.joblib",
+  "base_estimator_artifact": "phase8_best_xgboost.joblib",
+  "calibration_method": "isotonic",
+  "fitting_strategy": "5-Fold Stratified Out-of-Fold (OOF) Cross-Fitting strictly on Train",
+  "provenance": {
+    "training_split_file": "data/splits/train_indices.parquet",
+    "training_row_count": 215257,
+    "training_default_count": 17377,
+    "training_default_rate": 0.08072675917624049,
+    "validation_rows_accessed": 0,
+    "validation_labels_accessed": 0,
+    "test_rows_accessed": 0,
+    "test_labels_accessed": 0
+  },
+  "oof_generation": {
+    "cv_folds": 5,
+    "stratified": true,
+    "random_state": 42,
+    "hyperparameters": {
+      "subsample": 0.8,
+      "n_estimators": 500,
+      "min_child_weight": 10,
+      "max_depth": 3,
+      "learning_rate": 0.1,
+      "colsample_bytree": 1.0
+    },
+    "oof_generation_time_seconds": 259.59,
+    "uncalibrated_oof_brier": 0.06611632838574659,
+    "uncalibrated_oof_logloss": 0.23801408594200513,
+    "uncalibrated_oof_ece": 0.0022636152195389253,
+    "calibrated_oof_brier": 0.06600759772846249,
+    "calibrated_oof_logloss": 0.23757903444564019,
+    "calibrated_oof_ece": 1.808276583031353e-18
+  },
+  "frozen_artifacts_preserved": [
+    "artifacts/models/phase8_best_xgboost.joblib",
+    "artifacts/models/phase8_calibrated_model.joblib"
+  ],
+  "timestamp_utc": "2026-11-03 04:42:13 UTC"
+}
