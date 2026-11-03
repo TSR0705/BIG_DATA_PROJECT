@@ -94,3 +94,50 @@ def test_age_band_partitioning():
     expected = ["Under 25", "Under 25", "25-40", "25-40", "40-55", "40-55", "55+", "55+"]
     assert list(bands) == expected
     assert "Other" not in bands
+
+
+def test_subgroup_metrics_single_class_n1():
+    """Verify single-class subgroup with n=1 and zero positive cases (CODE_GENDER=None cohort).
+
+    Verifies:
+    - Recall is undefined (None / NA) because TP + FN = 0.
+    - Discrimination metrics (ROC-AUC, PR-AUC) are undefined (None).
+    - Precision is 0.0 when threshold predicts positive (0 TP, 1 FP).
+    - Brier score: (y - p)^2 = (0 - 0.291874)^2 = 0.08519.
+    - ECE: |y - p| = |0 - 0.291874| = 0.29187.
+    """
+    y_true = np.array([0])
+    y_prob = np.array([0.291874])
+    threshold = 0.16
+
+    res = compute_metrics_for_subgroup(y_true, y_prob, threshold=threshold)
+
+    assert res["n"] == 1
+    assert res["defaults"] == 0
+    assert res["default_rate"] == 0.0
+    assert res["roc_auc"] is None
+    assert res["pr_auc"] is None
+    assert res["recall"] is None
+    assert res["f1"] is None
+    assert res["precision"] == 0.0
+    assert res["brier_score"] == pytest.approx(0.08519, abs=1e-4)
+    assert res["ece"] == pytest.approx(0.29187, abs=1e-4)
+
+
+def test_bootstrap_confidence_intervals_includes_all_metrics():
+    """Verify bootstrap CI generation includes Brier, ECE, Precision, and Recall."""
+    rng = np.random.RandomState(42)
+    y_true = rng.binomial(1, 0.15, size=200)
+    y_prob = rng.uniform(0, 0.8, size=200)
+
+    cis = compute_bootstrap_confidence_intervals(
+        y_true, y_prob, threshold=0.16, n_bootstraps=20, seed=42
+    )
+
+    required_ci_keys = ["roc_auc", "pr_auc", "brier_score", "ece", "precision", "recall"]
+    for k in required_ci_keys:
+        assert k in cis, f"Missing CI key: {k}"
+        low, high = cis[k]
+        assert low is not None and high is not None
+        assert low <= high
+

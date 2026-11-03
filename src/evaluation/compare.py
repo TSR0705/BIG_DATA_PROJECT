@@ -132,20 +132,25 @@ def run_frozen_test_evaluation() -> Tuple[pd.DataFrame, Dict[str, Any], Dict[str
         meta = json.load(f)
     feature_cols = meta["features"]
 
-    # Preprocess categorical features for tree models
-    cat_cols = [c for c in feature_cols if test_df[c].dtype == "object" or test_df[c].dtype.name == "category"]
-    for c in cat_cols:
-        test_df[c] = test_df[c].astype("category").cat.codes
-
-    X_test_tree = test_df[feature_cols].copy()
     y_test = test_df["TARGET"].values.astype(int)
 
-    logger.info(f"Test Set Loaded: {len(X_test_tree):,} applicants, positive default rate: {y_test.mean():.4f}")
-
-    # Prepare features for logistic regression using fitted preprocessor
+    # Prepare features for Logistic Regression using Phase 6 fitted ColumnTransformer (raw un-encoded features)
     lr_prep_path = ARTIFACTS_PREPROC_DIR / "fitted_logistic_preprocessor.joblib"
     lr_preprocessor = joblib.load(lr_prep_path)
     X_test_lr = lr_preprocessor.transform(test_df[feature_cols])
+
+    # Prepare features for Tree models using Phase 7 fitted OrdinalEncoder
+    tree_encoder_path = ARTIFACTS_MODELS_DIR / "tree_preprocessor.joblib"
+    tree_encoder = joblib.load(tree_encoder_path)
+    cat_cols = [c for c in feature_cols if test_df[c].dtype == "object" or test_df[c].dtype.name == "category"]
+
+    test_tree_clean = test_df[feature_cols].copy()
+    for c in cat_cols:
+        test_tree_clean[c] = test_tree_clean[c].astype(str).replace({"nan": np.nan, "None": np.nan})
+    test_tree_clean[cat_cols] = tree_encoder.transform(test_tree_clean[cat_cols])
+    X_test_tree = test_tree_clean.astype(np.float32)
+
+    logger.info(f"Test Set Loaded: {len(X_test_tree):,} applicants, positive default rate: {y_test.mean():.4f}")
 
     # 2. Load Frozen Models
     logger.info("Loading frozen model artifacts...")

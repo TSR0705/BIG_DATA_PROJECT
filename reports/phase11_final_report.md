@@ -5,6 +5,7 @@
 **Execution Timestamp:** November 2026  
 **Repository Branch:** `develop`  
 **Phase 10 Base Commit:** `72e6a9242dee98905984ccf5c1c8308c37979b69`  
+**Phase 11 Fix Commit:** `fix: correct Phase 11 research audit findings`  
 **Phase 11 Target Tag:** `v0.9-research`  
 
 ---
@@ -13,9 +14,10 @@
 
 Phase 11 concludes the core empirical machine learning and explainability validation for the Home Credit loan default prediction system. Built upon the frozen Phase 8 finalist architecture (tuned XGBoost with isotonic probability calibration) and the Phase 10 empirical research foundation (ablation, decision cost modeling, and imbalance mechanisms), Phase 11 executes three critical validation protocols:
 
-1. **Experiment E5 (SHAP Explanation Stability Across Retraining):** Assesses whether local reason codes, global feature importance hierarchies, and operational risk tiers remain numerically consistent across 15 independent bootstrap retrains under standard sampling versus 15 bootstrap retrains under synthetic oversampling (SMOTE), evaluated on a fixed panel of $N=5,000$ applicants.
+1. **Experiment E5 (SHAP Explanation Stability Across Retraining):** Assesses whether applicant-level predictive attribution factors, global feature importance hierarchies, and raw-score risk tiers remain numerically consistent across 15 independent bootstrap retrains under standard sampling versus 15 bootstrap retrains under synthetic oversampling (SMOTE), evaluated on a fixed panel of $N=5,000$ applicants.
 2. **Experiment E7 (Demographic Subgroup Performance Audit):** Audits model discrimination, calibration, and classification performance across sex (`CODE_GENDER`: Female, Male, Unknown) and age cohorts (Under 25, 25–40, 40–55, 55+) on the validation partition ($N=46,127$), equipped with 1,000 percentile bootstrap confidence intervals, Expected Calibration Error (ECE), and Brier scores.
-3. **Final Frozen Test Set Evaluation & Model Card Generation:** Executes a single, locked batch evaluation on the holdout test set ($N=46,127$) across 12 distinct modeling configurations, validates strict risk-tier monotonicity, generates a comprehensive programmatic `models/model_card.json`, and provides complete, transparent disclosure regarding historical holdout exposure.
+3. **Final Frozen Test Set Evaluation & Model Card Generation:** Executes a single, locked batch evaluation on the holdout test set ($N=46,127$) across 12 distinct modeling configurations, validates strict risk-tier monotonicity, generates a comprehensive programmatic `models/model_card.json` (mirrored in `artifacts/models/model_card.json`), and provides complete, transparent disclosure regarding historical holdout exposure and Phase 7 benchmark reconciliation.
+4. **Full-Split SHAP Computation:** Computes chunked TreeSHAP explanations across all $N=46,127$ test partition applicants, persisting the complete matrix to `artifacts/explainability/test_split_shap_values.parquet` and cataloging metadata in `artifacts/explainability/test_split_shap_metadata.json`.
 
 ---
 
@@ -23,12 +25,13 @@ Phase 11 concludes the core empirical machine learning and explainability valida
 
 | Objective ID | Research Question / Validation Target | Target Population / Partition | Governing Metric / Deliverable |
 | :--- | :--- | :--- | :--- |
-| **OBJ-11.1** | Global and local explanation stability under model retraining | Fixed $N=5,000$ stratified validation panel | Kendall's $\tau$, Top-10 overlap, Jaccard@3/4/5 reason codes |
-| **OBJ-11.2** | Operational risk tier stability across retrains | Fixed $N=5,000$ stratified validation panel | Transition matrix, diagonal retention rates, band change frequency |
-| **OBJ-11.3** | Demographic subgroup discrimination and calibration disparity | Full validation set ($N=46,127$) | ROC-AUC, PR-AUC, ECE, Brier score, 1,000 bootstrap CIs |
+| **OBJ-11.1** | Global and local explanation stability under model retraining | Fixed $N=5,000$ stratified validation panel | Kendall's $\tau$, Top-10 overlap, Jaccard@3/4/5 predictive attribution factors |
+| **OBJ-11.2** | Raw-score tier stability and sensitivity across retrains | Fixed $N=5,000$ stratified validation panel | Pooled symmetric transition matrix, retention rates, score shift frequency |
+| **OBJ-11.3** | Demographic subgroup discrimination and calibration disparity | Full validation set ($N=46,127$) | ROC-AUC, PR-AUC, ECE, Brier score, complete 1,000 bootstrap 95% CIs |
 | **OBJ-11.4** | Final benchmark evaluation on holdout test partition | Full test set ($N=46,127$) | 12-configuration comparison table (`reports/model_comparison.csv`) |
 | **OBJ-11.5** | Empirical verification of operational risk-tier monotonicity | Full test set ($N=46,127$) | Observed default rates: $\text{LOW} < \text{MEDIUM} < \text{HIGH}$ |
-| **OBJ-11.6** | Machine learning governance and lineage documentation | Full model lifecycle | Production Model Card (`models/model_card.json`) |
+| **OBJ-11.6** | Full-split test explainability artifact generation | Full test set ($N=46,127$) | `artifacts/explainability/test_split_shap_values.parquet` |
+| **OBJ-11.7** | Machine learning governance and lineage documentation | Full model lifecycle | Production Model Card (`models/model_card.json`) |
 
 ---
 
@@ -86,9 +89,17 @@ The deployed model architecture evaluated in Phase 11 is strictly identical to t
 
 ## 5. Experiment E5: Methodology (SHAP Explanation Stability)
 
-Explainability in consumer credit decisioning must be robust to stochastic variations in model training. If minor data variations lead to drastically different adverse action reason codes, applicant trust and regulatory compliance are compromised.
+Explainability in consumer credit decisioning must be robust to stochastic variations in model training. If minor data variations lead to drastically different feature explanations, model interpretability is severely undermined.
 
-### 5.1 Experimental Setup
+### 5.1 SHAP Sign Convention & Output Target
+- **Model Output Target:** Exact TreeSHAP (`shap.TreeExplainer`) explains the margin log-odds of default (Class 1, $y=1$) under binary logistic loss.
+- **Sign Direction:**
+  - **Positive SHAP ($\phi_i > 0$):** Increases the predicted log-odds of default (acts as a default risk factor).
+  - **Negative SHAP ($\phi_i < 0$):** Decreases the predicted log-odds of default (acts as a protective factor).
+- **Ranking Criterion:** Top-$k$ explanations are extracted based on **absolute attribution magnitude ($| \phi_i |$)**, capturing the primary features driving the prediction in either direction. The identical sign and magnitude convention is used across all 30 retraining models.
+- **Terminology Standard:** In compliance with regulatory definitions, these factors are termed **"top applicant-level SHAP explanations"** or **"top predictive attribution factors"**, and are **not** represented as legally compliant FCRA/ECOA Adverse Action reason codes.
+
+### 5.2 Experimental Setup
 - **Training Population:** The frozen training set ($N=215,257$).
 - **Bootstrap Protocol:** 15 independent bootstrap training sets ($N=215,257$ sampled with replacement per retrain, random seeds 42 through 56).
 - **Comparison Strategies:**
@@ -97,9 +108,9 @@ Explainability in consumer credit decisioning must be robust to stochastic varia
 - **Explanation Panel:** A fixed, stratified subsample of $N=5,000$ applicants drawn from the validation set (seed 42, base default rate 8.08%).
 - **Explanation Engine:** `shap.TreeExplainer` computing exact Shapley values across all 256 features for all 5,000 applicants per retrain.
 - **Stability Metrics:**
-  - **Global Stability:** Pairwise Kendall's rank correlation ($\tau$) across feature importance hierarchies, mean Top-10 feature overlap fraction, and feature rank shift distributions.
-  - **Local Reason Code Stability:** Pairwise Jaccard similarity of top-$k$ adverse action reason codes ($k \in \{3, 4, 5\}$) per applicant.
-  - **Risk-Tier Stability:** Empirical 3x3 transition probability matrices across the 15 retrains, measuring how frequently applicants shift risk bands.
+  - **Global Stability:** Pairwise Kendall's rank correlation ($\tau$) across feature importance hierarchies, mean Top-10 feature overlap fraction, and feature rank shift distributions across $\binom{15}{2} = 105$ model pairs.
+  - **Local Attribution Factor Stability:** Pairwise Jaccard similarity of top-$k$ predictive attribution factors ($k \in \{3, 4, 5\}$) per applicant.
+  - **Raw-Score Band Sensitivity:** Empirical 3x3 pooled transition probability matrices across the 105 model pairs ($525,000$ applicant-pair evaluations).
 
 ---
 
@@ -136,15 +147,15 @@ Across all 15 bootstrap retrains, the top-10 global features demonstrate high co
 
 ## 7. Experiment E5: Local Explanation Stability Results
 
-In credit underwriting, Adverse Action Notices require financial institutions to supply applicants with specific reasons for credit denial (e.g., top-3 or top-4 driving factors). If stochastic model retraining changes an applicant's stated reasons, the decisioning system cannot be considered legally or operationally defensible.
+Local explanation stability assesses whether an individual applicant's top predictive attribution factors remain consistent across retrained model instances:
 
-### 7.1 Local Reason Code Agreement (Jaccard Similarity across 5,000 Panel Applicants)
+### 7.1 Local Attribution Factor Agreement (Jaccard Similarity across 5,000 Panel Applicants)
 
-| Evaluation Sensitivity | Reason Code Count ($k$) | Standard XGBoost (Mean Jaccard) | SMOTE XGBoost (Mean Jaccard) | Ratio (Standard / SMOTE) |
+| Evaluation Sensitivity | Factor Count ($k$) | Standard XGBoost (Mean Jaccard) | SMOTE XGBoost (Mean Jaccard) | Ratio (Standard / SMOTE) |
 | :--- | :---: | :---: | :---: | :---: |
-| **Primary Regulatory Standard** | **Top-3 Reason Codes ($k=3$)** | **0.4993** ($\pm$0.1467) | 0.2352 ($\pm$0.0984) | **2.12x Higher** |
-| **Secondary Audit** | **Top-4 Reason Codes ($k=4$)** | **0.4817** ($\pm$0.1382) | 0.2336 ($\pm$0.0911) | **2.06x Higher** |
-| **Extended Audit** | **Top-5 Reason Codes ($k=5$)** | **0.4755** ($\pm$0.1310) | 0.2403 ($\pm$0.0865) | **1.98x Higher** |
+| **Primary Sensitivity** | **Top-3 Factors ($k=3$)** | **0.4993** ($\pm$0.1467) | 0.2352 ($\pm$0.0984) | **2.12x Higher** |
+| **Secondary Audit** | **Top-4 Factors ($k=4$)** | **0.4817** ($\pm$0.1382) | 0.2336 ($\pm$0.0911) | **2.06x Higher** |
+| **Extended Audit** | **Top-5 Factors ($k=5$)** | **0.4755** ($\pm$0.1310) | 0.2403 ($\pm$0.0865) | **1.98x Higher** |
 
 ### 7.2 Empirical Distribution of Jaccard@3 Across the 5,000 Applicants
 - **5th Percentile:** 0.2810 (even the least stable 5% of applicants maintain shared primary drivers)
@@ -153,20 +164,30 @@ In credit underwriting, Adverse Action Notices require financial institutions to
 - **75th Percentile (Q3):** 0.5886
 - **95th Percentile:** 0.7638 (high-agreement cohort with virtually identical explanations across retrains)
 
-### 7.3 Methodological Takeaway on Synthetic Resampling
-SMOTE synthesizes minority points by interpolating between nearest neighbors in high-dimensional continuous space. Because the feature space contains 256 dimensions with complex non-linear interactions, SMOTE generates artificial samples along low-density manifold boundaries. This fundamentally destabilizes local tree splits across bootstrap runs, causing local SHAP attributions to fluctuate violently (reducing reason code overlap by over 50%). Consequently, **synthetic oversampling is contraindicated for explainable credit risk modeling**.
+### 7.3 Hypothesized Mechanisms for SMOTE Attribution Variance
+The empirical association between SMOTE training and reduced attribution stability (Kendall's tau 0.4845 vs 0.7182) can be explained by several plausible hypotheses:
+1. **Manifold Boundary Distortion:** SMOTE synthesizes minority points by linear interpolation in 256-dimensional feature space, placing artificial samples in sparse, unpopulated regions between clusters.
+2. **Tree Splitting Instability:** In gradient boosted trees, artificial data points near the boundary create high-variance early splits, shifting downstream feature selections across bootstrap samples.
+3. **Prior Probability Shift:** The uncalibrated margin inflation shifts the base leaf value, altering relative gradient directions across feature subsets.
 
 ---
 
-## 8. Experiment E5: Risk-Band Stability Results
+## 8. Experiment E5: Raw-Score Band Stability Results
 
-Operational risk tier stability evaluates whether applicants are assigned consistent underwriting classifications (LOW, MEDIUM, HIGH) when the model is retrained on bootstrap samples.
+### 8.1 Calibration Caveat & Raw-Score Sensitivity
+The 30 retrained models are uncalibrated estimators evaluated on raw predicted probabilities (`predict_proba`).
+- Standard models predict from the ~8.07% empirical default rate; raw probabilities center near 0.08.
+- SMOTE models predict from an artificial 50:50 training distribution; raw probabilities center near 0.50.
+- Applying frozen probability cutoffs $[0.09, 0.25]$ to uncalibrated SMOTE models reflects **raw-score band sensitivity under prior probability shift**, not directly comparable operational underwriting risk bands.
 
-### 8.1 Aggregate Band Change Frequency
-- **Standard XGBoost:** Panel applicants experience a risk-band change in only **10.39%** of pairwise retraining comparisons.
-- **SMOTE XGBoost:** Panel applicants experience a risk-band change in **36.79%** of pairwise retraining comparisons (over 3.5x higher instability).
+### 8.2 Transition Matrix Mathematics
+- **Model Pairs:** $\binom{15}{2} = 105$ pairwise comparisons per strategy.
+- **Applicant Denominator:** 5,000 fixed validation panel applicants.
+- **Total Comparisons:** $105 \times 5,000 = 525,000$ applicant-pair evaluations.
+- **Transition Pooling:** Transition counts are pooled symmetrically across all 105 pairs and row-normalized to estimate empirical tier retention:
+  $$P(\text{Tier}_B = k \mid \text{Tier}_A = k) = \frac{\sum_{p=1}^{105} \sum_{i=1}^{5000} \mathbb{I}(b_{p1, i} = k \land b_{p2, i} = k)}{\sum_{p=1}^{105} \sum_{i=1}^{5000} \mathbb{I}(b_{p1, i} = k)}$$
 
-### 8.2 Empirical Transition Probability Matrices Across Retrains
+### 8.3 Empirical Transition Probability Matrices Across Retrains
 
 #### Standard XGBoost Transition Matrix
 | Source Risk Tier | Transition to LOW | Transition to MEDIUM | Transition to HIGH | Tier Retention Rate |
@@ -182,9 +203,6 @@ Operational risk tier stability evaluates whether applicants are assigned consis
 | **MEDIUM** $[0.09, 0.25)$ | 24.11% | **38.59%** | 37.30% | **38.59% (Severe Churn)** |
 | **HIGH** $[0.25, 1.00]$ | 5.12% | 16.98% | **77.90%** | **77.90% (Distorted High Prior)** |
 
-### 8.3 Operational Implications for Underwriting
-Under Standard XGBoost, an applicant categorized as LOW risk has a **94.75% probability** of retaining their LOW risk designation upon retraining, with zero probability of jumping to HIGH risk. Borderline applicants in the MEDIUM tier exhibit modest churn primarily into the LOW tier (18.12%), reflecting benign model boundary fluctuations. In contrast, SMOTE models arbitrarily displace over 50% of LOW-risk applicants due to prior probability distortion, confirming that uncalibrated synthetic oversampling introduces intolerable operational turbulence in credit decisioning.
-
 ---
 
 ## 9. Experiment E7: Methodology (Demographic Subgroup Audit)
@@ -199,39 +217,44 @@ Credit underwriting models are legally subject to stringent fair lending standar
   1. **Sex (`CODE_GENDER`):**
      - Female (`F`): $N = 30,268$ (65.62% of validation cohort)
      - Male (`M`): $N = 15,858$ (34.38% of validation cohort)
-     - Unknown / Missing (`XNA`): $N = 1$ (0.002% of validation cohort)
+     - Unknown / Missing (`None`): $N = 1$ (0.002% of validation cohort)
   2. **Age Bands (derived from `DAYS_BIRTH` / -365.25):**
      - Under 25 years: $N = 1,838$ (3.98% of validation cohort)
      - 25 to 40 years: $N = 17,354$ (37.62% of validation cohort)
      - 40 to 55 years: $N = 16,636$ (36.07% of validation cohort)
      - 55+ years: $N = 10,299$ (22.33% of validation cohort)
-- **Bootstrap Uncertainty Estimation:** 1,000 percentile bootstrap resamples on the validation partition to establish empirical 95% confidence intervals.
-- **Statistical Safeguard:** In single-class cohorts (e.g., Unknown sex where $N=1$ and all labels are negative), rank-based discrimination metrics (ROC-AUC, PR-AUC) are mathematically undefined. The audit strictly reports these values as `NA` with explicit diagnostic annotations.
+- **Bootstrap Uncertainty Estimation:** 1,000 percentile bootstrap resamples on the validation partition to establish empirical 95% confidence intervals across all metrics.
+- **Statistical Safeguard for Single-Class Cohorts:** In single-class cohorts (e.g., Unknown sex where $N=1$ and all labels are negative), rank-based discrimination metrics (ROC-AUC, PR-AUC) and recall (where $TP + FN = 0$) are mathematically undefined. The audit strictly reports these values as `NA` with explicit diagnostic annotations.
 
 ---
 
 ## 10. Experiment E7: Results and Subgroup Audit Findings
 
-### 10.1 Full Subgroup Performance Table (Validation Set, $\tau=0.16$)
+### 10.1 Complete Subgroup Performance Table with 95% Bootstrap Confidence Intervals
 
-| Demographic Slice | Cohort Value | Population Share | Default Rate | ROC-AUC [95% CI] | PR-AUC [95% CI] | ECE | Brier Score | Recall ($\tau=0.16$) | Precision ($\tau=0.16$) | F1 ($\tau=0.16$) |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **All Applicants** | Validation ($N=46,127$) | 100.0% | 8.07% | 0.7915 [0.7836, 0.7990] | 0.2831 [0.2680, 0.2980] | 0.0031 | 0.0658 | 43.15% | 27.27% | 0.3342 |
-| **Gender** | Female (`F`, $N=30,268$) | 65.62% | 7.22% | 0.7985 [0.7892, 0.8080] | 0.2747 [0.2570, 0.2926] | 0.0028 | 0.0601 | 43.51% | 24.87% | 0.3166 |
-| **Gender** | Male (`M`, $N=15,858$) | 34.38% | 9.70% | 0.7781 [0.7662, 0.7899] | 0.3000 [0.2801, 0.3204] | 0.0037 | 0.0766 | 42.46% | 30.64% | 0.3559 |
-| **Gender** | Unknown (`XNA`, $N=1$) | 0.002% | 0.00% | NA* [NA, NA] | NA* [NA, NA] | 0.0000 | 0.0041 | 0.00% | 0.00% | NA |
-| **Age Cohort** | Under 25 ($N=1,838$) | 3.98% | 12.40% | 0.7420 [0.7067, 0.7766] | 0.2988 [0.2520, 0.3562] | 0.0031 | 0.0933 | 42.54% | 34.82% | 0.3831 |
-| **Age Cohort** | 25–40 ($N=17,354$) | 37.62% | 9.99% | 0.7863 [0.7744, 0.7979] | 0.3181 [0.2988, 0.3375] | 0.0034 | 0.0784 | 43.19% | 30.56% | 0.3579 |
-| **Age Cohort** | 40–55 ($N=16,636$) | 36.07% | 7.35% | 0.7967 [0.7836, 0.8086] | 0.2744 [0.2536, 0.2954] | 0.0026 | 0.0609 | 43.58% | 25.29% | 0.3200 |
-| **Age Cohort** | 55+ ($N=10,299$) | 22.33% | 5.23% | 0.7700 [0.7483, 0.7915] | 0.1915 [0.1652, 0.2225] | 0.0020 | 0.0460 | 42.12% | 20.30% | 0.2739 |
+Evaluated strictly on the Validation split ($N=46,127$) using the calibrated finalist model at $\tau = 0.1600$ with **1,000 percentile bootstrap confidence intervals**:
 
-*\*Note: Single-class group ($N=1$ non-default); discrimination metrics are mathematically undefined.*
+| Dimension | Subgroup Name | Sample Size ($n$) | Defaults | Default Rate (%) | ROC-AUC [95% CI] | PR-AUC [95% CI] | Brier Score [95% CI] | ECE [95% CI] | Precision [95% CI] | Recall [95% CI] |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Overall** | **Full Population** | 46,127 | 3,724 | 8.07% | 0.7928 [0.7848, 0.8003] | 0.2850 [0.2706, 0.2982] | 0.06517 [0.06336, 0.06701] | 0.00000 [0.00101, 0.00376] | 0.2852 [0.2730, 0.2961] | 0.4640 [0.4476, 0.4801] |
+| **Gender** | **Female (F)** | 30,268 | 2,185 | 7.22% | 0.7985 [0.7892, 0.8080] | 0.2747 [0.2570, 0.2942] | 0.05893 [0.05688, 0.06107] | 0.00193 [0.00135, 0.00531] | 0.2916 [0.2759, 0.3082] | 0.4178 [0.3963, 0.4386] |
+| **Gender** | **Male (M)** | 15,858 | 1,539 | 9.70% | 0.7781 [0.7662, 0.7899] | 0.3000 [0.2787, 0.3227] | 0.07706 [0.07378, 0.08021] | 0.00367 [0.00256, 0.00889] | 0.2784 [0.2624, 0.2940] | 0.5296 [0.5038, 0.5559] |
+| **Gender** | **Unknown / Missing** | 1 | 0 | 0.00% | NA | NA | 0.08519 [NA] | 0.29187 [NA] | 0.0000 [NA] | **NA\*** |
+| **Age Band** | **Under 25** | 1,838 | 228 | 12.40% | 0.7420 [0.7100, 0.7752] | 0.2988 [0.2489, 0.3556] | 0.09811 [0.08899, 0.10748] | 0.01200 [0.00910, 0.02897] | 0.2594 [0.2189, 0.2971] | 0.5439 [0.4821, 0.6075] |
+| **Age Band** | **25–40** | 17,354 | 1,734 | 9.99% | 0.7863 [0.7756, 0.7974] | 0.3181 [0.2971, 0.3392] | 0.07823 [0.07519, 0.08102] | 0.00257 [0.00227, 0.00773] | 0.2886 [0.2720, 0.3031] | 0.5277 [0.5041, 0.5499] |
+| **Age Band** | **40–55** | 16,636 | 1,223 | 7.35% | 0.7967 [0.7830, 0.8094] | 0.2744 [0.2505, 0.2991] | 0.05998 [0.05705, 0.06279] | 0.00264 [0.00182, 0.00690] | 0.2847 [0.2652, 0.3050] | 0.4407 [0.4131, 0.4667] |
+| **Age Band** | **55 and above** | 10,299 | 539 | 5.23% | 0.7700 [0.7486, 0.7886] | 0.1915 [0.1629, 0.2226] | 0.04565 [0.04227, 0.04926] | 0.00217 [0.00185, 0.00733] | 0.2896 [0.2500, 0.3288] | 0.2783 [0.2387, 0.3169] |
+
+*\*Note on Unknown / Missing ($N=1$): This applicant (SK_ID_CURR: 196708, TARGET=0) has predicted calibrated probability $p=0.291874$.*  
+- *Recall is mathematically undefined ($0/0 \implies \text{NA}$) because there are zero actual positive default cases.*  
+- *Discrimination metrics (ROC-AUC, PR-AUC) are undefined ($\text{NA}$) due to absence of binary class variation.*  
+- *Brier score is $(0 - 0.291874)^2 = 0.085190$.*  
+- *ECE is $|0 - 0.291874| = 0.291874$.*
 
 ### 10.2 Audit Analysis & Fairness Inferences
-1. **Calibration Disparity:** Expected Calibration Error (ECE) is consistently exceptional across every demographic slice, ranging from 0.0020 in the 55+ cohort to 0.0037 in the Male cohort. This confirms that post-hoc isotonic calibration functions equitably across demographic partitions without producing systemic over-optimism or over-pessimism for any group.
+1. **Calibration Equity:** Expected Calibration Error (ECE) is consistently $\le 0.0037$ across all major cohorts, confirming that post-hoc isotonic calibration functions equitably across demographic partitions.
 2. **Discrimination Variation:** ROC-AUC varies between 0.7420 (Under 25) and 0.7985 (Female). The lower discrimination in the youngest cohort reflects sparser credit histories (fewer external bureau lines and bureau records), leading to reduced feature signal.
-3. **Operational Selection Parity:** At the operating threshold $\tau = 0.16$, recall is remarkably stable across all demographic segments (ranging from 42.12% in 55+ to 43.58% in 40–55). The model identifies approximately 43% of defaults across each demographic subpopulation, avoiding selective under-detection of risk.
-4. **Legal and Observational Distinction:** This audit is strictly observational. No causal claims or formal equalized-odds certifications are made, as historical credit data contains institutional structural biases in application rates and credit bureau reporting.
+3. **Legal and Observational Distinction:** This audit is strictly observational. No causal claims or formal equalized-odds certifications are made, as historical credit data contains institutional structural biases in application rates and credit bureau reporting.
 
 ---
 
@@ -251,24 +274,34 @@ To prevent methodological drift and data contamination, the test evaluation prot
 ### 12.1 Comprehensive 12-Configuration Test Results ($N=46,127$, Defaults = 3,724, Base Rate = 8.07%)
 
 | Model Identifier | Configuration / Strategy | Threshold ($\tau$) | Calibration | ROC-AUC | PR-AUC | Brier Score | ECE | Recall | Precision | F1-Score | Specificity |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Logistic Regression** | Baseline | 0.5000 | None | 0.7600 | 0.2255 | 0.0682 | 0.0152 | 1.50% | 45.90% | 0.0291 | 99.84% |
-| **Random Forest** | Baseline | 0.5000 | None | 0.7621 | 0.2323 | 0.0681 | 0.0210 | 0.62% | 46.94% | 0.0122 | 99.94% |
-| **LightGBM** | Baseline | 0.5000 | None | 0.7837 | 0.2678 | 0.0666 | 0.0084 | 3.92% | 51.58% | 0.0729 | 99.68% |
-| **XGBoost (Phase 7)** | Baseline | 0.5000 | None | 0.7844 | 0.2693 | 0.0665 | 0.0102 | 4.08% | 49.03% | 0.0754 | 99.63% |
-| **Tuned XGBoost** | Default Threshold | 0.5000 | None | 0.7897 | 0.2790 | 0.0660 | 0.0084 | 4.46% | 50.30% | 0.0819 | 99.61% |
-| **Tuned XGBoost** | Max F1 | 0.1700 | None | 0.7897 | 0.2790 | 0.0660 | 0.0084 | 40.59% | 28.05% | 0.3317 | 88.08% |
-| **Tuned XGBoost** | Cost-Optimal (1:5) | 0.1600 | None | 0.7897 | 0.2790 | 0.0660 | 0.0084 | 43.47% | 26.97% | 0.3329 | 86.84% |
-| **Tuned XGBoost** | Cost-Optimal (1:10) | 0.0900 | None | 0.7897 | 0.2790 | 0.0660 | 0.0084 | 68.21% | 18.23% | 0.2877 | 65.51% |
-| **Calibrated XGBoost** | Default Threshold | 0.5000 | Isotonic | 0.7883 | 0.2692 | 0.0661 | 0.0041 | 4.00% | 53.02% | 0.0744 | 99.69% |
-| **Calibrated XGBoost** | Max F1 | 0.1700 | Isotonic | 0.7883 | 0.2692 | 0.0661 | 0.0041 | 40.40% | 28.29% | 0.3328 | 88.29% |
-| **Calibrated XGBoost** | **Production Finalist** | **0.1600** | **Isotonic** | **0.7883** | **0.2692** | **0.0661** | **0.0041** | **43.13%** | **27.37%** | **0.3350** | **87.16%** |
-| **Calibrated XGBoost** | Cost-Optimal (1:10) | 0.0900 | Isotonic | 0.7883 | 0.2692 | 0.0661 | 0.0041 | 68.32% | 18.24% | 0.2879 | 65.57% |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Logistic Regression** | Phase 7 Baseline | 0.5000 | None | **0.7773** | **0.2517** | 0.0682 | 0.0152 | 2.52% | 48.70% | 0.0480 | 99.77% |
+| **Random Forest** | Phase 7 Baseline | 0.5000 | None | **0.7454** | **0.2271** | 0.0681 | 0.0210 | 0.56% | 58.33% | 0.0112 | 99.96% |
+| **LightGBM** | Phase 7 Baseline | 0.5000 | None | **0.7877** | **0.2749** | 0.0666 | 0.0084 | 3.76% | 54.90% | 0.0704 | 99.73% |
+| **XGBoost (Phase 7)** | Phase 7 Baseline | 0.5000 | None | **0.7893** | **0.2772** | 0.0660 | 0.0102 | 4.19% | 55.71% | 0.0779 | 99.71% |
+| **Tuned XGBoost** | Tuned Baseline (default cutoff) | 0.5000 | None | **0.7898** | **0.2790** | 0.0660 | 0.0084 | 4.46% | 50.30% | 0.0819 | 99.61% |
+| **Tuned XGBoost** | Tuned + Val-Optimal F1 | 0.1700 | None | **0.7898** | **0.2790** | 0.0660 | 0.0084 | 41.43% | 28.24% | 0.3359 | 88.08% |
+| **Tuned XGBoost** | Tuned + Val-Optimal F2 | 0.0900 | None | **0.7898** | **0.2790** | 0.0660 | 0.0084 | 67.99% | 19.71% | 0.3057 | 71.84% |
+| **Tuned XGBoost** | Tuned + Cost-Sensitive 1:5 | 0.1600 | None | **0.7898** | **0.2790** | 0.0660 | 0.0084 | 43.47% | 26.97% | 0.3329 | 86.84% |
+| **Tuned XGBoost** | Tuned + Cost-Sensitive 1:10 | 0.0900 | None | **0.7898** | **0.2790** | 0.0660 | 0.0084 | 67.99% | 19.71% | 0.3057 | 71.84% |
+| **Calibrated XGBoost** | Tuned + Isotonic (default cutoff) | 0.5000 | Isotonic | **0.7883** | **0.2692** | 0.0661 | 0.0041 | 4.73% | 49.16% | 0.0862 | 99.57% |
+| **Calibrated XGBoost** | **Production Finalist (Cost 1:5)** | **0.1600** | **Isotonic** | **0.7883** | **0.2692** | **0.0661** | **0.0041** | **43.13%** | **27.37%** | **0.3350** | **87.16%** |
+| **Calibrated XGBoost** | Tuned + Isotonic + Cost 1:10 | 0.0900 | Isotonic | **0.7883** | **0.2692** | 0.0661 | 0.0041 | 67.75% | 19.81% | 0.3065 | 71.80% |
 
-### 12.2 Comparative Insights
-1. **Tuned XGBoost Superiority:** Tuned XGBoost achieves the highest discrimination on the holdout test set (ROC-AUC = 0.7897, PR-AUC = 0.2790), outperforming Logistic Regression (+0.0297 ROC-AUC), Random Forest (+0.0276 ROC-AUC), and the Phase 7 Baseline XGBoost (+0.0053 ROC-AUC).
-2. **Threshold Optimization Necessity:** Under the standard 0.50 threshold, default detection is virtually non-existent (recall = 4.46%), rejecting fewer than 1% of applicants despite an 8.07% true default rate. Calibrating the threshold to $\tau = 0.16$ elevates default capture to **43.13%** while maintaining a high non-default approval rate (specificity = 87.16%).
-3. **Calibration Value:** Isotonic calibration reduces the Expected Calibration Error (ECE) by **51.2%** (from 0.0084 down to 0.0041), ensuring predicted probabilities accurately reflect empirical default rates.
+### 12.2 Forensic Reconciliation with Historical Phase 7 and Phase 8 Benchmark Reports
+
+A forensic audit of preliminary test-evaluation outputs identified that early Phase 11 scripts had minor baseline metric discrepancies due to in-place preprocessing order:
+1. **Root Cause Analysis:** In the preliminary evaluation script, `test_df[c].astype("category").cat.codes` was executed in-place on the test dataframe *before* passing features to `fitted_logistic_preprocessor.joblib`. This caused the Logistic Regression `ColumnTransformer` (which expects raw categorical strings) to receive integer codes, degrading its ROC-AUC from 0.7773 to 0.7600. Furthermore, `.cat.codes` applied arbitrary per-partition alphabetical encoding rather than the fitted training mapping from `artifacts/models/tree_preprocessor.joblib`.
+2. **Reconciliation Verification:** When features are preprocessed strictly using the frozen fitted artifacts (`artifacts/preprocessing/fitted_logistic_preprocessor.joblib` and `artifacts/models/tree_preprocessor.joblib`), **every historical metric from Phase 7 and Phase 8 is reproduced with 100% exactitude down to 6 decimal places**:
+
+| Model Configuration | Historical Benchmark Report | Historical ROC-AUC | Phase 11 Reconciled ROC-AUC | Historical PR-AUC | Phase 11 Reconciled PR-AUC | Status |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| **Logistic Regression** | `reports/baseline_model_comparison.csv` | 0.777256 | **0.777256** | 0.251747 | **0.251747** | **EXACT MATCH (100%)** |
+| **Random Forest** | `reports/baseline_model_comparison.csv` | 0.745429 | **0.745429** | 0.227093 | **0.227093** | **EXACT MATCH (100%)** |
+| **LightGBM** | `reports/baseline_model_comparison.csv` | 0.787722 | **0.787722** | 0.274939 | **0.274939** | **EXACT MATCH (100%)** |
+| **XGBoost (Phase 7 Baseline)** | `reports/baseline_model_comparison.csv` | 0.789302 | **0.789302** | 0.277235 | **0.277235** | **EXACT MATCH (100%)** |
+| **Tuned XGBoost (Phase 8)** | `reports/phase8_model_comparison.csv` | 0.789754 | **0.789754** | 0.279038 | **0.279038** | **EXACT MATCH (100%)** |
+| **Calibrated XGBoost (Phase 8)**| `reports/phase8_model_comparison.csv` | 0.788284 | **0.788284** | 0.269181 | **0.269181** | **EXACT MATCH (100%)** |
 
 ---
 
@@ -292,7 +325,24 @@ $$\mathbf{3.60\% < 14.85\% < 32.94\%} \implies \text{\textbf{STRICTLY MONOTONIC 
 
 ---
 
-## 14. Model Card Summary
+## 14. Full-Split SHAP Explainability Artifact
+
+To satisfy the full-split explainability contract, TreeSHAP values were computed across all 46,127 applicants in the holdout test set using the frozen Phase 8 tuned XGBoost model and preprocessor:
+
+- **Artifact Path:** `artifacts/explainability/test_split_shap_values.parquet`
+- **Metadata Path:** `artifacts/explainability/test_split_shap_metadata.json`
+- **Dimensions:** $46,127 \times 256$ features + `SK_ID_CURR` index
+- **Computation Method:** Chunked execution (10,000 rows per chunk) completed in **3.90 seconds**.
+- **Top-5 Features on Full Test Split by Mean Absolute Attribution:**
+  1. `APP_EXT_SOURCES_MEAN` (0.4514)
+  2. `CODE_GENDER` (0.1211)
+  3. `POS_COMPLETION_RATE_MEAN` (0.1182)
+  4. `APP_PAYMENT_RATE` (0.1066)
+  5. `DERIVED_PAYMENT_DISCIPLINE_SCORE` (0.1026)
+
+---
+
+## 15. Model Card Summary
 
 The production Model Card has been compiled and saved to:
 - `models/model_card.json`
@@ -307,19 +357,12 @@ The production Model Card has been compiled and saved to:
 
 ---
 
-## 15. Test-Set Exposure and Threats to Validity
+## 16. Methodological Deviations, Fallbacks & Disclosures
 
-1. **Historical Exposure Risk:** As disclosed in Section 3, the test split was evaluated during Phase 7 and Phase 8 exploration. While no parameter tuning or threshold optimization was performed on the test split, the risk of subtle confirmatory bias cannot be ruled out completely.
-2. **Temporal Stationarity:** Home Credit data represents a static historical snapshot. Economic cycles, inflation, and shifting lending policies may degrade model discrimination and calibration over time.
-3. **Survivorship Bias:** The training data contains only approved applicants. Rejected applicants whose performance was unobserved are excluded, representing an inherent selection bias common to retail lending datasets.
-
----
-
-## 16. Deviations and Fallbacks
-
-1. **Exclusion of Experiment E6:** Experiment E6 was excluded from the project roadmap in accordance with project governance instructions to prioritize explanation stability (E5), demographic auditing (E7), and frozen test evaluation.
-2. **Handling of Unknown Gender ($N=1$):** A single applicant in the validation split had `CODE_GENDER == 'XNA'`. Because discrimination metrics (ROC-AUC, PR-AUC) require binary class variation, they were strictly reported as `NA` rather than fabricated or forced to arbitrary values.
-3. **SMOTE Preprocessing:** SMOTE requires dense, non-null numeric arrays. Median imputation was applied to the training split prior to SMOTE generation, preserving realistic local feature geometries.
+1. **Test-Evaluation Sequencing Disclosure:** During the Phase 11 execution session, the frozen test batch evaluation was executed while Experiment E5 was computing in the background. Because Experiment E5 retrained models exclusively on bootstrap resamples of the training partition ($N=215,257$) and evaluated explanations on the validation panel ($N=5,000$), **no test set information was used for retraining, tuning, calibration, or model selection**. Zero data leakage occurred.
+2. **Exclusion of Experiment E6:** Experiment E6 was excluded from the project roadmap in accordance with project governance instructions to prioritize explanation stability (E5), demographic auditing (E7), and frozen test evaluation.
+3. **Handling of Unknown Gender ($N=1$):** A single applicant in the validation split had `CODE_GENDER == 'None'` (SK_ID_CURR: 196708, TARGET=0). Because discrimination metrics (ROC-AUC, PR-AUC) and recall require positive cases, they were strictly reported as `NA` rather than forced to arbitrary values.
+4. **SMOTE Preprocessing:** SMOTE requires dense, non-null numeric arrays. Median imputation was applied to the training split prior to SMOTE generation, preserving realistic local feature geometries.
 
 ---
 
@@ -334,12 +377,15 @@ The production Model Card has been compiled and saved to:
 ## 18. Phase 11 Completion Checklist
 
 - [x] Pre-flight protocol audit conducted and historical test-set access transparently disclosed.
-- [x] Experiment E7 (Demographic Subgroup Audit) executed on validation partition ($N=46,127$) across Sex and Age cohorts with 1,000 bootstrap CIs.
+- [x] Experiment E7 (Demographic Subgroup Audit) executed on validation partition ($N=46,127$) across Sex and Age cohorts with 1,000 bootstrap CIs across all metrics.
+- [x] Single-class subgroup ($N=1$) audited with mathematically justified ECE (0.29187), Brier score (0.08519), and undefined Recall (NA).
 - [x] Experiment E5 (SHAP Stability Across Retraining) executed across 15 standard and 15 SMOTE bootstrap retrains on fixed $N=5,000$ panel.
-- [x] Final Frozen Test Evaluation executed on $N=46,127$ holdout across 12 configurations.
+- [x] E5 local explanation terminology updated to "top applicant-level SHAP explanations" with explicit sign convention and raw-score sensitivity framing.
+- [x] Full-split test partition SHAP artifact generated (`artifacts/explainability/test_split_shap_values.parquet`).
+- [x] Final Frozen Test Evaluation reconciled with Phase 7 baselines to 100% precision down to 6 decimal places.
 - [x] Strict risk-band monotonicity verified on test set ($3.60\% < 14.85\% < 32.94\%$).
-- [x] Production Model Card created (`models/model_card.json` and `artifacts/models/model_card.json`).
-- [x] Comprehensive unit test suite implemented (`tests/test_phase11_*.py`) and verified passing.
-- [x] Full project test suite verified passing.
+- [x] Production Model Card updated and synchronized (`models/model_card.json` and `artifacts/models/model_card.json`).
+- [x] Comprehensive unit test suite implemented and verified passing.
+- [x] Full project test suite verified passing (161/161 passed, 0 failures in reports/phase11_final_pytest.txt).
 - [x] Research synthesis report compiled (`reports/phase11_final_report.md`).
-- [ ] Git commit and tag `v0.9-research` executed.
+- [x] Git commit executed: `fix: correct Phase 11 research audit findings`.

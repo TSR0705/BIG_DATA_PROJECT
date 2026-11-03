@@ -120,3 +120,65 @@ def test_model_card_schema():
     assert params["n_estimators"] == 500
     assert params["subsample"] == 0.8
     assert params["min_child_weight"] == 10
+
+
+def test_baseline_metrics_exact_reconciliation():
+    """Verify that model_comparison.csv reproduces Phase 7 and Phase 8 baselines to 5+ decimal places."""
+    csv_path = ROOT / "reports" / "model_comparison.csv"
+    if not csv_path.exists():
+        pytest.skip("reports/model_comparison.csv does not exist")
+
+    df = pd.read_csv(csv_path)
+
+    # Historical Phase 7 & 8 reference metrics on Test split (N=46,127):
+    lr = df[(df["model"] == "Logistic Regression") & (df["strategy"] == "Phase 7 Baseline")].iloc[0]
+    assert lr["roc_auc"] == pytest.approx(0.777256, abs=1e-5)
+    assert lr["pr_auc"] == pytest.approx(0.251747, abs=1e-5)
+
+    rf = df[(df["model"] == "Random Forest") & (df["strategy"] == "Phase 7 Baseline")].iloc[0]
+    assert rf["roc_auc"] == pytest.approx(0.745429, abs=1e-5)
+    assert rf["pr_auc"] == pytest.approx(0.227093, abs=1e-5)
+
+    lgb = df[(df["model"] == "LightGBM") & (df["strategy"] == "Phase 7 Baseline")].iloc[0]
+    assert lgb["roc_auc"] == pytest.approx(0.787722, abs=1e-5)
+    assert lgb["pr_auc"] == pytest.approx(0.274939, abs=1e-5)
+
+    xgb_p7 = df[(df["model"] == "XGBoost (Phase 7)") & (df["strategy"] == "Phase 7 Baseline")].iloc[0]
+    assert xgb_p7["roc_auc"] == pytest.approx(0.789302, abs=1e-5)
+    assert xgb_p7["pr_auc"] == pytest.approx(0.277235, abs=1e-5)
+
+    xgb_tuned = df[(df["model"] == "XGBoost") & (df["strategy"] == "Tuned Baseline (default cutoff)")].iloc[0]
+    assert xgb_tuned["roc_auc"] == pytest.approx(0.789754, abs=1e-5)
+    assert xgb_tuned["pr_auc"] == pytest.approx(0.279038, abs=1e-5)
+
+    xgb_cal = df[(df["model"] == "Calibrated XGBoost") & (df["strategy"] == "Tuned + Isotonic + Cost-Sensitive 1:5")].iloc[0]
+    assert xgb_cal["roc_auc"] == pytest.approx(0.788284, abs=1e-5)
+    assert xgb_cal["pr_auc"] == pytest.approx(0.269181, abs=1e-5)
+
+
+def test_full_split_shap_artifact_metadata():
+    """Verify that full-split SHAP metadata exists and confirms chunked execution across all 46,127 test rows."""
+    meta_path = ROOT / "artifacts" / "explainability" / "test_split_shap_metadata.json"
+    if not meta_path.exists():
+        pytest.skip("artifacts/explainability/test_split_shap_metadata.json does not exist")
+
+    with open(meta_path, "r", encoding="utf-8") as f:
+        meta = json.load(f)
+
+    assert meta["total_rows"] == 46127
+    assert meta["total_features"] == 256
+    assert meta["explainer"] == "shap.TreeExplainer"
+    assert meta["output_margin"] == "raw_margin_log_odds_class_1"
+    assert meta["positive_shap_interpretation"] == "increases_default_log_odds"
+
+
+def test_test_sequencing_disclosure_present():
+    """Verify that model card and final report document the evaluation sequencing disclosure."""
+    card_path = ROOT / "artifacts" / "models" / "model_card.json"
+    with open(card_path, "r", encoding="utf-8") as f:
+        card = json.load(f)
+
+    assert "test_evaluation_sequencing_disclosure" in card
+    disclosure = card["test_evaluation_sequencing_disclosure"]["execution_note"]
+    assert "strictly zero data leakage" in disclosure.lower() or "zero data leakage" in disclosure.lower()
+

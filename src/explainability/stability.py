@@ -137,6 +137,32 @@ def train_bootstrap_model(
     return clf
 
 
+def extract_topk_shap_attributions(
+    shap_matrix: np.ndarray,
+    k: int = 3,
+    ranking_mode: str = "magnitude",
+) -> np.ndarray:
+    """Extract top-k feature indices per applicant for SHAP explanations.
+
+    Sign and Attribution Conventions:
+    - XGBoost binary:logistic outputs raw margin log-odds of default (Class 1).
+    - Positive SHAP (phi_i > 0) increases predicted default log-odds (risk factor).
+    - Negative SHAP (phi_i < 0) decreases predicted default log-odds (protective factor).
+
+    Modes:
+    - 'magnitude': Ranks by absolute attribution |phi_i| (top predictive attribution factors).
+    - 'risk_increasing': Ranks strictly by positive SHAP contributions (factors increasing default risk).
+    """
+    if ranking_mode == "magnitude":
+        scores = np.abs(shap_matrix)
+    elif ranking_mode == "risk_increasing":
+        scores = np.maximum(shap_matrix, 0.0)
+    else:
+        raise ValueError(f"Unknown ranking_mode: {ranking_mode}")
+
+    return np.argsort(-scores, axis=1)[:, :k]
+
+
 def compute_shap_for_model(model: XGBClassifier, X_panel: pd.DataFrame) -> np.ndarray:
     """Compute TreeExplainer SHAP values on the fixed explanation panel."""
     explainer = shap.TreeExplainer(model)
@@ -303,19 +329,17 @@ def run_e5_experiment(
         shap_list = all_shap_matrices[strategy] # list of 15 arrays of shape (5000, 256)
         n_m = len(shap_list)
 
-        # Precompute top-k reason codes per applicant for k in [3, 4, 5]
-        # Using largest absolute SHAP value
-        reason_codes = {k: [] for k in [3, 4, 5]}
+        # Precompute top-k applicant-level predictive attribution factors for k in [3, 4, 5]
+        # Evaluated using absolute SHAP magnitude |phi_i| (top predictive drivers)
+        top_explanations = {k: [] for k in [3, 4, 5]}
         for s_mat in shap_list:
-            abs_s = np.abs(s_mat)
             for k in [3, 4, 5]:
-                # Top k feature indices per sample: shape (5000, k)
-                top_k_indices = np.argsort(-abs_s, axis=1)[:, :k]
-                reason_codes[k].append(top_k_indices)
+                top_k_indices = extract_topk_shap_attributions(s_mat, k=k, ranking_mode="magnitude")
+                top_explanations[k].append(top_k_indices)
 
         jaccards_by_k = {}
         for k in [3, 4, 5]:
-            code_list = reason_codes[k] # 15 items, each (5000, k)
+            code_list = top_explanations[k] # 15 items, each (5000, k)
             pair_jaccards = []
             for j in range(n_m):
                 for l in range(j + 1, n_m):
@@ -343,7 +367,7 @@ def run_e5_experiment(
         # Average stability per applicant across all 105 pairs
         all_app_jaccards_k3 = np.zeros(panel_size)
         n_pairs = 0
-        code_list_3 = reason_codes[3]
+        code_list_3 = top_explanations[3]
         for j in range(n_m):
             for l in range(j + 1, n_m):
                 n_pairs += 1
@@ -367,9 +391,18 @@ def run_e5_experiment(
         }
 
     # -------------------------------------------------------------
-    # 3. Risk-Band Stability Analysis
+    # 3. Risk-Band Stability & Raw-Score Sensitivity Analysis
     # -------------------------------------------------------------
-    logger.info("Computing Risk-Band Stability and Transition Matrices...")
+    # Note on Calibration and Methodology:
+    # - The 30 retrained models are uncalibrated raw-score estimators.
+    # - Standard models predict from the ~8% base-rate training distribution.
+    # - SMOTE models predict from an artificial 50:50 training prior.
+    # - Applying fixed probability cutoffs [0.09, 0.25] to uncalibrated SMOTE models reflects
+    #   raw-score sensitivity under distribution shift rather than comparable operational underwriting tiers.
+    # - Pairwise model comparisons: 15 models -> (15 * 14) / 2 = 105 model pairs.
+    # - Denominator per comparison: 5,000 panel applicants -> 105 * 5,000 = 525,000 total applicant-pair comparisons.
+    # - Transition matrix is pooled symmetrically across all 105 pairs and row-normalized to measure empirical retention.
+    logger.info("Computing Risk-Band Stability and Pooled Transition Matrices (105 pairs, 525,000 comparisons)...")
     risk_results = {}
     tier_names = ["LOW", "MEDIUM", "HIGH"]
     tier_map = {"LOW": 0, "MEDIUM": 1, "HIGH": 2}
@@ -395,9 +428,9 @@ def run_e5_experiment(
                     trans_matrix[idx_j, idx_l] += 1
                     trans_matrix[idx_l, idx_j] += 1 # symmetric transitions across runs
 
-        # Row-normalize transition matrix
+        # Row-normalize pooled transition matrix
         row_sums = trans_matrix.sum(axis=1, keepdims=True)
-        norm_trans_matrix = np.divide(trans_matrix, row_sums, where=row_sums > 0)
+        norm_trans_matrix = np.divide(trans_matrix, row_sums, out=np.zeros_like(trans_matrix), where=row_sums > 0)
 
         risk_results[strategy] = {
             "mean_band_change_rate": float(np.mean(band_changes)),
@@ -406,6 +439,9 @@ def run_e5_experiment(
             "max_band_change_rate": float(np.max(band_changes)),
             "transition_matrix": norm_trans_matrix.tolist(),
             "diagonal_retention": [float(norm_trans_matrix[i, i]) for i in range(3)],
+            "model_pairs_compared": len(band_changes),
+            "applicant_denominator_per_pair": panel_size,
+            "total_pairwise_evaluations": len(band_changes) * panel_size,
         }
 
     # -------------------------------------------------------------
@@ -577,7 +613,7 @@ def _generate_e5_report(output: Dict[str, Any]):
 
 | Metric Category | Metric Name | Standard XGBoost (15 Retrains) | SMOTE XGBoost (15 Retrains) | Methodological Interpretation |
 | :--- | :--- | :---: | :---: | :--- |
-| **Global Stability** | Mean Kendall's Tau | **{g_std['mean_kendall_tau']:.4f}** ($\pm${g_std['std_kendall_tau']:.4f}) | {g_smt['mean_kendall_tau']:.4f} ($\pm${g_smt['std_kendall_tau']:.4f}) | Rank correlation across all 256 model features. |
+| **Global Stability** | Mean Kendall's Tau | **{g_std['mean_kendall_tau']:.4f}** (±{g_std['std_kendall_tau']:.4f}) | {g_smt['mean_kendall_tau']:.4f} (±{g_smt['std_kendall_tau']:.4f}) | Rank correlation across all 256 model features. |
 | | Top-10 Overlap Ratio | **{g_std['mean_top10_overlap']*100:.1f}%** | {g_smt['mean_top10_overlap']*100:.1f}% | Percentage of identical features in the top 10 global ranks. |
 | | Median Rank Shift | **{g_std['rank_shift_median']:.2f}** ranks | {g_smt['rank_shift_median']:.2f} ranks | Median standard deviation of feature rankings across retrains. |
 | **Local Stability** | Jaccard@3 (Top-3 Codes) | **{l_std['metrics_by_k']['k_3']['mean_jaccard']:.4f}** | {l_smt['metrics_by_k']['k_3']['mean_jaccard']:.4f} | Overlap ratio of top-3 reason codes per applicant. |

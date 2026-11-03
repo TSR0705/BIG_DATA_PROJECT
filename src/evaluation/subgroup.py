@@ -69,20 +69,31 @@ def compute_metrics_for_subgroup(
     # Single-class or zero-variance check
     unique_classes = np.unique(y_true)
     if len(unique_classes) < 2:
+        y_pred = (y_prob >= threshold).astype(int)
+        tp = int(np.sum((y_true == 1) & (y_pred == 1)))
+        fp = int(np.sum((y_true == 0) & (y_pred == 1)))
+        tn = int(np.sum((y_true == 0) & (y_pred == 0)))
+        fn = int(np.sum((y_true == 1) & (y_pred == 0)))
+
+        # Undefined metrics for single-class cohorts
+        rec = None if (tp + fn) == 0 else float(tp / (tp + fn))
+        prec = None if (tp + fp) == 0 else float(tp / (tp + fp))
+        spec = None if (tn + fp) == 0 else float(tn / (tn + fp))
+
         return {
             "n": n,
             "defaults": defaults,
             "default_rate": default_rate,
             "roc_auc": None,
             "pr_auc": None,
-            "brier_score": float(brier_score_loss(y_true, y_prob)) if n > 0 else None,
+            "brier_score": float(np.mean((y_true - y_prob) ** 2)) if n > 0 else None,
             "log_loss": None,
             "ece": compute_expected_calibration_error(y_true, y_prob) if n > 0 else None,
-            "precision": None,
-            "recall": None,
+            "precision": prec,
+            "recall": rec,
             "f1": None,
-            "specificity": None,
-            "note": "Single-class group (TARGET contains only one class); discrimination undefined."
+            "specificity": spec,
+            "note": "Single-class group (TARGET contains only one class); discrimination and recall undefined."
         }
 
     # Discrimination metrics
@@ -166,7 +177,7 @@ def compute_bootstrap_confidence_intervals(
     upper_pct = 100 * (1 - alpha / 2)
 
     for k, vals in metrics_record.items():
-        if len(vals) >= 50:
+        if len(vals) >= 10:
             ci_dict[k] = (float(np.percentile(vals, lower_pct)), float(np.percentile(vals, upper_pct)))
         else:
             ci_dict[k] = (None, None)
@@ -272,9 +283,13 @@ def run_e7_subgroup_audit(
             "pr_auc": round(m_016["pr_auc"], 4) if m_016["pr_auc"] is not None else None,
             "pr_auc_ci": fmt_val_ci(m_016["pr_auc"], ci["pr_auc"]),
             "brier_score": round(m_016["brier_score"], 6) if m_016["brier_score"] is not None else None,
+            "brier_score_ci": fmt_val_ci(m_016["brier_score"], ci["brier_score"], decimals=5),
             "ece": round(m_016["ece"], 6) if m_016["ece"] is not None else None,
+            "ece_ci": fmt_val_ci(m_016["ece"], ci["ece"], decimals=5),
             "precision_at_016": round(m_016["precision"], 4) if m_016["precision"] is not None else None,
+            "precision_ci": fmt_val_ci(m_016["precision"], ci["precision"], decimals=4),
             "recall_at_016": round(m_016["recall"], 4) if m_016["recall"] is not None else None,
+            "recall_ci": fmt_val_ci(m_016["recall"], ci["recall"], decimals=4),
             "precision_at_017": round(m_017["precision"], 4) if m_017["precision"] is not None else None,
             "recall_at_017": round(m_017["recall"], 4) if m_017["recall"] is not None else None,
             "audit_note": m_016["note"],
@@ -384,19 +399,19 @@ This subgroup evaluation is an **exploratory performance and calibration audit**
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 """
     for _, row in df.iterrows():
-        roc_str = row["roc_auc_ci"] if row["roc_auc"] is not None else "NA (single class)"
-        pr_str = row["pr_auc_ci"] if row["pr_auc"] is not None else "NA (single class)"
-        brier_str = f"{row['brier_score']:.5f}" if row['brier_score'] is not None else "NA"
-        ece_str = f"{row['ece']:.5f}" if row['ece'] is not None else "NA"
-        prec_str = f"{row['precision_at_016']:.4f}" if row['precision_at_016'] is not None else "NA"
-        rec_str = f"{row['recall_at_016']:.4f}" if row['recall_at_016'] is not None else "NA"
+        roc_str = row["roc_auc_ci"] if row["roc_auc"] is not None else "NA"
+        pr_str = row["pr_auc_ci"] if row["pr_auc"] is not None else "NA"
+        brier_str = row["brier_score_ci"] if row["brier_score"] is not None else "NA"
+        ece_str = row["ece_ci"] if row["ece"] is not None else "NA"
+        prec_str = row["precision_ci"] if row["precision_at_016"] is not None else "NA"
+        rec_str = row["recall_ci"] if row["recall_at_016"] is not None else "NA"
 
         report_content += (
             f"| {row['subgroup_dimension']} | **{row['subgroup_name']}** | {row['sample_size']:,} | {row['population_share']}% | "
             f"{row['defaults']:,} | {row['default_rate']}% | {roc_str} | {pr_str} | {brier_str} | {ece_str} | {prec_str} | {rec_str} |\n"
         )
 
-    report_content += """
+    report_content += r"""
 ---
 
 ## 3. Subgroup Performance Observations

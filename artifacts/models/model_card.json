@@ -84,10 +84,10 @@
   },
   "final_test_evaluation": {
     "test_sample_size": 46127,
-    "test_roc_auc": 0.789748,
-    "test_pr_auc": 0.279044,
+    "test_roc_auc": 0.789754,
+    "test_pr_auc": 0.279038,
     "test_brier_score": 0.065953,
-    "test_ece": 0.003876,
+    "test_ece": 0.003879,
     "test_recall_at_016": 0.431257,
     "test_precision_at_016": 0.273688,
     "test_historical_exposure_disclosure": "The test set was previously evaluated in Phase 7 and Phase 8 model comparison tables. This evaluation represents a final locked evaluation on a previously exposed holdout."
@@ -131,12 +131,15 @@
       "local_jaccard_k3": 0.4993,
       "local_jaccard_k4": 0.4817,
       "local_jaccard_k5": 0.4755,
-      "risk_band_change_pct": 10.39,
+      "raw_score_band_shift_pct": 10.39,
       "low_band_retention_pct": 94.75,
       "med_band_retention_pct": 76.51,
-      "high_band_retention_pct": 74.97
+      "high_band_retention_pct": 74.97,
+      "model_pairs_compared": 105,
+      "total_pairwise_comparisons": 525000,
+      "explanation_criterion": "absolute magnitude |phi_i| of margin log-odds contributions"
     },
-    "smote_xgboost": {
+    "smote_xgboost_raw_score_sensitivity": {
       "retrains": 15,
       "panel_size": 5000,
       "global_kendall_tau": 0.4845,
@@ -144,32 +147,125 @@
       "local_jaccard_k3": 0.2352,
       "local_jaccard_k4": 0.2336,
       "local_jaccard_k5": 0.2403,
-      "risk_band_change_pct": 36.79,
+      "raw_score_band_shift_pct": 36.79,
       "low_band_retention_pct": 49.36,
       "med_band_retention_pct": 38.59,
-      "high_band_retention_pct": 77.9
+      "high_band_retention_pct": 77.9,
+      "model_pairs_compared": 105,
+      "total_pairwise_comparisons": 525000,
+      "calibration_note": "Uncalibrated models; 50% training prior shifts raw scores, making probability cutoffs an assessment of score sensitivity rather than identical underwriting tiers"
     },
-    "summary": "Standard XGBoost exhibits strong global attribution stability (Kendall tau=0.7182, Top-10 overlap=86.3%) and reliable risk tier assignments (10.39% band shift rate, 94.7% low tier retention). SMOTE retraining severely destabilizes feature rankings (Kendall tau=0.4845, Top-10 overlap=45.3%) and local adverse action reason codes (Jaccard=0.2352)."
+    "terminology_note": "Top-k factors represent top applicant-level predictive attribution factors by absolute SHAP magnitude, not legally certified Adverse Action reason codes",
+    "sign_convention": "Positive SHAP increases default log-odds (risk factor); negative SHAP decreases default log-odds (protective factor)"
   },
   "subgroup_audit_findings_e7": {
-    "gender_groups_evaluated": [
-      "Female (F)",
-      "Male (M)",
-      "Unknown / Missing"
+    "evaluation_partition": "Validation Split (N=46,127), strictly zero test data leakage",
+    "evaluator_model": "artifacts/models/phase8_calibrated_model.joblib",
+    "operating_threshold": 0.16,
+    "subgroups_evaluated": [
+      {
+        "group": "Female (F)",
+        "n": 30268,
+        "share": 65.62,
+        "default_rate": 7.22,
+        "roc_auc": 0.7985,
+        "pr_auc": 0.2747,
+        "brier": 0.05893,
+        "ece": 0.00193,
+        "recall": 0.4178,
+        "precision": 0.2916
+      },
+      {
+        "group": "Male (M)",
+        "n": 15858,
+        "share": 34.38,
+        "default_rate": 9.7,
+        "roc_auc": 0.7781,
+        "pr_auc": 0.3,
+        "brier": 0.07706,
+        "ece": 0.00367,
+        "recall": 0.5296,
+        "precision": 0.2784
+      },
+      {
+        "group": "Unknown / Missing",
+        "n": 1,
+        "share": 0.002,
+        "default_rate": 0.0,
+        "roc_auc": null,
+        "pr_auc": null,
+        "brier": 0.08519,
+        "ece": 0.29187,
+        "recall": null,
+        "precision": 0.0,
+        "note": "Single-class non-default observation; recall and discrimination metrics undefined (NA)"
+      },
+      {
+        "group": "Under 25",
+        "n": 1838,
+        "share": 3.98,
+        "default_rate": 12.4,
+        "roc_auc": 0.742,
+        "pr_auc": 0.2988,
+        "brier": 0.09811,
+        "ece": 0.012,
+        "recall": 0.5439,
+        "precision": 0.2594
+      },
+      {
+        "group": "25-40",
+        "n": 17354,
+        "share": 37.62,
+        "default_rate": 9.99,
+        "roc_auc": 0.7863,
+        "pr_auc": 0.3181,
+        "brier": 0.07823,
+        "ece": 0.00257,
+        "recall": 0.5277,
+        "precision": 0.2886
+      },
+      {
+        "group": "40-55",
+        "n": 16636,
+        "share": 36.07,
+        "default_rate": 7.35,
+        "roc_auc": 0.7967,
+        "pr_auc": 0.2744,
+        "brier": 0.05998,
+        "ece": 0.00264,
+        "recall": 0.4407,
+        "precision": 0.2847
+      },
+      {
+        "group": "55 and above",
+        "n": 10299,
+        "share": 22.33,
+        "default_rate": 5.23,
+        "roc_auc": 0.77,
+        "pr_auc": 0.1915,
+        "brier": 0.04565,
+        "ece": 0.00217,
+        "recall": 0.2783,
+        "precision": 0.2896
+      }
     ],
-    "age_bands_evaluated": [
-      "Under 25",
-      "25-40",
-      "40-55",
-      "55 and above"
-    ],
-    "summary": "Observed default rates scale from 5.23% (55+) to 12.40% (Under 25); ECE <= 0.0031 across cohorts.",
-    "disclaimer": "Exploratory observational audit only; does not constitute legal fairness certification."
+    "confidence_intervals": "1,000 percentile bootstrap resamples on validation set (seed 42); complete CIs cataloged in reports/subgroup_analysis.csv",
+    "disclaimer": "Exploratory observational audit only; does not constitute legal fairness certification or causal inference"
   },
   "governance_and_intended_use": {
     "intended_use": "Credit default risk scoring and risk-tiered underwriting triaging for retail personal loans.",
     "out_of_scope_uses": "Automated adverse action without human review in medium/high risk bands; corporate credit scoring.",
     "known_limitations": "Model reflects historical 2018 credit bureau patterns; subject to macroeconomic regime shifts.",
     "reproducibility": "Run 'python scripts/run_experiments.py --exp all' with random_state=42."
+  },
+  "full_split_shap_artifact": {
+    "artifact_path": "artifacts/explainability/test_split_shap_values.parquet",
+    "metadata_path": "artifacts/explainability/test_split_shap_metadata.json",
+    "evaluation_rows": 46127,
+    "features": 256,
+    "explainer": "shap.TreeExplainer chunked (10,000 rows/chunk)"
+  },
+  "test_evaluation_sequencing_disclosure": {
+    "execution_note": "Frozen test batch evaluation was executed during the Phase 11 validation session. E5 stability retraining operated strictly on training and validation partitions without test set influence, ensuring zero data leakage."
   }
 }

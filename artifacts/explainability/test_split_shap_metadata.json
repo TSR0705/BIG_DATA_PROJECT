@@ -1,0 +1,55 @@
+{
+  "artifact": "artifacts/explainability/test_split_shap_values.parquet",
+  "total_rows": 46127,
+  "total_features": 256,
+  "chunk_size": 10000,
+  "computation_time_seconds": 3.9,
+  "explainer": "shap.TreeExplainer",
+  "model_checkpoint": "artifacts/models/phase8_best_xgboost.joblib",
+  "preprocessor": "artifacts/models/tree_preprocessor.joblib",
+  "top_10_features_test_split": [
+    {
+      "feature": "APP_EXT_SOURCES_MEAN",
+      "mean_abs_shap": 0.45144468545913696
+    },
+    {
+      "feature": "CODE_GENDER",
+      "mean_abs_shap": 0.12109570950269699
+    },
+    {
+      "feature": "POS_COMPLETION_RATE_MEAN",
+      "mean_abs_shap": 0.11819819360971451
+    },
+    {
+      "feature": "APP_PAYMENT_RATE",
+      "mean_abs_shap": 0.10659899562597275
+    },
+    {
+      "feature": "DERIVED_PAYMENT_DISCIPLINE_SCORE",
+      "mean_abs_shap": 0.10261456668376923
+    },
+    {
+      "feature": "APP_GOODS_TO_CREDIT_RATIO",
+      "mean_abs_shap": 0.09719855338335037
+    },
+    {
+      "feature": "NAME_EDUCATION_TYPE",
+      "mean_abs_shap": 0.09080494940280914
+    },
+    {
+      "feature": "AMT_ANNUITY",
+      "mean_abs_shap": 0.08885996043682098
+    },
+    {
+      "feature": "INST_AMT_PAYMENT_SUM",
+      "mean_abs_shap": 0.07406526058912277
+    },
+    {
+      "feature": "BURO_DEBT_TO_CREDIT_RATIO",
+      "mean_abs_shap": 0.07377137988805771
+    }
+  ],
+  "partition": "Test (Historical Access)",
+  "output_margin": "raw_margin_log_odds_class_1",
+  "positive_shap_interpretation": "increases_default_log_odds"
+}

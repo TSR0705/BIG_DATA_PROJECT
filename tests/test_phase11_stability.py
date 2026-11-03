@@ -108,3 +108,56 @@ def test_risk_band_transition_matrix_row_stochasticity():
     # Diagonals represent retention / stability
     retention_rates = np.diag(transition_matrix)
     assert (retention_rates > 0.70).all()
+
+
+def test_extract_topk_shap_attributions_sign_and_magnitude():
+    """Verify that extract_topk_shap_attributions adheres to sign and magnitude conventions.
+
+    Conventions:
+    - XGBoost binary:logistic margin output: positive SHAP (phi_i > 0) increases default risk.
+    - Negative SHAP (phi_i < 0) decreases default risk.
+    - mode='magnitude': ranks by |phi_i| (top predictive attribution factors).
+    - mode='risk_increasing': ranks strictly by positive phi_i > 0.
+    """
+    from src.explainability.stability import extract_topk_shap_attributions
+
+    # Synthetic SHAP matrix for 2 applicants across 4 features:
+    # Feature 0: +2.5 (strong risk factor)
+    # Feature 1: -4.0 (strong protective factor)
+    # Feature 2: +1.0 (moderate risk factor)
+    # Feature 3: -0.5 (slight protective factor)
+    shap_matrix = np.array([
+        [2.5, -4.0, 1.0, -0.5],
+        [-1.0, 3.0, -2.0, 0.5],
+    ])
+
+    # Magnitude mode: ranks by |phi|:
+    # Applicant 0: |-4.0|=4.0 (feat 1), |2.5|=2.5 (feat 0), |1.0|=1.0 (feat 2), |-0.5|=0.5 (feat 3) -> [1, 0, 2]
+    top3_mag = extract_topk_shap_attributions(shap_matrix, k=3, ranking_mode="magnitude")
+    assert np.array_equal(top3_mag[0], [1, 0, 2])
+    # Applicant 1: |3.0|=3.0 (feat 1), |-2.0|=2.0 (feat 2), |-1.0|=1.0 (feat 0) -> [1, 2, 0]
+    assert np.array_equal(top3_mag[1], [1, 2, 0])
+
+    # Risk-increasing mode: ranks strictly by positive SHAP
+    # Applicant 0: 2.5 (feat 0), 1.0 (feat 2) -> [0, 2]
+    top2_risk = extract_topk_shap_attributions(shap_matrix, k=2, ranking_mode="risk_increasing")
+    assert np.array_equal(top2_risk[0], [0, 2])
+    # Applicant 1: 3.0 (feat 1), 0.5 (feat 3) -> [1, 3]
+    assert np.array_equal(top2_risk[1], [1, 3])
+
+    # Invalid mode raises ValueError
+    with pytest.raises(ValueError):
+        extract_topk_shap_attributions(shap_matrix, k=2, ranking_mode="unsupported_mode")
+
+
+def test_e5_pairwise_comparisons_count():
+    """Verify combinatorial math for E5 model pairs and applicant comparisons."""
+    from math import comb
+
+    n_retrains = 15
+    panel_size = 5000
+    n_pairs = comb(n_retrains, 2)
+    assert n_pairs == 105
+    total_applicant_comparisons = n_pairs * panel_size
+    assert total_applicant_comparisons == 525000
+
