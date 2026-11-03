@@ -16,7 +16,7 @@ Phase 11 concludes the core empirical machine learning and explainability valida
 
 1. **Experiment E5 (SHAP Explanation Stability Across Retraining):** Assesses whether applicant-level predictive attribution factors, global feature importance hierarchies, and raw-score risk tiers remain numerically consistent across 15 independent bootstrap retrains under standard sampling versus 15 bootstrap retrains under synthetic oversampling (SMOTE), evaluated on a fixed panel of $N=5,000$ applicants.
 2. **Experiment E7 (Demographic Subgroup Performance Audit):** Audits model discrimination, calibration, and classification performance across sex (`CODE_GENDER`: Female, Male, Unknown) and age cohorts (Under 25, 25–40, 40–55, 55+) on the validation partition ($N=46,127$), equipped with 1,000 percentile bootstrap confidence intervals, Expected Calibration Error (ECE), and Brier scores.
-3. **Final Frozen Test Set Evaluation & Model Card Generation:** Executes a single, locked batch evaluation on the holdout test set ($N=46,127$) across 12 distinct modeling configurations, validates strict risk-tier monotonicity, generates a comprehensive programmatic `models/model_card.json` (mirrored in `artifacts/models/model_card.json`), and provides complete, transparent disclosure regarding historical holdout exposure and Phase 7 benchmark reconciliation.
+3. **Final Frozen Test Set Evaluation & Model Card Generation:** Executes a single, locked batch evaluation on the frozen internal holdout test partition ($N=46,127$) across 12 distinct modeling configurations, validates strict risk-tier monotonicity, generates a comprehensive programmatic `models/model_card.json` (mirrored in `artifacts/models/model_card.json`), and provides complete, transparent disclosure regarding historical holdout exposure and Phase 7 benchmark reconciliation.
 4. **Full-Split SHAP Computation:** Computes chunked TreeSHAP explanations across all $N=46,127$ test partition applicants, persisting the complete matrix to `artifacts/explainability/test_split_shap_values.parquet` and cataloging metadata in `artifacts/explainability/test_split_shap_metadata.json`.
 
 ---
@@ -28,7 +28,7 @@ Phase 11 concludes the core empirical machine learning and explainability valida
 | **OBJ-11.1** | Global and local explanation stability under model retraining | Fixed $N=5,000$ stratified validation panel | Kendall's $\tau$, Top-10 overlap, Jaccard@3/4/5 predictive attribution factors |
 | **OBJ-11.2** | Raw-score tier stability and sensitivity across retrains | Fixed $N=5,000$ stratified validation panel | Pooled symmetric transition matrix, retention rates, score shift frequency |
 | **OBJ-11.3** | Demographic subgroup discrimination and calibration disparity | Full validation set ($N=46,127$) | ROC-AUC, PR-AUC, ECE, Brier score, complete 1,000 bootstrap 95% CIs |
-| **OBJ-11.4** | Final benchmark evaluation on holdout test partition | Full test set ($N=46,127$) | 12-configuration comparison table (`reports/model_comparison.csv`) |
+| **OBJ-11.4** | Final benchmark evaluation on frozen internal holdout test partition | Full test set ($N=46,127$) | 12-configuration comparison table (`reports/model_comparison.csv`) |
 | **OBJ-11.5** | Empirical verification of operational risk-tier monotonicity | Full test set ($N=46,127$) | Observed default rates: $\text{LOW} < \text{MEDIUM} < \text{HIGH}$ |
 | **OBJ-11.6** | Full-split test explainability artifact generation | Full test set ($N=46,127$) | `artifacts/explainability/test_split_shap_values.parquet` |
 | **OBJ-11.7** | Machine learning governance and lineage documentation | Full model lifecycle | Production Model Card (`models/model_card.json`) |
@@ -45,7 +45,7 @@ Prior to executing any Phase 11 pipeline, a rigorous forensic inspection of the 
 - In **Phases 9 and 10**, the test split was held out without access or contamination. Feature engineering, ablation studies (E1), decision-curve cost analyses (E3), and imbalance evaluations (E4) strictly utilized only the training ($N=215,257$) and validation ($N=46,127$) partitions.
 
 ### 3.2 Formal Protocol Stance for Phase 11
-Scientific integrity requires explicit recognition that the test partition was historically accessed during earlier iterations. Therefore, the Phase 11 test evaluation is **not** presented as a blind, pristine holdout. Rather, it is reported as a **locked final evaluation on a previously exposed partition**. 
+Scientific integrity requires explicit recognition that the test partition was historically accessed during earlier iterations. Therefore, the Phase 11 test evaluation is **not** presented as a blind, pristine holdout. Rather, it is designated strictly as the **frozen internal holdout test partition**. Because earlier phases used this partition for model comparison and optimization, it must not be described as a completely untouched, blind external holdout. 
 
 To maintain total methodological rigor:
 - **Zero Retraining:** No model was retrained on the test set.
@@ -217,7 +217,13 @@ Following an independent audit of Phase 8 calibration provenance, an in-sample c
 - **Zero Validation or Test Leakage:** Exactly 0 validation rows and 0 test rows were accessed during calibration fitting or selection.
 - **Evaluation Partition:** Validation split ($N=46,127$), evaluated completely out-of-sample.
 - **Base Estimator:** Frozen Phase 8 Tuned XGBoost (`artifacts/models/phase8_best_xgboost.joblib`).
-- **Operating Threshold:** $\tau = 0.1600$ (cost-optimal 1:5 ratio; primary) and $	au = 0.1700$ (maximum F1; secondary).
+- **Operating Threshold:** $\tau = 0.1600$ (cost-optimal 1:5 ratio; primary) and $\tau = 0.1700$ (maximum F1; secondary).
+- **Threshold Provenance & Operational Selection Disclosure:**
+  Operating threshold $\tau = 0.1600$ was selected during Phase 8 validation cost analysis (`scripts/run_phase8_optimization.py` line 264; `reports/cost_analysis.csv`) based on a 1:5 false-negative cost penalty. It was **NOT** independently selected or retuned during Phase 11.
+  - *Probability Calibration Independence:* The calibration mapping was fitted exclusively using training-set out-of-fold predictions, with validation data reserved for evaluating the calibrated predictions.
+  - *Methodological Qualification on Pipeline Selection:* While the calibration mapping was fitted independently relative to validation data, the complete model evaluation is not fully independent of validation-based model selection. Phase 8 used validation results to select model configurations and hyperparameters. Therefore, these validation metrics must not be described as an entirely untouched, unbiased evaluation of the whole modelling process.
+  - *Leakage Claim Precision:* No validation or test leakage occurred in the independent calibration-fitting procedure.
+  - *Threshold-Dependent Classification Metrics:* Operational classification metrics (Precision, Recall, F1-score) evaluate the model under this frozen historical deployment cutoff ($\tau = 0.1600$). They reflect performance under this frozen policy and are not claimed to be threshold-independent.
 - **Demographic Slices Audited:**
   1. **Sex (`CODE_GENDER`):**
      - Female (`F`): $N = 30,268$ (65.62% of validation cohort)
@@ -284,8 +290,20 @@ The forensic investigation established the following exact provenance details ac
 2. **Training-only calibration holdout:** None was exported to disk as a production model artifact during Phase 8. (Phase 10 Experiment E3 utilized an in-memory 80/20 train split of $172,205$ fit / $43,052$ cal, but did not persist an artifact for production inference).
 3. **Out-of-fold training predictions:** Out-of-fold predictions on the training set were not historically saved in Phase 8.
 4. **Calibrator selection using validation labels:** Yes. In Phase 8, `val_calib_iso["brier_score"] <= val_calib_sig["brier_score"]` compared validation metrics to select isotonic calibration over Platt scaling.
-5. **Test partition isolation:** Zero test labels were used in calibration fitting or method selection. The holdout test partition ($N=46,127$) remained completely unaccessed.
+5. **Test partition isolation:** Zero test labels were used in calibration fitting or method selection. The frozen internal holdout test partition ($N=46,127$) remained completely unaccessed.
 6. **Remediation implemented:** 5-Fold Stratified Out-of-Fold cross-fitting across all $215,257$ training rows was executed, generating `phase11_independent_calibrator.joblib` and `phase11_calibration_metadata.json` with zero validation rows or labels accessed.
+
+### 10.1.1 Frozen Split Partition Verification & Label Accounting
+A forensic audit of the frozen partition files (`data/splits/*.parquet`, sha256 verified, created 2026-10-05 21:08:17 UTC) joined to true target labels (`data/model_input/model_input.parquet`) establishes the exact immutable partition distribution:
+
+| Partition File | Exact Row Count ($N$) | Defaults ($y=1$) | Non-Defaults ($y=0$) | Default Rate (%) | Disjointness vs Other Splits | Completeness Verification |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| `train_indices.parquet` | **215,257** | **17,377** | **197,880** | 8.0727% | 0 overlap (Disjoint) | $\text{Train} \cup \text{Val} \cup \text{Test} = \text{All } 307,511$ |
+| `val_indices.parquet` | **46,127** | **3,724** | **42,403** | 8.0734% | 0 overlap (Disjoint) | Complete coverage |
+| `test_indices.parquet` | **46,127** | **3,724** | **42,403** | 8.0734% | 0 overlap (Disjoint) | Complete coverage |
+| **Total Supervised Population** | **307,511** | **24,825** | **282,686** | **8.0729%** | **Pairwise 0 Overlap** | **100% Unique Applicants** |
+
+*Forensic Discrepancy Reconciliation:* In an earlier informal assistant discussion table, values of 17,370 and 3,731 were transcribed due to a manual chat transcription error. The physical split files on disk and the Phase 6 benchmark records (`reports/split_report.json`) have remained completely frozen with exactly **17,377 train defaults**, **3,724 validation defaults**, and **3,724 test defaults** since October 5, 2026.
 
 ### 10.2 Complete Subgroup Performance Table with 95% Bootstrap Confidence Intervals
 
@@ -303,6 +321,15 @@ Evaluated strictly on the Validation split ($N=46,127$) using the independent ca
 | **Age Band** | **55 and above** | 10,299 | 539 | 5.23% | 0.7682 [0.7463, 0.7878] | 0.1920 [0.1634, 0.2235] | 0.04577 [0.04240, 0.04935] | 0.00359 [0.00210, 0.00833] | 0.2893 [0.2495, 0.3283] | 0.2764 [0.2367, 0.3154] |
 
 *\*Note on Single-Class Group:* Recall and discrimination metrics (ROC-AUC, PR-AUC) are mathematically undefined when $TP + FN = 0$ (all labels are negative), and are strictly reported as `NA`.
+
+### 10.2.1 Under-25 ECE Bootstrap Verification & Finite-Sample Folded-Normal Bias
+For the Under-25 applicant cohort ($N=1,838$, 228 defaults, observed default rate 12.40%):
+- **Sample Point Estimate:** $\text{ECE} = \mathbf{0.00627}$ (exact: $0.006265$).
+- **Calibration Binning Specification:** 10 uniform probability partitions spanning $[0.0, 1.0]$ (`np.linspace(0.0, 1.0, 11)`).
+- **Bootstrap Implementation Protocol:** Paired resampling with replacement of $(y_{\text{true}}, y_{\text{prob}})$, $B = 1,000$ bootstrap replicates, random seed `random_state = 42` (`src/evaluation/subgroup.py`).
+- **1,000 Conventional Percentile Bootstrap 95% CI:** $[\mathbf{0.00753}, \mathbf{0.02466}]$ (min: $0.00421$, median: $0.01467$, max: $0.03096$, mean: $0.01508$, std: $0.00452$).
+- **Theoretical Explanation of Observed Upward Shift:** In small demographic cohorts ($N=1,838$), bin-level sample sizes are small ($n_b \approx 50-200$). Under binomial sampling fluctuation ($k_b^* \sim \text{Binomial}(n_b, p_b)$), the absolute value operation $|\bar{y}_b^* - \bar{p}_b^*|$ folds zero-mean perturbations into a strictly positive half-normal distribution with expectation $\mathbb{E}[|Z|] = \sigma_b \sqrt{2/\pi} > 0$ (Nixon et al., 2019; Roelofs et al., 2022). Consequently, finite-sample bootstrap resamples naturally experience an upward shift relative to the point estimate. This theoretical analysis explains the observed upward shift in empirical bootstrap bounds, but is not presented as proof that the percentile interval possesses exact nominal statistical coverage.
+- **Reporting Fidelity:** In strict adherence to scientific integrity, the conventional percentile interval $[0.00753, 0.02466]$ is reported without artificial lower-bound clamping.
 
 ### 10.3 Old (In-Sample) vs. New (Independent) Validation Results Comparison
 
@@ -325,6 +352,7 @@ Evaluated strictly on the Validation split ($N=46,127$) using the independent ca
 2. **Natural Bootstrap Confidence Interval Enclosure:** Because the independent point estimate is non-zero, the conventional 95% percentile bootstrap interval ($[0.00232, 0.00680]$) naturally and rigorously encloses the point estimate ($0.00417$) without requiring artificial parameter boundary clamping.
 3. **Subgroup Recall Invariance:** Under a uniform cost-optimal decision threshold ($\tau = 0.1600$), recall varies systematically with group baseline default rate (Male: 52.70%, Female: 41.60%, Under-25: 54.39%, 55+: 27.64%), while operational precision remains tightly clustered across all groups (25.94% to 29.16%).
 4. **Preservation of Model Assets:** The Phase 8 production artifacts (`phase8_best_xgboost.joblib` and `phase8_calibrated_model.joblib`) were strictly preserved. The new model is stored separately as `artifacts/models/phase11_independent_calibrator.joblib` with full provenance documented in `phase11_calibration_metadata.json`.
+5. **OOF Calibration Score-Distribution Difference:** The five calibration fold models each trained on approximately 80% of the training partition ($N \approx 172,205$). The final frozen XGBoost model was trained on the full training partition ($N = 215,257$). Consequently, the OOF prediction distribution may differ slightly from the final model's prediction distribution. This is a recognized characteristic of cross-fitted calibration. It is not claimed that the OOF calibrator is guaranteed to be perfectly calibrated for the full-data model, although empirically it substantially mitigates overconfidence and reduces validation ECE from raw levels.
 
 ---
 
@@ -339,7 +367,7 @@ To prevent methodological drift and data contamination, the test evaluation prot
 
 ---
 
-## 12. Final Model Comparison on Holdout Test Set
+## 12. Final Model Comparison on Frozen Internal Holdout Test Partition
 
 ### 12.1 Comprehensive 12-Configuration Test Results ($N=46,127$, Defaults = 3,724, Base Rate = 8.07%)
 
@@ -397,7 +425,7 @@ $$\mathbf{3.60\% < 14.85\% < 32.94\%} \implies \text{\textbf{STRICTLY MONOTONIC 
 
 ## 14. Full-Split SHAP Explainability Artifact
 
-To satisfy the full-split explainability contract, TreeSHAP values were computed across all 46,127 applicants in the holdout test set using the frozen Phase 8 tuned XGBoost model and preprocessor:
+To satisfy the full-split explainability contract, TreeSHAP values were computed across all 46,127 applicants in the frozen internal holdout test partition using the frozen Phase 8 tuned XGBoost model and preprocessor:
 
 - **Artifact Path:** `artifacts/explainability/test_split_shap_values.parquet`
 - **Metadata Path:** `artifacts/explainability/test_split_shap_metadata.json`

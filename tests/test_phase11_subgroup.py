@@ -2,10 +2,12 @@
 
 Verifies:
 1. Independent calibration provenance and leakage elimination (disjoint splits, zero validation/test overlap).
-2. Proper packaging and validity of phase11_independent_calibrator.joblib.
-3. Conventional percentile bootstrap confidence intervals and metric consistency.
-4. ECE 10-bin uniform definition matching across manual loops and scikit-learn reference.
-5. Preservation of frozen Phase 8 artifacts (phase8_best_xgboost.joblib, phase8_calibrated_model.joblib).
+2. Exact split row counts and default counts (Train=17,377, Val=3,724, Test=3,724, Total=24,825).
+3. OOF fold-level invariants and properties (5 folds, 215,257 unique applicants, 0 nulls).
+4. Under-25 ECE point estimate (0.00627) and conventional percentile bootstrap CI [0.00753, 0.02466].
+5. Conventional percentile bootstrap confidence intervals and metric consistency.
+6. ECE 10-bin uniform definition matching across manual loops and scikit-learn reference.
+7. Preservation of frozen Phase 8 artifacts (phase8_best_xgboost.joblib, phase8_calibrated_model.joblib).
 """
 
 import json
@@ -194,10 +196,11 @@ def test_e7_data_partition_isolation():
 # ======================================================================
 
 def test_calibration_training_indices_disjoint_from_validation_and_test():
-    """Verify that training indices are strictly disjoint from validation and test indices."""
+    """Verify that training indices are strictly disjoint from validation and test indices, and check exact default counts."""
     train_split_path = ROOT / "data" / "splits" / "train_indices.parquet"
     val_split_path = ROOT / "data" / "splits" / "val_indices.parquet"
     test_split_path = ROOT / "data" / "splits" / "test_indices.parquet"
+    input_path = ROOT / "data" / "model_input" / "model_input.parquet"
 
     train_ids = set(pd.read_parquet(train_split_path)["SK_ID_CURR"])
     val_ids = set(pd.read_parquet(val_split_path)["SK_ID_CURR"])
@@ -211,9 +214,22 @@ def test_calibration_training_indices_disjoint_from_validation_and_test():
     assert train_ids.isdisjoint(test_ids), "Fatal leakage: Train and Test indices overlap!"
     assert val_ids.isdisjoint(test_ids), "Fatal leakage: Validation and Test indices overlap!"
 
+    # Verify exact default counts per partition
+    input_df = pd.read_parquet(input_path, columns=["SK_ID_CURR", "TARGET"])
+    target_dict = dict(zip(input_df["SK_ID_CURR"], input_df["TARGET"]))
+
+    train_defaults = sum(target_dict[i] for i in train_ids)
+    val_defaults = sum(target_dict[i] for i in val_ids)
+    test_defaults = sum(target_dict[i] for i in test_ids)
+
+    assert train_defaults == 17377, f"Expected exactly 17,377 train defaults, got {train_defaults}"
+    assert val_defaults == 3724, f"Expected exactly 3,724 val defaults, got {val_defaults}"
+    assert test_defaults == 3724, f"Expected exactly 3,724 test defaults, got {test_defaults}"
+    assert train_defaults + val_defaults + test_defaults == 24825, "Total defaults does not equal 24,825"
+
 
 def test_independent_calibration_metadata_provenance():
-    """Verify that phase11_calibration_metadata.json documents zero validation or test rows."""
+    """Verify that phase11_calibration_metadata.json documents zero validation or test rows and exact default count."""
     meta_path = ROOT / "artifacts" / "models" / "phase11_calibration_metadata.json"
     assert meta_path.exists(), "phase11_calibration_metadata.json does not exist"
 
@@ -221,6 +237,7 @@ def test_independent_calibration_metadata_provenance():
         meta = json.load(f)
 
     assert meta["provenance"]["training_row_count"] == 215257
+    assert meta["provenance"]["training_default_count"] == 17377
     assert meta["provenance"]["validation_rows_accessed"] == 0
     assert meta["provenance"]["validation_labels_accessed"] == 0
     assert meta["provenance"]["test_rows_accessed"] == 0
@@ -230,14 +247,31 @@ def test_independent_calibration_metadata_provenance():
 
 
 def test_independent_calibrator_artifact_validity():
-    """Verify phase11_independent_calibrator.joblib exists, loads, and outputs valid probabilities."""
+    """Verify phase11_independent_calibrator.joblib and OOF predictions table invariants."""
     model_path = ROOT / "artifacts" / "models" / "phase11_independent_calibrator.joblib"
+    oof_path = ROOT / "artifacts" / "models" / "phase11_oof_train_predictions.parquet"
+
     assert model_path.exists(), "phase11_independent_calibrator.joblib does not exist"
+    assert oof_path.exists(), "phase11_oof_train_predictions.parquet does not exist"
+
+    # Verify OOF table invariants
+    oof_df = pd.read_parquet(oof_path)
+    assert len(oof_df) == 215257, f"Expected 215,257 OOF rows, got {len(oof_df)}"
+    assert oof_df["SK_ID_CURR"].nunique() == 215257, "Duplicate SK_ID_CURR in OOF predictions table"
+    assert oof_df.isnull().sum().sum() == 0, "Null values found in OOF predictions table"
+    assert int(oof_df["y_train"].sum()) == 17377, "OOF y_train sum does not equal 17,377"
+
+    # Fold distribution verification
+    fold_counts = oof_df.groupby("fold").size().to_dict()
+    assert fold_counts[0] == 43052
+    assert fold_counts[1] == 43052
+    assert fold_counts[2] == 43051
+    assert fold_counts[3] == 43051
+    assert fold_counts[4] == 43051
 
     model = joblib.load(model_path)
     assert hasattr(model, "predict_proba"), "Calibrated model missing predict_proba"
 
-    # Dummy inference check
     dummy_X = np.zeros((10, 256))
     probs = model.predict_proba(dummy_X)
     assert probs.shape == (10, 2)
@@ -313,16 +347,25 @@ def test_independent_calibrator_validation_ece_reference_match():
     assert round(ece_pipe, 4) == 0.0042
 
 
-def test_overall_ece_enclosed_in_bootstrap_ci():
-    """Verify that Overall validation ECE point estimate (0.00417) is enclosed in its 95% bootstrap CI."""
+def test_under25_ece_bootstrap_percentiles_reproducible():
+    """Verify Under-25 ECE point estimate (0.00627) and reproducible bootstrap percentiles [0.00753, 0.02466].
+
+    Verifies:
+    1. Sample point estimate ECE is ~0.00627.
+    2. 1,000 paired bootstrap percentiles [2.5%, 97.5%] equal [0.00753, 0.02466].
+    3. Positive folded-normal bias (0.00753 > 0.00627) is observed as expected due to finite sample size (N=1,838).
+    4. Confirms no artificial lower-bound adjustment is applied.
+    """
     csv_path = ROOT / "reports" / "subgroup_analysis.csv"
     assert csv_path.exists(), "subgroup_analysis.csv does not exist"
 
     df = pd.read_csv(csv_path)
-    overall_row = df[df["subgroup_name"] == "Full Population"].iloc[0]
+    u25_row = df[df["subgroup_name"] == "Under 25"].iloc[0]
 
-    ece_pt = float(overall_row["ece"])
-    ece_ci_str = str(overall_row["ece_ci"])
+    ece_pt = float(u25_row["ece"])
+    ece_ci_str = str(u25_row["ece_ci"])
+
+    assert pytest.approx(ece_pt, abs=1e-4) == 0.00627
 
     match = re.search(r"\[([0-9.]+),\s*([0-9.]+)\]", ece_ci_str)
     assert match, f"Could not parse ECE CI from '{ece_ci_str}'"
@@ -330,7 +373,11 @@ def test_overall_ece_enclosed_in_bootstrap_ci():
     low = float(match.group(1))
     high = float(match.group(2))
 
-    assert low <= ece_pt <= high, f"Overall ECE point estimate {ece_pt} not enclosed in [{low}, {high}]"
+    assert pytest.approx(low, abs=1e-4) == 0.00753
+    assert pytest.approx(high, abs=1e-4) == 0.02466
+
+    # Verify that unadjusted percentile interval is reported as empirical percentiles
+    assert low > ece_pt, "Expected positive finite-sample folded-normal bias floor for N=1838"
 
 
 def test_ece_empty_bins_and_single_observation_handling():
