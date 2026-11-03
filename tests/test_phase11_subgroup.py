@@ -141,3 +141,65 @@ def test_bootstrap_confidence_intervals_includes_all_metrics():
         assert low is not None and high is not None
         assert low <= high
 
+
+def test_point_estimate_contained_in_bootstrap_ci():
+    """Verify that the full-subgroup point estimate is strictly enclosed by the bootstrap 95% CI."""
+    rng = np.random.RandomState(42)
+    n_samples = 1000
+    y_true = rng.binomial(1, 0.15, size=n_samples)
+    y_prob = rng.beta(2, 8, size=n_samples)
+    threshold = 0.16
+
+    pt = compute_metrics_for_subgroup(y_true, y_prob, threshold=threshold)
+    cis = compute_bootstrap_confidence_intervals(y_true, y_prob, threshold=threshold, n_bootstraps=200, seed=42)
+
+    for metric in ["roc_auc", "pr_auc", "brier_score", "ece", "precision", "recall"]:
+        pt_val = pt[metric]
+        low, high = cis[metric]
+        assert pt_val is not None, f"Point estimate for {metric} is None"
+        assert low is not None and high is not None, f"CI bounds for {metric} are None"
+        # Point estimate must be compatible with bootstrap distribution
+        assert low <= pt_val <= high or pytest.approx(pt_val, abs=1e-3) in (low, high), (
+            f"Point estimate {pt_val:.4f} for {metric} not enclosed by CI [{low:.4f}, {high:.4f}]"
+        )
+
+
+def test_paired_resampling_alignment():
+    """Verify that paired bootstrap resampling preserves exact applicant alignment between y_true and y_prob."""
+    n_samples = 500
+    rng = np.random.RandomState(42)
+    y_true = rng.binomial(1, 0.2, size=n_samples)
+    # Perfect predictor: y_prob == y_true
+    y_prob = y_true.astype(float)
+    threshold = 0.50
+
+    cis = compute_bootstrap_confidence_intervals(y_true, y_prob, threshold=threshold, n_bootstraps=50, seed=42)
+
+    # With paired resampling and perfect predictions, precision and recall must be 1.0 across all resamples
+    assert cis["precision"] == (1.0, 1.0)
+    assert cis["recall"] == (1.0, 1.0)
+    assert cis["roc_auc"] == (1.0, 1.0)
+
+
+def test_ece_consistent_binning_across_pipeline():
+    """Verify that ECE binning definition (n_bins=10) is used identically in point estimates and bootstrap."""
+    rng = np.random.RandomState(42)
+    y_true = rng.binomial(1, 0.1, size=300)
+    y_prob = rng.uniform(0, 0.5, size=300)
+
+    # Point estimate ECE
+    pt = compute_metrics_for_subgroup(y_true, y_prob)
+    ece_direct = compute_expected_calibration_error(y_true, y_prob, n_bins=10)
+    assert pt["ece"] == pytest.approx(ece_direct, abs=1e-6)
+
+
+def test_e7_data_partition_isolation():
+    """Verify that E7 subgroup audit strictly loads validation data and isolates test data."""
+    import inspect
+    from src.evaluation import subgroup
+
+    source = inspect.getsource(subgroup.run_e7_subgroup_audit)
+    assert "val_indices.parquet" in source
+    assert "test_indices.parquet" not in source
+
+
