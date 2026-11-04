@@ -1,0 +1,28 @@
+"use client";
+
+import React from "react";
+import { Lightbulb } from "lucide-react";
+
+export function FutureWorkTakeawayBanner() {
+  return (
+    <article className="cl-card p-4 sm:p-5 bg-white border border-[#E5EFE7] flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-5">
+      {/* Left Title with Lightbulb Icon */}
+      <div className="flex items-center gap-2.5 shrink-0">
+        <Lightbulb className="w-6 h-6 text-[#158444] shrink-0 stroke-[2.2]" />
+        <h3 className="text-[16px] font-bold text-[#111613] tracking-tight">
+          Takeaway
+        </h3>
+      </div>
+
+      {/* Vertical Divider (Desktop) */}
+      <div className="hidden sm:block w-px h-8 bg-[#D9DFD9] shrink-0" />
+
+      {/* Right Content Text */}
+      <p className="text-[12.5px] sm:text-[13px] text-[#222924] leading-relaxed">
+        Future work will focus on richer data, stronger and fairer models, real-time and
+        scalable deployment, and real-world validation to make the system more robust and
+        industry-ready.
+      </p>
+    </article>
+  );
+}

@@ -78,3 +78,7 @@ desktop.ini
 *.swp
 *.swo
 *~
+
+# Runtime data written by the CreditLens API (not versioned)
+artifacts/predictions/
+artifacts/dashboard_cache/
