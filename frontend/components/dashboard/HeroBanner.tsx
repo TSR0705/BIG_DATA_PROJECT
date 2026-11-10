@@ -48,12 +48,12 @@ export function HeroBanner({ totalApplicants }: { totalApplicants?: number }) {
         </div>
 
         {/* Center 3D Illustration region (~35-38% width on desktop) */}
-        <div className="relative w-full sm:w-[320px] md:w-[350px] lg:w-[330px] xl:w-[370px] h-[170px] sm:h-[185px] lg:h-[190px] xl:h-[200px] flex items-center justify-center shrink-0 z-10 select-none">
+        <div className="relative w-full sm:w-[320px] md:w-[350px] lg:w-[340px] xl:w-[380px] 2xl:w-[420px] h-[170px] sm:h-[185px] lg:h-[190px] xl:h-[200px] 2xl:h-[220px] flex items-center justify-center shrink-0 z-10 select-none">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/hero-3d-asset.png"
             alt="CreditLens 3D Loan Default Prediction Illustration"
-            className="w-full h-full object-contain filter drop-shadow-xs"
+            className="w-full h-full object-contain"
           />
         </div>
 
