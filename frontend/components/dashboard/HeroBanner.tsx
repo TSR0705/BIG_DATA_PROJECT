@@ -13,7 +13,7 @@ export function HeroBanner({ totalApplicants }: { totalApplicants?: number }) {
   const count = totalApplicants ? `${formatInt(Math.floor(totalApplicants / 1000))}K+` : "307K+";
 
   return (
-    <section className="cl-card relative overflow-hidden p-6 sm:p-7 xl:p-8 bg-white border border-[#E7ECE9] rounded-2xl sm:rounded-3xl shadow-2xs">
+    <section className="cl-card relative overflow-hidden p-6 sm:p-7 xl:p-8 bg-gradient-to-br from-white via-[#FCFDFD] to-[#F7FAF8] border border-[#E8EDE9] rounded-2xl sm:rounded-3xl shadow-2xs">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-4 xl:gap-8">
         
         {/* Left text & CTA region (~42-45% width on desktop) */}
@@ -32,14 +32,14 @@ export function HeroBanner({ totalApplicants }: { totalApplicants?: number }) {
           <div className="flex flex-wrap items-center gap-3.5 mt-5 sm:mt-6">
             <Link
               href="/check-risk"
-              className="inline-flex items-center gap-2 bg-[#087A43] hover:bg-[#066336] text-white text-[13px] sm:text-[13.5px] font-semibold px-5.5 sm:px-6 py-2.5 rounded-full shadow-xs hover:shadow-sm transition-all"
+              className="inline-flex items-center gap-2 bg-[#087A43] hover:bg-[#066336] text-white text-[13px] sm:text-[13.5px] font-semibold px-6 py-2.5 rounded-full shadow-xs hover:shadow-sm transition-all"
             >
-              <Play className="w-3.5 h-3.5 fill-none stroke-white stroke-[2.4]" />
+              <Play className="w-3.5 h-3.5 fill-white stroke-white stroke-[2]" />
               <span>Check Loan Risk</span>
             </Link>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 bg-white hover:bg-[#F2FAF4] text-[#101828] border-2 border-[#087A43]/70 hover:border-[#087A43] text-[13px] sm:text-[13.5px] font-semibold px-5 sm:px-5.5 py-2.5 rounded-full transition-all shadow-2xs"
+              className="inline-flex items-center gap-2 bg-white hover:bg-[#F2FAF4] text-[#101828] border-2 border-[#087A43]/70 hover:border-[#087A43] text-[13px] sm:text-[13.5px] font-semibold px-5.5 py-2.5 rounded-full transition-all shadow-2xs"
             >
               <BookOpen className="w-4 h-4 text-[#087A43] stroke-[2.2]" />
               <span>How It Works</span>
@@ -59,10 +59,10 @@ export function HeroBanner({ totalApplicants }: { totalApplicants?: number }) {
 
         {/* Right Feature Checklist Card region (~20-22% width on desktop) */}
         <div className="w-full lg:w-auto shrink-0 z-10">
-          <div className="bg-white border border-[#E7ECE9] rounded-2xl p-4 sm:p-4.5 shadow-2xs flex flex-col gap-3 min-w-[210px] xl:min-w-[220px]">
+          <div className="bg-[#FAFDFB]/90 backdrop-blur-xs border border-[#E2EBE5] rounded-2xl p-4 sm:p-5 shadow-2xs flex flex-col gap-3 min-w-[210px] xl:min-w-[220px]">
             {FEATURES.map((feat) => (
               <div key={feat} className="flex items-center gap-2.5">
-                <span className="w-5 h-5 rounded-full bg-[#D6F3DF] flex items-center justify-center shrink-0">
+                <span className="w-5 h-5 rounded-full bg-[#D6F3DF] border border-[#A6F4C5]/60 flex items-center justify-center shrink-0 shadow-2xs">
                   <Check className="w-3 h-3 text-[#087A43] stroke-[3]" />
                 </span>
                 <span className="text-[12.5px] sm:text-[13px] font-bold text-[#101828] whitespace-nowrap">

@@ -14,7 +14,7 @@ export function ApplicantDistribution({ distribution }: { distribution: Applican
       hole: 0.62,
       values: [distribution.non_default_count, distribution.default_count],
       labels: ["Non-Default", "Default"],
-      marker: { colors: ["#10543A", "#48C774"], line: { color: "#ffffff", width: 2 } },
+      marker: { colors: ["#10543A", "#48C774"], line: { color: "#ffffff", width: 2.5 } },
       textinfo: "none",
       sort: false,
       direction: "clockwise",
@@ -35,27 +35,29 @@ export function ApplicantDistribution({ distribution }: { distribution: Applican
   return (
     <Card className="flex flex-col h-full">
       <CardHeader>
-        <CardTitle icon={<UserRound />}>Applicant Distribution</CardTitle>
+        <CardTitle icon={<UserRound />} iconClass="bg-[#E0F9E6] text-[#10543A]">
+          Applicant Distribution
+        </CardTitle>
       </CardHeader>
       <div className="flex-1 flex flex-col sm:flex-row items-center gap-4 mt-2">
-        <PlotlyChart data={data} layout={layout} className="w-[170px] h-[170px] shrink-0" />
+        <PlotlyChart data={data} layout={layout} className="w-[160px] h-[160px] shrink-0" />
         <ul className="space-y-3.5 text-[12.5px]">
           <li className="flex items-start gap-2.5">
-            <span className="w-3.5 h-3.5 rounded-full bg-[#10543A] mt-0.5 shrink-0" />
+            <span className="w-3.5 h-3.5 rounded-full bg-[#10543A] mt-0.5 shrink-0 shadow-2xs" />
             <span>
-              <span className="font-semibold text-ink">Non-Default</span>
+              <span className="font-bold text-[#111613]">Non-Default</span>
               <br />
-              <span className="text-ink-muted tabular-nums">
+              <span className="text-[#555E57] font-medium tabular-nums">
                 {formatInt(distribution.non_default_count)} ({distribution.non_default_percent.toFixed(1)}%)
               </span>
             </span>
           </li>
           <li className="flex items-start gap-2.5">
-            <span className="w-3.5 h-3.5 rounded-full bg-[#48C774] mt-0.5 shrink-0" />
+            <span className="w-3.5 h-3.5 rounded-full bg-[#48C774] mt-0.5 shrink-0 shadow-2xs" />
             <span>
-              <span className="font-semibold text-ink">Default</span>
+              <span className="font-bold text-[#111613]">Default</span>
               <br />
-              <span className="text-ink-muted tabular-nums">
+              <span className="text-[#555E57] font-medium tabular-nums">
                 {formatInt(distribution.default_count)} ({distribution.default_percent.toFixed(1)}%)
               </span>
             </span>

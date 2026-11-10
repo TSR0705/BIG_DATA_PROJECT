@@ -2,7 +2,7 @@ import { Layers } from "lucide-react";
 import type { RiskFactorData } from "@/types";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 
-const BAR_COLORS = ["#10543A", "#20865D", "#48C774", "#86EFAC", "#BBF7D0"];
+const BAR_COLORS = ["#10543A", "#1B6E4C", "#248B5E", "#3EB17C", "#6EE7B7"];
 
 const BENCHMARK_FACTORS: RiskFactorData[] = [
   { rank: 1, feature: "AMT_CREDIT", display_name: "Loan Amount", mean_abs_shap: 0.076, mean_shap: 0.076, direction: "increase", rank_correlation: 0.18 },
@@ -27,20 +27,23 @@ export function TopRiskFactors({ factors, context }: { factors?: RiskFactorData[
     <Card className="flex flex-col h-full" title={context ? `SHAP sample: N=${context.sample_size} (${context.partition})` : undefined}>
       <CardHeader className="items-center">
         <CardTitle icon={<Layers />}>
-          Top Risk Factors <span className="font-normal text-ink-muted">(SHAP Analysis)</span>
+          Top Risk Factors <span className="font-normal text-[#555E57] text-[13px]">(SHAP Analysis)</span>
         </CardTitle>
       </CardHeader>
-      <ul className="mt-4 space-y-3">
+      <ul className="mt-4 space-y-3.5">
         {displayFactors.map((f, i) => (
           <li key={f.feature} className="grid grid-cols-[minmax(0,8.5rem)_1fr_auto] items-center gap-3">
-            <span className="text-[12.5px] font-medium text-ink truncate">{f.display_name}</span>
-            <div className="h-3.5 rounded-full bg-app/80 overflow-hidden">
+            <span className="text-[12.5px] font-semibold text-[#111613] truncate">{f.display_name}</span>
+            <div className="h-3 rounded-full bg-[#EEF2EF] overflow-hidden p-0.5">
               <div
-                className="h-full rounded-full transition-all duration-500"
-                style={{ width: `${Math.min(100, (f.mean_abs_shap / max) * 100)}%`, backgroundColor: BAR_COLORS[i % BAR_COLORS.length] }}
+                className="h-full rounded-full transition-all duration-500 shadow-2xs"
+                style={{
+                  width: `${Math.min(100, (f.mean_abs_shap / max) * 100)}%`,
+                  backgroundColor: BAR_COLORS[i % BAR_COLORS.length],
+                }}
               />
             </div>
-            <span className="text-[12px] font-semibold text-ink tabular-nums w-14 text-right">{signLabel(f)}</span>
+            <span className="text-[12px] font-bold text-[#111613] tabular-nums w-14 text-right">{signLabel(f)}</span>
           </li>
         ))}
       </ul>
