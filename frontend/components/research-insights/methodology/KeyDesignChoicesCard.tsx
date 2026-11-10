@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Database, Layers, Lightbulb, Search, Shield } from "lucide-react";
+import { Database, Layers, Lightbulb, Search, ShieldCheck } from "lucide-react";
 
 interface ChoiceItem {
   title: string;
@@ -23,7 +23,7 @@ const CHOICES: ChoiceItem[] = [
   {
     title: "Model Selection",
     description: "Compared multiple ML models and chosen XGBoost.",
-    icon: Shield,
+    icon: ShieldCheck,
   },
   {
     title: "Model Explainability",

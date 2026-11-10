@@ -5,7 +5,7 @@ import { Info } from "lucide-react";
 
 export function ProjectOutcomeBanner() {
   return (
-    <article className="cl-card p-4 sm:p-5 bg-white border border-[#E5EFE7] flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-5">
+    <article className="cl-card p-4 sm:p-5 bg-[#EAF5EE] border border-[#C6F2D2] flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-5">
       {/* Left Title with Info Icon */}
       <div className="flex items-center gap-2.5 shrink-0">
         <Info className="w-6 h-6 text-[#158444] shrink-0 stroke-[2.2]" />
@@ -15,7 +15,7 @@ export function ProjectOutcomeBanner() {
       </div>
 
       {/* Vertical Divider (Desktop) */}
-      <div className="hidden sm:block w-px h-8 bg-[#D9DFD9] shrink-0" />
+      <div className="hidden sm:block w-px h-8 bg-[#A7E2BA] shrink-0" />
 
       {/* Right Content Text */}
       <p className="text-[12.5px] sm:text-[13px] text-[#222924] leading-relaxed">

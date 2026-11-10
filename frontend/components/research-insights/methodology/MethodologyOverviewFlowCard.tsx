@@ -100,7 +100,7 @@ export function MethodologyOverviewFlowCard() {
                 {/* Desktop Arrow Connector */}
                 {idx < STEPS.length - 1 && (
                   <div className="hidden xl:flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-6 h-6 items-center justify-center pointer-events-none">
-                    <ArrowRight className="w-4 h-4 text-[#89938D] stroke-[2.2]" />
+                    <ArrowRight className="w-4 h-4 text-[#158444] stroke-[2.4]" />
                   </div>
                 )}
               </div>

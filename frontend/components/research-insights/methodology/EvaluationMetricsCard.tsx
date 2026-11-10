@@ -4,9 +4,9 @@ import React from "react";
 import {
   BarChart3,
   Layers,
-  Percent,
   Share2,
   Shield,
+  Sigma,
   Target,
   TrendingUp,
 } from "lucide-react";
@@ -20,7 +20,7 @@ const METRICS: MetricBadge[] = [
   { name: "ROC-AUC", icon: TrendingUp },
   { name: "ECE", icon: Shield },
   { name: "PR-AUC", icon: BarChart3 },
-  { name: "R² Score", icon: Percent },
+  { name: "R² Score", icon: Sigma },
   { name: "Brier Score", icon: Layers },
   { name: "SHAP", icon: Share2 },
 ];

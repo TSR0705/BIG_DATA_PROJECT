@@ -52,11 +52,11 @@ export function ModelComparisonTestCard() {
         <div className="flex items-center gap-2">
           <BarChart3 className="w-5 h-5 text-[#158444] shrink-0" />
           <h2 className="text-[15px] sm:text-[16px] font-bold text-[#111613] tracking-tight">
-            Model Comparison (Benchmark)
+            Model Comparison (Test Set)
           </h2>
         </div>
         <p className="text-[12px] text-[#555E57] mt-0.5">
-          Phase 11 independent evaluation benchmark (Validation partition, N=46,127).
+          Performance of different models on the test data.
         </p>
       </div>
 
