@@ -35,6 +35,8 @@ export interface RecentPredictionData {
   probability_percent: string;
   decision: string;
   source: string;
+  model_version?: string;
+  inference_type?: "GENUINE_MODEL" | "ILLUSTRATIVE_ESTIMATE" | string;
 }
 
 export interface ProfileBand {

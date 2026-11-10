@@ -129,6 +129,11 @@ def get_project_overview(profile_dimension: str = "age") -> ProjectOverview:
 
 
 def _recent_view(entry: Dict[str, Any]) -> Dict[str, Any]:
+    inf_type = (
+        "GENUINE_MODEL"
+        if entry.get("sk_id_curr") is not None or "XGBoost" in entry.get("model_version", "")
+        else "ILLUSTRATIVE_ESTIMATE"
+    )
     return {
         "applicant_id": entry["applicant_id"],
         "sk_id_curr": entry.get("sk_id_curr"),
@@ -138,6 +143,8 @@ def _recent_view(entry: Dict[str, Any]) -> Dict[str, Any]:
         "probability_percent": f"{entry['probability'] * 100:.1f}%",
         "decision": entry.get("decision", ""),
         "source": entry.get("source", ""),
+        "model_version": entry.get("model_version", ""),
+        "inference_type": inf_type,
     }
 
 

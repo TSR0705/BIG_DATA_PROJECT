@@ -43,6 +43,8 @@ class RecentPrediction(BaseModel):
     probability_percent: str
     decision: str = ""
     source: str = ""
+    model_version: Optional[str] = None
+    inference_type: Optional[str] = None
 
 
 class ProfileBand(BaseModel):
