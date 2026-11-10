@@ -41,7 +41,7 @@ export function ApplicantDistribution({ distribution }: { distribution: Applican
         <PlotlyChart data={data} layout={layout} className="w-[170px] h-[170px] shrink-0" />
         <ul className="space-y-3.5 text-[12.5px]">
           <li className="flex items-start gap-2.5">
-            <span className="w-3.5 h-3.5 rounded-full bg-forest mt-0.5 shrink-0" />
+            <span className="w-3.5 h-3.5 rounded-full bg-[#10543A] mt-0.5 shrink-0" />
             <span>
               <span className="font-semibold text-ink">Non-Default</span>
               <br />
@@ -51,7 +51,7 @@ export function ApplicantDistribution({ distribution }: { distribution: Applican
             </span>
           </li>
           <li className="flex items-start gap-2.5">
-            <span className="w-3.5 h-3.5 rounded-full bg-mint mt-0.5 shrink-0" />
+            <span className="w-3.5 h-3.5 rounded-full bg-[#48C774] mt-0.5 shrink-0" />
             <span>
               <span className="font-semibold text-ink">Default</span>
               <br />

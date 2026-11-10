@@ -24,16 +24,22 @@ export function RecentPredictions({ predictions }: { predictions: RecentPredicti
       ) : (
         <ul className="divide-y divide-app/80 mt-1 px-5">
           {predictions.map((p) => (
-            <li key={`${p.applicant_id}-${p.scored_at}`} className="flex items-center justify-between gap-2 py-2.5">
+            <li
+              key={`${p.applicant_id}-${p.scored_at}`}
+              className="flex items-center justify-between gap-2 py-2.5 min-h-[48px] hover:bg-[#FAFBF9] transition-colors rounded-lg px-1.5 -mx-1.5"
+            >
               <div className="flex items-center gap-2.5 min-w-0">
                 <span className="w-8 h-8 rounded-full bg-[#F4F5F6] flex items-center justify-center text-[#555E57] shrink-0">
                   <UserRound className="w-4 h-4 stroke-[2]" />
                 </span>
                 <div className="min-w-0 leading-tight">
-                  <Link href={`/check-risk?id=${p.sk_id_curr ?? ""}`} className="text-[12px] font-bold text-ink hover:text-[#158444] truncate block">
+                  <Link
+                    href={`/check-risk?id=${p.sk_id_curr ?? ""}`}
+                    className="text-[12px] font-bold text-ink hover:text-[#158444] whitespace-nowrap block truncate"
+                  >
                     {p.applicant_id}
                   </Link>
-                  <span className="text-[10px] text-[#89938D]">
+                  <span className="text-[10.5px] text-[#89938D] whitespace-nowrap block">
                     {timeAgo(p.scored_at)}
                   </span>
                 </div>
@@ -41,7 +47,7 @@ export function RecentPredictions({ predictions }: { predictions: RecentPredicti
               <div className="flex items-center gap-2 shrink-0">
                 <span
                   className={cn(
-                    "text-[10.5px] font-semibold px-2 py-0.5 rounded-full",
+                    "text-[10.5px] font-semibold px-2.5 py-0.5 rounded-full min-w-[76px] text-center",
                     p.risk_tier === "Low Risk" && "bg-[#E0F9E6] text-[#158444]",
                     p.risk_tier === "Medium Risk" && "bg-[#FEF9C3] text-[#A16207]",
                     p.risk_tier === "High Risk" && "bg-[#FDE8E8] text-[#E02424]",
@@ -49,7 +55,9 @@ export function RecentPredictions({ predictions }: { predictions: RecentPredicti
                 >
                   {p.risk_tier}
                 </span>
-                <span className="text-[12px] font-bold text-ink tabular-nums w-10 text-right">{p.probability_percent}</span>
+                <span className="text-[12px] font-bold text-ink tabular-nums w-12 text-right">
+                  {p.probability_percent}
+                </span>
               </div>
             </li>
           ))}

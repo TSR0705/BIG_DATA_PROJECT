@@ -1,4 +1,4 @@
-import { CheckCircle2, Lightbulb } from "lucide-react";
+import { Check, Lightbulb } from "lucide-react";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function KeyTakeaways({ takeaways }: { takeaways: string[] }) {
@@ -7,11 +7,13 @@ export function KeyTakeaways({ takeaways }: { takeaways: string[] }) {
       <CardHeader className="items-center">
         <CardTitle icon={<Lightbulb />}>Key Takeaways</CardTitle>
       </CardHeader>
-      <ul className="mt-3 space-y-2.5">
+      <ul className="mt-3.5 space-y-3">
         {takeaways.map((t) => (
           <li key={t} className="flex items-start gap-2.5">
-            <CheckCircle2 className="w-4 h-4 fill-[#158444] text-white shrink-0 mt-0.5" />
-            <span className="text-[12.5px] text-ink leading-snug">{t}</span>
+            <span className="w-4 h-4 rounded-full bg-[#158444] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <Check className="w-2.5 h-2.5 stroke-[3]" />
+            </span>
+            <span className="text-[12.5px] text-ink leading-snug font-medium">{t}</span>
           </li>
         ))}
       </ul>
