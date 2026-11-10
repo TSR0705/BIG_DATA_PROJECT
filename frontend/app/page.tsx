@@ -78,30 +78,30 @@ export default function DashboardPage() {
       <HeroBanner totalApplicants={data.total_applicants} />
 
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-4">
-        {/* Main Left Section (~73% width) */}
-        <div className="xl:col-span-9 flex flex-col gap-4">
+        {/* Main Left Section (8 cols on xl / 9 cols on 2xl) */}
+        <div className="xl:col-span-8 2xl:col-span-9 flex flex-col gap-4">
           {/* Row 1: Top 3 KPI Cards */}
           <KPICards kpis={data.kpis} />
 
           {/* Row 2: Loan Default Trend + Applicant Distribution */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-            <div className="lg:col-span-7">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+            <div className="md:col-span-7">
               <DefaultRateProfile key={data.generated_at} initial={data.default_rate_profile} dimensions={data.profile_dimensions} />
             </div>
-            <div className="lg:col-span-5">
+            <div className="md:col-span-5">
               <ApplicantDistribution distribution={data.distribution} />
             </div>
           </div>
 
           {/* Row 3: Top Risk Factors + Key Takeaways */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <TopRiskFactors factors={data.top_risk_factors} context={data.shap_context} />
             <KeyTakeaways takeaways={data.key_takeaways} />
           </div>
         </div>
 
-        {/* Dedicated Right Section (~27% width) */}
-        <div className="xl:col-span-3 flex flex-col gap-4">
+        {/* Dedicated Right Section (4 cols on xl / 3 cols on 2xl; 2-col side-by-side on md-lg) */}
+        <div className="xl:col-span-4 2xl:col-span-3 grid grid-cols-1 md:grid-cols-2 xl:flex xl:flex-col gap-4">
           <QuickActions />
           <RecentPredictions predictions={data.recent_predictions} />
         </div>
